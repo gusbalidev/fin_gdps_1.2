@@ -1,0 +1,12 @@
+{
+  "/transaction-all/page": "app/transaction-all/page.js",
+  "/api/transaction-all/route": "app/api/transaction-all/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/neraca/page": "app/neraca/page.js",
+  "/api/neraca/route": "app/api/neraca/route.js",
+  "/receive-other/page": "app/receive-other/page.js",
+  "/receive-keb/page": "app/receive-keb/page.js",
+  "/jurnal/page": "app/jurnal/page.js",
+  "/transaction-q/page": "app/transaction-q/page.js",
+  "/rep-activity/page": "app/rep-activity/page.js"
+}
