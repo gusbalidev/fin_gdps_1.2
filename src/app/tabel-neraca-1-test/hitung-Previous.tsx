@@ -91,7 +91,7 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
 
     return (
         <>
-
+            {totalTerima1X} <br />
         </>
 
     )

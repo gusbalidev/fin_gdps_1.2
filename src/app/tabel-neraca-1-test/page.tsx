@@ -18,8 +18,8 @@ export default function TabelNeraca1() {
   // const data = await getData()
   // const [isClosing, setIsClosing] = useState(false);
   // const [periodType, setPeriodType] = useState<'M' | 'Y'>('M');
-  const { periodType, subTitle } = useNeracaSaldoContext();
-  const { periodType2, subTitle2 } = useNeracaSaldoContextB();
+  // const { periodType, subTitle } = useNeracaSaldoContext();
+  const { periodType, subTitle, subTitle2 } = useNeracaSaldoContext();
   const DataComponent = ShowNSDataB;
 
   // setPeriodeOn(false);

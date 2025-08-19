@@ -17,14 +17,15 @@ import DataAsetBersih from "./data-aset-bersih";
 
 // import NeracaData from "../neraca2/neraca-data";
 import NeracaDataSub from "../neraca2/neraca-data-sub";
-import NeracaDataAP from "./neraca-data-ap-close";
+import NeracaDataAPX from "./neraca-data-ap-close";
 
-import { NeracaDataTotalAT } from "../neraca2/total-at";
+import { NeracaDataTotalAT, NeracaDataTotalATX } from "../neraca2/total-at";
 import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca2/title-value";
 
-import NeracaDataX from "../neraca/neraca-dataX";
 import NeracaData from "./neraca-data";
-import NeracaDataSubX from "../neraca/neraca-data-subX";
+import NeracaDataX from "../neraca2/neraca-dataX";
+import NeracaDataSubX from "../neraca2/neraca-data-subX";
+import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 
 
 //
@@ -33,7 +34,7 @@ export default function ShowNSDataB() {
   const { totalAT1, totalAT2, totalAT3, totalAT4, totalAP } = useNeracaTContext();
   const { totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX, totalALX, totalATLX } = useNeracaTContext();
 
-  const { start, end, startPrev, endPrev } = useNeracaSaldoContextB();
+  const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
 
   // const totalAT = totalAT1 + totalAT2 + totalAT3 + totalAT4;
@@ -48,52 +49,52 @@ export default function ShowNSDataB() {
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold opacity-0">AKTIVA</h2>
         <Divider />
         <br />
-        {totalALX}
+        {/* {totalALX} */}
 
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
           {/* <AktivaLancar /> */}
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">AKTIVA LANCAR</h2>
           <NeracaDataX title="AL1" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
           <NeracaDataX title="AL1" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={end} />
-          <NeracaData title="AL1" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={end} />
+          <NeracaDataX title="AL1" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
 
           <NeracaDataSubX title="AL1" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} />
-          {totalALX} <br />
-          {totalATLX}
+          {/* {totalALX} <br /> */}
+          {/* {totalATLX} */}
         </Suspense>
 
         <br />
         <Suspense fallback={<Loading section="AKTIVA TIDAK LANCAR" />}>
           {/* <AktivaTidakLancar /> */}
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">AKTIVA TIDAK LANCAR</h2>
-          <NeracaData title="ATL" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
-          <NeracaData title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
+          <NeracaDataX title="ATL1" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
+          <NeracaDataX title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
 
-          <NeracaDataSub title="ATL" titleTotal="ATL" type={1} group={3} start={startFirst} end={end} />
+          <NeracaDataSubX title="ATL1" titleTotal="ATL" type={1} group={3} start={startFirst} end={end} />
         </Suspense>
 
         <br />
         <Suspense fallback={<Loading section="AKTIVA TETAP" />}>
           {/* <AktivaTidakLancar /> */}
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">AKTIVA TETAP</h2>
-          <NeracaData title="AT" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
-          <NeracaData title="AT" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
-          <NeracaData title="AT" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
-          <NeracaData title="AT" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
+          <NeracaDataX title="AT1" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
+          <NeracaDataX title="AT1" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
+          <NeracaDataX title="AT1" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
+          <NeracaDataX title="AT1" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
 
           {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-          <NeracaDataTotalAT title="Aktiva Tetap" start={startFirst} end={end} />
+          <NeracaDataTotalATX title="Aktiva Tetap" start={startFirst} end={end} />
         </Suspense>
 
         {/* Hitung Ak. Penyusutan */}
         <Suspense fallback={<Loading section="AP" />}>
-          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN" start={startFirst} end={end} />
+          <NeracaDataAPX title="AP1" titleTotal="AKUMULASI PENYUSUTAN" start={startFirst} end={end} />
         </Suspense>
 
         <br />

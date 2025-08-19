@@ -6,15 +6,15 @@ import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
 
 //Hitung Akumulasi Penyusutan
-const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
+const NeracaDataAPX = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
 
-    const { setTotalAP } = useNeracaTContext();
+    const { setTotalAPX } = useNeracaTContext();
     const type = 1;
     const group = 14;
 
     // Fetch data
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: [{title}, type, group],
+        queryKey: [{ title }, type, group],
         queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -30,9 +30,9 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
     const { accounts: data, totalBalance } = result;
     const newTotal = Math.abs(totalBalance);
     const newTotalBalance = toidr(newTotal);
-    
+
     if (isSuccess) {
-        setTotalAP(totalBalance);
+        setTotalAPX(totalBalance);
     }
 
     return (
@@ -43,6 +43,6 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
     )
 }
 
-export default NeracaDataAP;
+export default NeracaDataAPX;
 
 //export default
