@@ -92,7 +92,22 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                     )
                 }
 
-
+                <br />
+                CEK: <br />
+                -- <br />
+                tot aset awal test: <br />
+                {Math.abs(totalBalance) + previousKPAB} <br />
+                -- <br />
+                terima XX <br />
+                {totalTerima1X + totalTerima2X} <br />
+                beban XX<br />
+                {totalBebanOpX + totalBeban2X + totalBeban3X} <br />
+                -- <br />
+                selisih AB prev <br />
+                {totalSelisihABX} <br />
+                -- <br />
+                selisih AB curr: <br />
+                {totalSelisihAB}
 
             </div>
         </>

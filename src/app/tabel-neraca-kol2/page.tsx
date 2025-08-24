@@ -9,17 +9,15 @@ import YearSelectorB from "@/components/widget/year-selector-close-b";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 import ShowNSDataB from "./page-data";
-import MonthYearSelector from "@/components/widget/month-year-selector-close";
-import YearSelector from "@/components/widget/year-selector-close";
 
 
 //
-export default function TabelNeraca1() {
+export default function TabelNeraca() {
   // const data = await getData()
   // const [isClosing, setIsClosing] = useState(false);
   // const [periodType, setPeriodType] = useState<'M' | 'Y'>('M');
-  // const { periodType, subTitle } = useNeracaSaldoContext();
-  const { periodType, subTitle, subTitle2 } = useNeracaSaldoContext();
+  const { periodType, subTitle } = useNeracaSaldoContext();
+  const { periodType2, subTitle2 } = useNeracaSaldoContextB();
   const DataComponent = ShowNSDataB;
 
   // setPeriodeOn(false);
@@ -30,13 +28,13 @@ export default function TabelNeraca1() {
       <div>
 
         {/* <br /> */}
-        <h1 className="text-xl font-bold dark:text-blue-500">{subTitle} test</h1>
+        <h1 className="text-xl font-bold dark:text-blue-500">{subTitle2}</h1>
         <Divider />
 
         {periodType === 'M' ?
-          <MonthYearSelector DataComponent={DataComponent} />
+          <MonthYearSelectorB DataComponent={DataComponent} />
           :
-          <YearSelector DataComponent={DataComponent} />
+          <YearSelectorB DataComponent={DataComponent} />
         }
         <br />
 

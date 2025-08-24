@@ -4,19 +4,20 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
+// import { TulisRekapRp } from './sub-total';
+import { JustValueTotal, JustValueTotalNoLine } from './title-value';
 
-import { JustValueTotalNoLine } from './title-value';
+const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
-const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
-
-    const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContext();
-    const { setTotalALX, setTotalATLX, setTotalATX, setTotalKX, setTotalABX, setTotalAB2X, setTotalAT1X, setTotalAT2X, setTotalAT3X, setTotalAT4X } = useNeracaTContext();
+    //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
+    const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4 } = useNeracaTContext();
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: ['nsx', type, group],
+        queryKey: ['nsnow', type, group],
+        //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
+        //queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
         queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -40,40 +41,39 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
         switch (group) {
 
             case 1:
-                setTotalALX(newTotal)
+                setTotalAL(newTotal)
                 break;
             case 3:
-                setTotalATLX(newTotal)
+                setTotalATL(newTotal)
                 break;
             case 2:
-                setTotalATX(newTotal)
+                setTotalAT(newTotal)
                 break;
             case 4:
-                setTotalKX(newTotal)
+                setTotalK(newTotal)
                 break;
             // case 5:
-            //     setTotalKLX(newTotal)
+            //     setTotalKL(newTotal)
             //     break;
             case 6:
-                setTotalABX(newTotal)
+                setTotalAB(newTotal)
                 break;
             case 7:
-                setTotalAB2X(newTotal)
+                setTotalAB2(newTotal)
                 break;
-
 
             //Tanah, Gedung, Kendaraan, Inventaris
             case 10:
-                setTotalAT1X(newTotal)
+                setTotalAT1(newTotal)
                 break;
             case 11:
-                setTotalAT2X(newTotal)
+                setTotalAT2(newTotal)
                 break;
             case 12:
-                setTotalAT3X(newTotal)
+                setTotalAT3(newTotal)
                 break;
             case 13:
-                setTotalAT4X(newTotal)
+                setTotalAT4(newTotal)
                 break;
 
             default:
@@ -81,7 +81,6 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
                 break;
         }
     };
-    setTotalATX(totalAT1X + totalAT2X + totalAT3X + totalAT4X);
 
     return (
         <>
@@ -94,6 +93,6 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
     )
 }
 
-export default NeracaDataX;
+export default NeracaData;
 
 //export default

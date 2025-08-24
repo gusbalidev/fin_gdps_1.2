@@ -4,12 +4,13 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useAktivitasContextB from '@/context/aktivitas-contex-b';
+import useAktivitasContext from '@/context/aktivitas-context';
 
 const HitungPrevious = ({ title, type, group2, start, end }: { title: string; type: number; group2: number; start: string, end: string }) => {
 
-    const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X,
-        setTotalTerima1X, setTotalTerima2X, setTotalBebanOpX, setTotalBeban2X, setTotalBeban3X,
-    } = useAktivitasContextB();
+    const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX,
+        setTotalTerima1XX, setTotalTerima2XX, setTotalBebanOpXX, setTotalBeban2XX, setTotalBeban3XX,
+    } = useAktivitasContext();
 
     // hitung KPAB periode sebelum
     // const totalBebanX = Math.abs(totalBebanOpX + totalBeban2X + totalBeban3X);
@@ -49,26 +50,26 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
     switch (group2) {
 
         case 8:
-            setTotalTerima1X(newTotal)
+            setTotalTerima1XX(newTotal)
             console.log('Total Terima 1:', newTotal);
             break;
         case 9:
-            setTotalTerima2X(newTotal)
+            setTotalTerima2XX(newTotal)
             console.log('Total Terima 2:', newTotal);
             break;
 
         case 10:
-            setTotalBebanOpX(newTotal)
+            setTotalBebanOpXX(newTotal)
             console.log('Total Beban Operasional:', newTotal);
             break;
 
         case 11:
-            setTotalBeban2X(newTotal)
+            setTotalBeban2XX(newTotal)
             console.log('Total Beban 2:', newTotal);
             break;
 
         case 12:
-            setTotalBeban3X(newTotal)
+            setTotalBeban3XX(newTotal)
             console.log('Total Beban 3:', newTotal);
             break;
 
@@ -77,9 +78,9 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
             break;
     }
 
-    console.log('Total Penerimaan:', totalTerima1X + totalTerima2X);
-    console.log('Total Beban:', totalBebanOpX + totalBeban2X + totalBeban3X);
-    console.log('Total Selisih AB:', totalTerima1X + totalTerima2X - (totalBebanOpX + totalBeban2X + totalBeban3X));
+    console.log('Total PenerimaanXX:', totalTerima1XX + totalTerima2XX);
+    console.log('Total BebanXX:', totalBebanOpXX + totalBeban2XX + totalBeban3XX);
+    console.log('Total Selisih ABXX:', totalTerima1XX + totalTerima2XX - (totalBebanOpXX + totalBeban2XX + totalBeban3XX));
 
 
     //Update Total global States
@@ -91,7 +92,7 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
 
     return (
         <>
-            {totalTerima1X} <br />
+            {/* {totalTerima1X} <br /> */}
         </>
 
     )

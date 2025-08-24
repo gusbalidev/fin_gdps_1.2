@@ -6,7 +6,7 @@ import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
 
 //Hitung Akumulasi Penyusutan
-const NeracaDataAPX = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
+const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
 
     const { setTotalAPX } = useNeracaTContext();
     const type = 1;
@@ -43,6 +43,6 @@ const NeracaDataAPX = ({ title, titleTotal, start, end }: { title: string; title
     )
 }
 
-export default NeracaDataAPX;
+export default NeracaDataAP;
 
 //export default

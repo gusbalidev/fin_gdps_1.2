@@ -13,7 +13,7 @@ import { JustValueTotal, JustValueTotalBold, JustValueTotalNoLine } from "../ner
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
-    const { setTotalAsetAwalX, setTotalAsetAkhirX, totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir } = useAktivitasContextB();
+    const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir } = useAktivitasContextB();
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContextB();
     const { saldoAwal } = useSaldoAwalContextB();
 
@@ -36,7 +36,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     const { accounts: data, totalBalance } = result;
 
     // const totalABA = Math.abs(totalBalance);
-    setTotalAsetAwalX(Math.abs(totalBalance));
+    setTotalAsetAwal(Math.abs(totalBalance));
 
 
     //Update Total global States
@@ -54,15 +54,15 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     const totalAsetAkhirFinal = totalAsetAwalFinal + totalSelisihAB;
 
     // Simpan ke Variables Context
-    setTotalAsetAwalX(totalAsetAwalFinal);
-    setTotalAsetAkhirX(totalAsetAkhirFinal);
+    setTotalAsetAwal(totalAsetAwalFinal);
+    setTotalAsetAkhir(totalAsetAkhirFinal);
 
     if (month === 3) {
-        setTotalAsetAwalX(totalAsetAwalFinal - saldoAwal);
-        setTotalAsetAkhirX(totalAsetAwal + totalSelisihAB);
+        setTotalAsetAwal(totalAsetAwalFinal - saldoAwal);
+        setTotalAsetAkhir(totalAsetAwal + totalSelisihAB);
     } else {
 
-        setTotalAsetAkhirX(totalAsetAwal + previousKPAB + saldoAwal);
+        setTotalAsetAkhir(totalAsetAwal + previousKPAB + saldoAwal);
     }
 
 
@@ -73,7 +73,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 {
                     (month === 3 ?
                         // <SubTotalAktivitas value={toidr(totalAsetAwal)} />
-                        <JustValueTotalNoLine value={toidr(totalAsetAwalX)} />
+                        <JustValueTotalNoLine value={toidr(totalAsetAwal)} />
                         :
                         // <SubTotalAktivitas value={toidr(totalAsetAwalFinal)} />
                         <JustValueTotalNoLine value={toidr(totalAsetAwalFinal)} />
@@ -85,14 +85,15 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 {
                     (month === 3 ?
                         // <SubTotalAktivitas value={toidr(totalAsetAkhir)} />
-                        <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
+                        <JustValueTotalBold value={toidr(totalAsetAkhir)} />
                         :
                         // <SubTotalAktivitas value={toidr(totalAsetAkhirFinal)} /
                         <JustValueTotalBold value={toidr(totalAsetAkhirFinal)} />
                     )
                 }
 
-
+                Total Terima <br />
+                {totalTerima1X + totalTerima2X}
 
             </div>
         </>

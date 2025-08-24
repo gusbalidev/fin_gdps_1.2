@@ -9,7 +9,7 @@ import Divider from "@/components/Divider";
 import KolomTitleNeraca from "./kolom-title-neraca";
 
 import BlokPeriode from "./blok-periode";
-import TabelNeraca1 from "../tabel-neraca-1-test/page";
+import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
 
 
@@ -53,18 +53,16 @@ export default function page() {
 
             {/* Tabel1 */}
             <div className='w-1/2'>
-              {/* <AktivitasArus1 /> */}
-              {/* <TabelNeraca1 /> */}
-              <TabelNeraca />
-              {/* <Pasiva2Test /> */}
+
+              <TabelNeracaKol1 />
+
             </div>
 
             {/* Tabel 2 */}
             <div className='w-1/2'>
-              {/* <AktivitasArus2 /> */}
-              <TabelNeraca />
-              {/* <Pasiva2Test /> */}
-              {/* <Pasiva /> */}
+
+              {/* <TabelNeraca /> */}
+
             </div>
 
             {/* Tabel PoP */}

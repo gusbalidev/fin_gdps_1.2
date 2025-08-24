@@ -3,20 +3,20 @@
 import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
+import TulisTotalRp from "@/components/TulisTotalRpNeracaX";
 import useNeracaTContext from '@/context/neraca-t-context';
+import { JustValueTotalBold } from './title-value';
 
-import { JustValueTotalNoLine } from './title-value';
+const NeracaDataSubX = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
-const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
+    const { setTotalALX, setTotalATLX, setTotalATX, setTotalAPX, setTotalKX, setTotalABX, setTotalAB2X } = useNeracaTContext();
 
-    const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContext();
-    const { setTotalALX, setTotalATLX, setTotalATX, setTotalKX, setTotalABX, setTotalAB2X, setTotalAT1X, setTotalAT2X, setTotalAT3X, setTotalAT4X } = useNeracaTContext();
-
-    // Fetch data using TanStack Query
+    // Fetch data
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: ['nsx', type, group],
-        queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-
+        queryKey: ['ns-subx', type, group],
+        //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
+        queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+            //queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -26,6 +26,7 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
     if (isLoading) return <div>Tunggu...</div>; // Handle loading state
     if (error) return <div>Error: {error.message}</div>; // Handle error state
     if (!result) return <div>Tidak ada data (null)</div>;
+
 
     //Total & data for table
     const { accounts: data, totalBalance } = result;
@@ -51,9 +52,9 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
             case 4:
                 setTotalKX(newTotal)
                 break;
-            // case 5:
-            //     setTotalKLX(newTotal)
-            //     break;
+            case 14:
+                setTotalAPX(newTotal)
+                break;
             case 6:
                 setTotalABX(newTotal)
                 break;
@@ -61,32 +62,17 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
                 setTotalAB2X(newTotal)
                 break;
 
-
-            //Tanah, Gedung, Kendaraan, Inventaris
-            case 10:
-                setTotalAT1X(newTotal)
-                break;
-            case 11:
-                setTotalAT2X(newTotal)
-                break;
-            case 12:
-                setTotalAT3X(newTotal)
-                break;
-            case 13:
-                setTotalAT4X(newTotal)
-                break;
-
             default:
                 // Handle default case
                 break;
         }
     };
-    setTotalATX(totalAT1X + totalAT2X + totalAT3X + totalAT4X);
 
     return (
         <>
             <div className="w-full">
-                <JustValueTotalNoLine value={newTotalBalance} />
+                {/* <TulisTotalRp value={newTotalBalance} title={titleTotal} /> */}
+                <JustValueTotalBold value={newTotalBalance} />
             </div>
 
         </>
@@ -94,6 +80,4 @@ const NeracaDataX = ({ title, titleTotal, type, group, start, end }: { title: st
     )
 }
 
-export default NeracaDataX;
-
-//export default
+export default NeracaDataSubX;
