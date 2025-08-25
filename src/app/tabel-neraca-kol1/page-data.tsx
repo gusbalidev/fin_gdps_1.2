@@ -21,6 +21,7 @@ import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungKPAB from "./hitung-KPAB";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
 // import { NeracaDataTotalATX } from "../n2new/total-at";
 
 
@@ -29,6 +30,8 @@ export default function ShowNSDataB() {
 
   const { totalATX, totalAPX } = useNeracaTContext();
   const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
+  const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX } = useAktivitasContext();
+  const { totalSelisihABX } = useAktivitasContext();
   
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
   const prevMonth = getMonth(new Date(end));
@@ -119,8 +122,8 @@ export default function ShowNSDataB() {
           </Suspense> */}
 
           {/* Tampilkan Data */}
-          <Suspense fallback={<Loading section="ASET BERSIH AWAL - AKHIR" />}>
-              <HitungAsetBersih title="ABX" titleTotal="Aset Bersih Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+          <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}>
+              <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
           </Suspense>
 
           {/* <TableArusKas /> */}
@@ -135,6 +138,18 @@ export default function ShowNSDataB() {
           <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
+
+        {/* totalSelisihAB: {totalSelisihABX} <br />
+        --- <br />
+        totalTerima1XX: {totalTerima1XX} <br />
+        totalTerima2XX: {totalTerima2XX} <br />
+        totalBebanOpXX: {totalBebanOpXX} <br />
+        totalBeban2XX: {totalBeban2XX} <br />
+        totalBeban3XX: {totalBeban3XX} <br />
+        -- <br />
+        Selisih: {(totalTerima1XX+totalTerima2XX)-(totalBebanOpXX+totalBeban2XX+totalBeban3XX)} <br /> */}
+
+
 
         <Divider />
         <TotalPasiva />

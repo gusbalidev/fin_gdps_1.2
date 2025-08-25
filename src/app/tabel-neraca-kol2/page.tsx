@@ -3,8 +3,8 @@
 
 import Divider from "@/components/Divider";
 
-import MonthYearSelectorB from "@/components/widget/month-year-selector-close-b";
-import YearSelectorB from "@/components/widget/year-selector-close-b";
+import MonthYearSelectorB from "./month-year-selector-close-b";
+import YearSelectorB from "./year-selector-close-b";
 
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";

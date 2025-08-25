@@ -16,11 +16,10 @@ import GetSaldoAwal from "@/lib/get-SaldoAwal";
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
-    // const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir } = useAktivitasContextB();
-    const { setTotalAsetAwalX, setTotalAsetAkhirX, totalAsetAwalX, totalAsetAkhirX, } = useAktivitasContext();
-    const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, setTotalSelisihABXX, totalSelisihABXX } = useAktivitasContext();
-    const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
-    const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3, totalSelisihAB, setTotalSelisihAB } = useAktivitasContext();
+    const { totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX } = useAktivitasContext();
+    const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContext();
+    const { totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
+    const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContext();
 
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
     
@@ -48,11 +47,11 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
     // Hitung Kenaikan/Penurunan AB
     const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
-    const previousKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
+    const currentKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
 
     // Set KPAB to Context
     setTotalSelisihABXX(previousKPABXX);
-    setTotalSelisihABX(previousKPABX);
+    setTotalSelisihABX(currentKPABX);
 
     // Aset Awal & Akhir Final
     // const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
@@ -61,7 +60,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
     // Simpan ke Variables Context
     setTotalAsetAwalX(Math.abs(totalBalance)+totalSelisihABXX+saldoAwal);
-    setTotalAsetAkhirX(totalAsetAwalX + totalSelisihAB);
+    setTotalAsetAkhirX(totalAsetAwalX + totalSelisihABX);
 
     
     //TEST Aset Awal, KPAB, Aset Akhir

@@ -32,6 +32,7 @@ export default function ShowNSDataB() {
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
 
   const totalAT = totalAT1 + totalAT2 + totalAT3 + totalAT4;
+  const { totalSelisihAB } = useAktivitasContextB();
 
   return (
 
@@ -123,6 +124,8 @@ export default function ShowNSDataB() {
           <HitungPrevious title="B2" type={5} group2={11} start={startFirst} end={endPrev} />
           <HitungPrevious title="B3" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
+
+        {/* totalSelisihAB: {totalSelisihAB} <br /> */}
 
         <Divider />
         <TotalPasiva />

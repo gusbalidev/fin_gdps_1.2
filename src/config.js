@@ -50,5 +50,9 @@ module.exports = global.config = {
         
 
     },
+    btnCaption: {
+        hitung: 'HITUNG',
+        tampilkan: 'TAMPILKAN',
+    }
     // other global config variables you wish
 };
