@@ -9,7 +9,7 @@ import Divider from "@/components/Divider";
 import KolomTitleNeraca from "./kolom-title-neraca";
 
 import BlokPeriode from "./blok-periode";
-import TabelNeraca1 from "../tabel-neraca-1-test/page";
+import TabelNeraca1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
 
 
