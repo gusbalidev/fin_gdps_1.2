@@ -16,8 +16,9 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
     // const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir } = useAktivitasContextB();
-    const { setTotalAsetAwalX, setTotalAsetAkhirX, totalSelisihABX, totalAsetAwalX, totalAsetAkhirX, } = useAktivitasContext();
+    const { setTotalAsetAwalX, setTotalAsetAkhirX, totalAsetAwalX, totalAsetAkhirX, } = useAktivitasContext();
     const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, setTotalSelisihABXX, totalSelisihABXX } = useAktivitasContext();
+    const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
     const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3, totalSelisihAB, setTotalSelisihAB } = useAktivitasContext();
     const { saldoAwal } = useSaldoAwalContextB();
 
@@ -49,49 +50,51 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         const totalABA = Math.abs(totalBalance);
     };
 
-    const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) + saldoAwal;
-    const previousKPAB = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
+    const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
+    const previousKPABX = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
 
     setTotalSelisihABXX(previousKPABXX);
-    setTotalSelisihAB(previousKPAB);
+    setTotalSelisihABX(previousKPABX);
 
     // Aset Awal & Akhir Final
-    const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
+    // const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
+    const totalAsetAwalFinal = Math.abs(totalBalance) + totalSelisihABXX + saldoAwal;
     const totalAsetAkhirFinal = totalAsetAwalFinal + totalSelisihABXX;
-
-
 
     // Simpan ke Variables Context
     setTotalAsetAwalX(totalAsetAwalFinal);
-    setTotalAsetAkhirX(totalAsetAkhirFinal);
+    setTotalAsetAkhirX(totalAsetAwalX + totalSelisihAB);
 
+    
+    
+    const x1 = Math.abs(totalBalance)+totalSelisihABXX+saldoAwal;
+    const x2 = totalSelisihABX;
+    const x3 = x1 + x2;
+    
+    setTotalAsetAkhirX(x3);
     if (month === 3) {
-        setTotalAsetAwalX(totalAsetAwalFinal - saldoAwal);
+        setTotalSelisihABX(saldoAwal);
+        setTotalAsetAwalX(Math.abs(totalBalance)+saldoAwal);
         // setTotalAsetAkhirX(totalAsetAwalX + totalSelisihABX);
-        setTotalSelisihAB(saldoAwal);
-        setTotalAsetAkhirX(totalAsetAwalX + totalSelisihAB);
-    } else {
+        setTotalAsetAkhirX(Math.abs(totalBalance)+x2);
+    } 
 
-        setTotalSelisihAB(previousKPAB);
-        setTotalAsetAkhirX(totalAsetAwalX + totalSelisihAB);
-    }
 
 
     return (
         <>
             <div className="w-full">
 
+                {/* <JustValueTotalNoLine value={toidr(x1)} /> */}
                 {
                     (month === 3 ?
-                        // <SubTotalAktivitas value={toidr(totalAsetAwal)} />
-                        <JustValueTotalNoLine value={toidr(totalAsetAwalX)} />
+                        <JustValueTotalNoLine value={toidr(Math.abs(totalBalance))} />
                         :
-                        // <SubTotalAktivitas value={toidr(totalAsetAwalFinal)} />
-                        <JustValueTotalNoLine value={toidr(totalAsetAwalX)} />
+                        <JustValueTotalNoLine value={toidr(x1)} />
                     )
                 }
 
-                <JustValueTotalNoLine value={toidr(totalSelisihAB)} />
+                <JustValueTotalNoLine value={toidr(x2)} />
                 {/* {
                     (month === 3 ?
                         <JustValueTotalNoLine value={toidr(saldoAwal)} />
@@ -101,23 +104,21 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 } */}
 
 
-                <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
-                {/* {
+                {/* <JustValueTotalBold value={toidr(x3)} /> */}
+                {
                     (month === 3 ?
-                        // <SubTotalAktivitas value={toidr(totalAsetAkhir)} />
-                        <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
+                        <JustValueTotalBold value={toidr(Math.abs(totalBalance)+x2)} />
                         :
-                        // <SubTotalAktivitas value={toidr(totalAsetAkhirFinal)} /
-                        <JustValueTotalBold value={toidr(totalAsetAkhirFinal)} />
+                        <JustValueTotalBold value={toidr(x3)} />
                     )
-                } */}
+                }
 
 
                 <br />
                 CEK: <br />
                 -- <br />
-                tot aset awal test: <br />
-                {Math.abs(totalBalance) + previousKPABXX} <br />
+                SaldoAwal: {saldoAwal} <br />
+                tot aset awal: {Math.abs(totalBalance)} <br />
                 -- <br />
                 terima XX <br />
                 {totalTerima1XX + totalTerima2XX} <br />
@@ -128,7 +129,11 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 {totalSelisihABXX} <br />
                 -- <br />
                 selisih AB curr: <br />
-                {totalSelisihAB}
+                {totalSelisihABX}
+
+                <br />
+                Total Terima: 
+                {totalTerima1X+totalTerima2X}
 
 
 

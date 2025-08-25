@@ -62,7 +62,7 @@ export default function page() {
             {/* Tabel 2 */}
             <div className='w-1/2'>
 
-              <TabelNeracaKol2 />
+              {/* <TabelNeraca /> */}
 
             </div>
 

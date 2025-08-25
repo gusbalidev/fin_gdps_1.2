@@ -11,7 +11,7 @@ import useAktivitasContext from '@/context/aktivitas-context';
 const NeracaDataNew = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number; start: string, end: string }) => {
 
     // const { setTotalAsetAwal, setTotalTerima1, setTotalTerima2, setTotalBebanOp, setTotalBeban2, setTotalBeban3 } = useAktivitasContextB()
-    const { setTotalAsetAwal, setTotalTerima1, setTotalTerima2, setTotalBebanOp, setTotalBeban2, setTotalBeban3 } = useAktivitasContext()
+    const { setTotalAsetAwalX, setTotalTerima1X, setTotalTerima2X, setTotalBebanOpX, setTotalBeban2X, setTotalBeban3X } = useAktivitasContext()
 
     // hitung KPAB periode sebelum
     // const totalBebanX = Math.abs(totalBebanOpX + totalBeban2X + totalBeban3X);
@@ -56,25 +56,25 @@ const NeracaDataNew = ({ title, titleTotal, type, group2, start, end }: { title:
         switch (group2) {
 
             case 8:
-                setTotalTerima1(newTotal)
+                setTotalTerima1X(newTotal)
                 break;
             case 9:
-                setTotalTerima2(newTotal)
+                setTotalTerima2X(newTotal)
                 break;
 
             case 6:
-                setTotalAsetAwal(newTotal)
+                setTotalAsetAwalX(newTotal)
                 break;
 
             case 10:
-                setTotalBebanOp(newTotal)
+                setTotalBebanOpX(newTotal)
 
             case 11:
-                setTotalBeban2(newTotal)
+                setTotalBeban2X(newTotal)
                 break;
 
             case 12:
-                setTotalBeban3(newTotal)
+                setTotalBeban3X(newTotal)
                 break;
 
             default:

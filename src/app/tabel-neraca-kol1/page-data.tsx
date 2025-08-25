@@ -8,36 +8,31 @@ import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 
-import useNeracaTContext from "@/context/neraca-t-context";
-import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
-import useAktivitasContextB from "@/context/aktivitas-contex-b";
-
-import HitungPrevious from "./hitung-Previous";
-import DataAsetBersih from "./data-aset-bersih";
-
-import NeracaData from "../neraca2/neraca-data";
-import NeracaDataSub from "../neraca2/neraca-data-sub";
-import NeracaDataAP from "./neraca-data-ap-close";
-
-import { NeracaDataTotalAT } from "../neraca2/total-at";
 import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca2/title-value";
 import NeracaDataX from "../n2new/neraca-dataX";
 import NeracaDataSubX from "../n2new/neraca-data-subX";
+import NeracaDataAP from "./neraca-data-ap-close";
+
+import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 import useAktivitasContext from "@/context/aktivitas-context";
+
+import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
+import HitungPenerimaanBiaya from "./Hitung-Penerimaan-Biaya";
+import HitungKPAB from "./hitung-KPAB";
+import HitungAsetBersih from "./hitung-Aset-Bersih";
 // import { NeracaDataTotalATX } from "../n2new/total-at";
 
 
 //
 export default function ShowNSDataB() {
 
-  const { totalATX, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-
+  const { totalATX, totalAPX } = useNeracaTContext();
   const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
+  
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
-
-  const totalAT = totalATX + totalAT2X + totalAT3X + totalAT4X;
-
+  const prevMonth = getMonth(new Date(end));
+  
   return (
 
     <>
@@ -95,6 +90,7 @@ export default function ShowNSDataB() {
         <br />
         {/* Akumulasi Penyusutan */}
         <JustValueTotalNoLine value={toidr(totalAPX)} />
+        {/* Total Aktiva Tetap Bersih */}
         <JustValueTotalBold value={toidr(totalATX + totalAPX)} />
 
         <br />
@@ -115,17 +111,29 @@ export default function ShowNSDataB() {
             <NeracaDataSubX title="KWX" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
           </Suspense>
           <br />
-          <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">ASET BERSIH</h2>
-          <DataAsetBersih />
+          <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
+          <HitungPenerimaanBiaya />
+          
+          <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
+              <HitungKPAB titleTotal="Kenaikan (Penurunan) Aset Bersih" month={prevMonth + 1} />
+          </Suspense>
+
+          {/* Tampilkan Data */}
+          <Suspense fallback={<Loading section="ASET BERSIH AWAL - AKHIR" />}>
+              <HitungAsetBersih title="AB2" titleTotal="Aset Bersih Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+          </Suspense>
+
           {/* <TableArusKas /> */}
         </div>
 
+        {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
+        Per. sblum: {startFirst} - {endPrev}<br /> */}
         <div>
-          <HitungPrevious title="P1 B" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPrevious title="P2 B" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B1 B" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B2 B" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B3 B" type={5} group2={12} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P1 B" type={4} group2={8} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P2 B" type={4} group2={9} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B1 B" type={5} group2={10} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B2 B" type={5} group2={11} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B3 B" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
         <Divider />

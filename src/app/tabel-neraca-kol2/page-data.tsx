@@ -114,6 +114,8 @@ export default function ShowNSDataB() {
           {/* <TableArusKas /> */}
         </div>
 
+        Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
+        Per. sblum: {startFirst} - {endPrev}<br />
         <div>
           <HitungPrevious title="P1 B" type={4} group2={8} start={startFirst} end={endPrev} />
           <HitungPrevious title="P2 B" type={4} group2={9} start={startFirst} end={endPrev} />
