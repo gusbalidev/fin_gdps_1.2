@@ -18,7 +18,7 @@ import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 import useAktivitasContext from "@/context/aktivitas-context";
 
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
-import HitungPenerimaanBiaya from "./Hitung-Penerimaan-Biaya";
+import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungKPAB from "./hitung-KPAB";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
 // import { NeracaDataTotalATX } from "../n2new/total-at";
