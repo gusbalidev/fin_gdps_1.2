@@ -144,7 +144,7 @@ const data = {
       items: [
         {
           title: "NERACA",
-          url: "/n2new",
+          url: "/neraca",
         },
         {
           title: "Lampiran NERACA",
@@ -211,7 +211,7 @@ const data = {
       items: [
         {
           title: "NERACA v2",
-          url: "/neraca2",
+          url: "/n2new",
         },
         {
           title: "Buku Besar Riil",
