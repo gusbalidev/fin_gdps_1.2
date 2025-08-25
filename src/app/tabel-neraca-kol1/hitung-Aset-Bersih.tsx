@@ -4,38 +4,43 @@ import global from "@/config.js";
 import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
-import SubTotalAktivitas from "./total-aktivitas";
-import useAktivitasContextB from "@/context/aktivitas-contex-b";
-import useSaldoAwalContextB from "@/context/saldo-awal-context-b";
-import { TulisRekap, TulisRekapBold } from "../neraca/TulisRekap";
 import { JustValueTotal, JustValueTotalBold, JustValueTotalNoLine } from "../neraca2/title-value";
 import useAktivitasContext from "@/context/aktivitas-context";
 import useSaldoAwalContext from "@/context/saldo-awal-context";
 import GetSaldoAwal from "@/lib/get-SaldoAwal";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
+import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
+    // const {selisihAB1, setSelisihAB1} = useNeracaSaldoContext();
+    
     const { totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX } = useAktivitasContext();
     const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContext();
     const { totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
     const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContext();
+    // const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContextB();
+    
 
+    // setSelisihAB1(totalSelisihABX);
+    // const finalAB = selisihAB1;
+    
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
     
     const { saldoAwal } = useSaldoAwalContext();
-
+    
     // Fetch data 
     const { data: result, isLoading, error, isSuccess } = useQuery({
         queryKey: [title, type, group2],
         queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-            // queryFn: () => fetch(`/api/ns-nom?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.json();
-            }),
+        // queryFn: () => fetch(`/api/ns-nom?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        }),
     });
-
+    
     if (isLoading) return <div>{global.msgText.wait}</div>;
     if (error) return <div>{global.msgText.error}: {error.message}</div>;
     if (!result) return <div>{global.msgText.noData}</div>;
@@ -91,6 +96,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 } */}
 
                 <JustValueTotalNoLine value={toidr(totalSelisihABX)} />
+                {/* <JustValueTotalNoLine value={toidr(finalAB)} /> */}
                 {/* {
                     (month === 3 ?
                         <JustValueTotalNoLine value={toidr(saldoAwal)} />

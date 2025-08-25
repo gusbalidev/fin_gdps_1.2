@@ -149,7 +149,7 @@ export default function ShowNSDataB() {
         -- <br />
         Selisih: {(totalTerima1XX+totalTerima2XX)-(totalBebanOpXX+totalBeban2XX+totalBeban3XX)} <br /> */}
 
-
+        
 
         <Divider />
         <TotalPasiva />

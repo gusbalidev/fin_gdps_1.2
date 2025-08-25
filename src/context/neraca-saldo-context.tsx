@@ -22,6 +22,9 @@ const NeracaSaldoContext = createContext
         isClosing: boolean; setIsClosing: (type: boolean) => void;
         periodType: 'M' | 'Y'; setPeriodType: (type: 'M' | 'Y') => void;
         showComponent: boolean; setShowComponent: (type: boolean) => void;
+
+        selisihAB1: number; setSelisihAB1: (type: number) => void;
+
     }>
 
     ({
@@ -38,6 +41,7 @@ const NeracaSaldoContext = createContext
         titlePrevMonthYear: '',
         titleMY: '',
         isClosing: false,
+        selisihAB1:0,
 
         showComponent: false,
         setShowComponent: () => { },
@@ -58,6 +62,8 @@ const NeracaSaldoContext = createContext
 
         periodType: 'M', // 'M' for monthly, 'Y' for yearly
         setPeriodType: () => { },
+
+        setSelisihAB1: () => { },
 
     });
 
@@ -82,6 +88,9 @@ export function NeracaSaldoProvider({ children }: {
     const [periodType, setPeriodType] = useState<'M' | 'Y'>('M');
     const [showComponent, setShowComponent] = useState(false);
 
+    const [selisihAB1, setSelisihAB1] = useState(0);
+
+
     return (
         <NeracaSaldoContext.Provider value={{
             filterType, setFilterType,
@@ -98,7 +107,8 @@ export function NeracaSaldoProvider({ children }: {
             titleMY, setTitleMY,
             isClosing, setIsClosing,
             periodType, setPeriodType,
-            showComponent, setShowComponent
+            showComponent, setShowComponent,
+            selisihAB1, setSelisihAB1,
         }}>
             {children}
         </NeracaSaldoContext.Provider>

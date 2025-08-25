@@ -13,7 +13,8 @@ import { JustValueTotal, JustValueTotalBold, JustValueTotalNoLine } from "../ner
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
-    const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir, setTotalSelisihAB } = useAktivitasContextB();
+    const { setTotalAsetAwal, setTotalAsetAkhir, totalAsetAwal, totalAsetAkhir, setTotalSelisihAB } = useAktivitasContextB();
+    const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3, totalSelisihAB } = useAktivitasContextB();
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContextB();
     const { saldoAwal } = useSaldoAwalContextB();
 
@@ -46,7 +47,9 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     };
 
     const previousKPAB = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X) + saldoAwal;
+    const currentKPAB = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
 
+    setTotalSelisihAB(currentKPAB);
     setTotalSelisihABX(previousKPAB);
 
     // Aset Awal & Akhir Final
