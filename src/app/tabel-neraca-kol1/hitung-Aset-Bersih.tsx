@@ -11,6 +11,7 @@ import { TulisRekap, TulisRekapBold } from "../neraca/TulisRekap";
 import { JustValueTotal, JustValueTotalBold, JustValueTotalNoLine } from "../neraca2/title-value";
 import useAktivitasContext from "@/context/aktivitas-context";
 import useSaldoAwalContext from "@/context/saldo-awal-context";
+import GetSaldoAwal from "@/lib/get-SaldoAwal";
 
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
@@ -20,7 +21,10 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, setTotalSelisihABXX, totalSelisihABXX } = useAktivitasContext();
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
     const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3, totalSelisihAB, setTotalSelisihAB } = useAktivitasContext();
-    const { saldoAwal } = useSaldoAwalContextB();
+
+    GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
+    
+    const { saldoAwal } = useSaldoAwalContext();
 
     // Fetch data 
     const { data: result, isLoading, error, isSuccess } = useQuery({
@@ -44,7 +48,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
     // Hitung Kenaikan/Penurunan AB
     const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
-    const previousKPABX = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
+    const previousKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
 
     // Set KPAB to Context
     setTotalSelisihABXX(previousKPABXX);
@@ -67,9 +71,9 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     
     setTotalAsetAkhirX(x3);
     if (month === 3) {
-        setTotalSelisihABX(saldoAwal);
         setTotalAsetAwalX(Math.abs(totalBalance));
-        setTotalAsetAkhirX(Math.abs(totalBalance)+x2);
+        setTotalSelisihABX(saldoAwal);
+        setTotalAsetAkhirX(Math.abs(totalBalance)+saldoAwal);
     } 
 
 
@@ -108,27 +112,10 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
                 
                 <br />
-                {/* 
-                CEK: <br />
+                
+                {/* CEK: <br />
                 -- <br />
-                SaldoAwal: {saldoAwal} <br />
-                tot aset awal: {Math.abs(totalBalance)} <br />
-                -- <br />
-                terima XX <br />
-                {totalTerima1XX + totalTerima2XX} <br />
-                beban XX<br />
-                {totalBebanOpXX + totalBeban2XX + totalBeban3XX} <br />
-                -- <br />
-                selisih AB prev <br />
-                {totalSelisihABXX} <br />
-                -- <br />
-                selisih AB curr: <br />
-                {totalSelisihABX}
-
-                <br />
-                Total Terima: 
-                {totalTerima1X+totalTerima2X} */}
-
+                {totalSelisihABX} */}
 
 
             </div>

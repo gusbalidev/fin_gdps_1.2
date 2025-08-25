@@ -10,10 +10,25 @@ import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import NeracaDataNew from "./neraca-data-new";
 import HitungKPAB from "./hitung-KPAB";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
+import useSaldoAwalContextB from "@/context/saldo-awal-context-b";
+import GetSaldoAwalB from "@/lib/get-SaldoAwal-b";
 
 export default function DataAsetBersih() {
 
     const { start, end, startPrev, endPrev, titleMonthYear } = useNeracaSaldoContextB();
+    const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3, setTotalSelisihAB } = useAktivitasContextB();
+    // const { saldoAwal } = useSaldoAwalContextB();
+
+    // Dapatkan dan Set Aset Bersih Awal, dari COA 82 (Kenaikan ( Penurunan ) Aset Bersih)
+    GetSaldoAwalB({ title: "Saldo Awal", coaId: 82 });
+
+    const totalTerima = Math.abs(totalTerima1 + totalTerima2);
+    const totalBeban = Math.abs(totalBebanOp + totalBeban2 + totalBeban3);
+    const totalKPAB = Math.abs(totalTerima - totalBeban);
+
+    // Set Kenaikan/Penurunan AB
+    setTotalSelisihAB(totalKPAB);
 
     // console.log('SHOW-NS-DATA:')
     // console.log('Start:', start)
@@ -56,9 +71,9 @@ export default function DataAsetBersih() {
                     </Suspense>
 
 
-                    <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
+                    {/* <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
                         <HitungKPAB titleTotal="Kenaikan (Penurunan) Aset Bersih" month={prevMonth + 1} />
-                    </Suspense>
+                    </Suspense> */}
 
                     {/* Tampilkan Data */}
                     <Suspense fallback={<Loading section="ASET BERSIH AWAL - AKHIR" />}>
@@ -66,7 +81,7 @@ export default function DataAsetBersih() {
                     </Suspense>
 
                     {/* <HitungPrevious title="KPABX" titleTotal="Kenaikan (Penurunan) Aset Bersih" type={3} group2={8} start={startFirst} end={endPrev} /> */}
-                    <br />
+                    {/* <br /> */}
 
                 </div>
             </div>

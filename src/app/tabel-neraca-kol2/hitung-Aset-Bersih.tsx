@@ -13,7 +13,7 @@ import { JustValueTotal, JustValueTotalBold, JustValueTotalNoLine } from "../ner
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
-    const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir } = useAktivitasContextB();
+    const { setTotalAsetAwal, setTotalAsetAkhir, totalSelisihAB, totalAsetAwal, totalAsetAkhir, setTotalSelisihAB } = useAktivitasContextB();
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX } = useAktivitasContextB();
     const { saldoAwal } = useSaldoAwalContextB();
 
@@ -58,6 +58,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     setTotalAsetAkhir(totalAsetAkhirFinal);
 
     if (month === 3) {
+        setTotalSelisihAB(saldoAwal);
         setTotalAsetAwal(totalAsetAwalFinal - saldoAwal);
         setTotalAsetAkhir(totalAsetAwal + totalSelisihAB);
     } else {
@@ -93,21 +94,9 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 }
 
                 <br />
-                CEK: <br />
+                {/* CEK: <br />
                 -- <br />
-                tot aset awal test: <br />
-                {Math.abs(totalBalance) + previousKPAB} <br />
-                -- <br />
-                terima XX <br />
-                {totalTerima1X + totalTerima2X} <br />
-                beban XX<br />
-                {totalBebanOpX + totalBeban2X + totalBeban3X} <br />
-                -- <br />
-                selisih AB prev <br />
-                {totalSelisihABX} <br />
-                -- <br />
-                selisih AB curr: <br />
-                {totalSelisihAB}
+                {totalSelisihABX} */}
 
             </div>
         </>

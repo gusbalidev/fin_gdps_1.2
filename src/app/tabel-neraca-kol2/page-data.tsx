@@ -114,14 +114,14 @@ export default function ShowNSDataB() {
           {/* <TableArusKas /> */}
         </div>
 
-        Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
-        Per. sblum: {startFirst} - {endPrev}<br />
+        {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
+        Per. sblum: {startFirst} - {endPrev}<br /> */}
         <div>
-          <HitungPrevious title="P1 B" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPrevious title="P2 B" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B1 B" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B2 B" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPrevious title="B3 B" type={5} group2={12} start={startFirst} end={endPrev} />
+          <HitungPrevious title="P1" type={4} group2={8} start={startFirst} end={endPrev} />
+          <HitungPrevious title="P2" type={4} group2={9} start={startFirst} end={endPrev} />
+          <HitungPrevious title="B1" type={5} group2={10} start={startFirst} end={endPrev} />
+          <HitungPrevious title="B2" type={5} group2={11} start={startFirst} end={endPrev} />
+          <HitungPrevious title="B3" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
         <Divider />

@@ -144,7 +144,7 @@ const data = {
       items: [
         {
           title: "NERACA",
-          url: "/neraca",
+          url: "/n2new",
         },
         {
           title: "Lampiran NERACA",

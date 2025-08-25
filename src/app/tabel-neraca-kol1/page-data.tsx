@@ -114,13 +114,13 @@ export default function ShowNSDataB() {
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
           <HitungPenerimaanBiaya />
           
-          <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
+          {/* <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
               <HitungKPAB titleTotal="Kenaikan (Penurunan) Aset Bersih" month={prevMonth + 1} />
-          </Suspense>
+          </Suspense> */}
 
           {/* Tampilkan Data */}
           <Suspense fallback={<Loading section="ASET BERSIH AWAL - AKHIR" />}>
-              <HitungAsetBersih title="AB2" titleTotal="Aset Bersih Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+              <HitungAsetBersih title="ABX" titleTotal="Aset Bersih Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
           </Suspense>
 
           {/* <TableArusKas /> */}
@@ -129,11 +129,11 @@ export default function ShowNSDataB() {
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}
         <div>
-          <HitungPenerimaanBiayaXX title="P1 B" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="P2 B" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B1 B" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B2 B" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B3 B" type={5} group2={12} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P1X" type={4} group2={8} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P2X" type={4} group2={9} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B1X" type={5} group2={10} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
         <Divider />
