@@ -20,9 +20,10 @@ interface MonthYearSelectorProps {
 
 // MonthYearSelector component that accepts a DataComponent prop
 const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
+
     const btnCaption = global.btnCaption.hitung;
     const { start, end, setIsClosing, setSubTitle, setStartContext, setEndContext, setPrevStartContext, setPrevEndContext,
-        setTitleMonthYear, setPrevTitleMonthYear } = useNeracaSaldoContext();
+        setTitleMonthYear, setPrevTitleMonthYear, setIsColumn1Ready } = useNeracaSaldoContext();
 
     const currentMonthIndex = new Date().getMonth(); // Get current month index (0-11)
     const currentYear = new Date().getFullYear(); // Get current year
@@ -106,6 +107,8 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
         updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
         setSubTitle(selectedPeriod);
         setShowComponent(false);
+        setIsColumn1Ready(false);
+        //refreshPath();
     }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod]);
 
     const handleMonthChange = (value: string) => {
@@ -133,6 +136,7 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
     const handleButtonClick = () => {
         setSubTitle(selectedPeriod);
         setShowComponent(true);
+        setIsColumn1Ready(true);
         //refreshPath();
     };
 

@@ -12,6 +12,7 @@ import BlokPeriode from "./blok-periode";
 import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
 import TabelNeracaKol2 from "../tabel-neraca-kol2/page";
+import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 
 
 //
@@ -22,6 +23,8 @@ export default function page() {
   const footer = <p>{global.pageInfo.footerText}</p>;
   const pageTitle = global.pageTitle.neraca;
   const pageTitle2 = 'Laporan Komparatif';
+
+  const { isColumn1Ready } = useNeracaSaldoContext();
 
 
   return (
@@ -62,7 +65,11 @@ export default function page() {
             {/* Tabel 2 */}
             <div className='w-1/2'>
 
-              <TabelNeraca />
+              {isColumn1Ready === true ?
+                <TabelNeraca /> 
+                : 
+                null
+              }
 
             </div>
 

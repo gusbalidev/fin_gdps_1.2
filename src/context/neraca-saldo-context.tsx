@@ -24,6 +24,8 @@ const NeracaSaldoContext = createContext
         showComponent: boolean; setShowComponent: (type: boolean) => void;
 
         selisihAB1: number; setSelisihAB1: (type: number) => void;
+        isColumn1Ready: boolean; setIsColumn1Ready: (type: boolean) => void;
+
 
     }>
 
@@ -42,6 +44,7 @@ const NeracaSaldoContext = createContext
         titleMY: '',
         isClosing: false,
         selisihAB1:0,
+        isColumn1Ready: false,
 
         showComponent: false,
         setShowComponent: () => { },
@@ -64,6 +67,7 @@ const NeracaSaldoContext = createContext
         setPeriodType: () => { },
 
         setSelisihAB1: () => { },
+        setIsColumn1Ready: () => { },
 
     });
 
@@ -89,6 +93,7 @@ export function NeracaSaldoProvider({ children }: {
     const [showComponent, setShowComponent] = useState(false);
 
     const [selisihAB1, setSelisihAB1] = useState(0);
+    const [isColumn1Ready, setIsColumn1Ready] = useState(false);
 
 
     return (
@@ -109,6 +114,7 @@ export function NeracaSaldoProvider({ children }: {
             periodType, setPeriodType,
             showComponent, setShowComponent,
             selisihAB1, setSelisihAB1,
+            isColumn1Ready, setIsColumn1Ready,
         }}>
             {children}
         </NeracaSaldoContext.Provider>
