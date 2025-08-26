@@ -66,7 +66,7 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
         updateDateRange(newYearFrom, newYearTo);
         setShowComponent(true);
         setIsClosing(false);
-    }, [currentYear, updateDateRange]);
+    }, [currentYear, updateDateRange, setIsClosing]);
 
     const handleYearToChange = useCallback((value: string) => {
         const newYearTo = value;
@@ -76,7 +76,7 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
         updateDateRange(newYearFrom, newYearTo);
         setShowComponent(true);
         setIsClosing(false);
-    }, [updateDateRange]);
+    }, [updateDateRange, setIsClosing]);
 
     const handleButtonClick = () => {
         setShowComponent(true);

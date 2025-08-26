@@ -102,7 +102,7 @@ const MonthYearSelector2 = () => {
         setSubTitle('Periode: ' + selectedPeriod);
         // setSubTitle2(selectedPeriod);
         setShowComponent(true);
-    }, [month, year, updateStartAndEndDate, setSubTitle2, selectedPeriod]);
+    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod, setShowComponent]);
 
     const handleMonthChange = (value: string) => {
         setMonth(value);

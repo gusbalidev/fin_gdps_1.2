@@ -109,7 +109,7 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
         setShowComponent(false);
         setIsColumn1Ready(false);
         //refreshPath();
-    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod]);
+    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod, setIsColumn1Ready]);
 
     const handleMonthChange = (value: string) => {
         setMonth(value);

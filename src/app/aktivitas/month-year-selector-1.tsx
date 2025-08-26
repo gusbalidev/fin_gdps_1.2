@@ -108,7 +108,7 @@ const MonthYearSelector1 = () => {
         updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
         setSubTitle('Periode: ' + selectedPeriod);
         setShowComponent(true);
-    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod]);
+    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod, setShowComponent]);
 
     const handleMonthChange = (value: string) => {
         setMonth(value);

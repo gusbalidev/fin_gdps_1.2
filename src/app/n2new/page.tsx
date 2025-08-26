@@ -16,7 +16,7 @@ import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 
 
 //
-export default function page() {
+export default function Page() {
 
   // const { periodType } = useNeracaSaldoContext();
   const header = <h4>{global.pageInfo.headerText}</h4>;
