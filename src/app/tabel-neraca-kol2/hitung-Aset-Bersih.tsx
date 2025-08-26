@@ -69,6 +69,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalAsetAkhir(totalAsetAwal + previousKPAB + saldoAwal);
     }
 
+    let fixTemp = currentKPAB;
 
     return (
         <>
@@ -85,6 +86,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 }
 
                 <JustValueTotalNoLine value={toidr(totalSelisihAB)} />
+                {/* <JustValueTotalNoLine value={toidr(fixTemp)} /> */}
 
                 {
                     (month === 3 ?

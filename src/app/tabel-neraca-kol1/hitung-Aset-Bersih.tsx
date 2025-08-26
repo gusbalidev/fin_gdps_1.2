@@ -80,6 +80,8 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalAsetAkhirX(Math.abs(totalBalance)+saldoAwal);
     } 
 
+    let fixTemp = totalSelisihABX;
+    
 
 
     return (
@@ -96,6 +98,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 } */}
 
                 <JustValueTotalNoLine value={toidr(totalSelisihABX)} />
+                {/* <JustValueTotalNoLine value={toidr(fixTemp)} /> */}
                 {/* <JustValueTotalNoLine value={toidr(finalAB)} /> */}
                 {/* {
                     (month === 3 ?
@@ -118,9 +121,8 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 
                 <br />
                 
-                {/* CEK: <br />
-                -- <br />
-                {totalSelisihABX} */}
+                {/* /* CEK: <br />
+                -- <br /> */}
 
 
             </div>
@@ -131,3 +133,9 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 export default HitungAsetBersih;
 
 //export default
+
+
+function StoreFix({value}:{value:number}) {
+
+    
+}
