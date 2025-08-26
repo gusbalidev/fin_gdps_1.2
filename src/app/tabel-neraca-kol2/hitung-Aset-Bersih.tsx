@@ -69,7 +69,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalAsetAkhir(totalAsetAwal + previousKPAB + saldoAwal);
     }
 
-    let fixTemp = currentKPAB;
+    // let fixTemp = currentKPAB;
 
     return (
         <>

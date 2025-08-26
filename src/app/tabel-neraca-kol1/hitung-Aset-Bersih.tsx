@@ -80,7 +80,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalAsetAkhirX(Math.abs(totalBalance)+saldoAwal);
     } 
 
-    let fixTemp = totalSelisihABX;
+    // let fixTemp = totalSelisihABX;
     
 
 
