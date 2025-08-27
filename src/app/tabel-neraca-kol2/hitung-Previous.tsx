@@ -51,26 +51,26 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
 
         case 8:
             setTotalTerima1X(newTotal)
-            console.log('Total Terima 1:', newTotal);
+            // console.log('Total Terima 1:', newTotal);
             break;
         case 9:
             setTotalTerima2X(newTotal)
-            console.log('Total Terima 2:', newTotal);
+            // console.log('Total Terima 2:', newTotal);
             break;
 
         case 10:
             setTotalBebanOpX(newTotal)
-            console.log('Total Beban Operasional:', newTotal);
+            // console.log('Total Beban Operasional:', newTotal);
             break;
 
         case 11:
             setTotalBeban2X(newTotal)
-            console.log('Total Beban 2:', newTotal);
+            // console.log('Total Beban 2:', newTotal);
             break;
 
         case 12:
             setTotalBeban3X(newTotal)
-            console.log('Total Beban 3:', newTotal);
+            // console.log('Total Beban 3:', newTotal);
             break;
 
         default:
@@ -78,16 +78,14 @@ const HitungPrevious = ({ title, type, group2, start, end }: { title: string; ty
             break;
     }
 
-    console.log('Total Penerimaan:', totalTerima1X + totalTerima2X);
-    console.log('Total Beban:', totalBebanOpX + totalBeban2X + totalBeban3X);
-    console.log('Total Selisih AB:', totalTerima1X + totalTerima2X - (totalBebanOpX + totalBeban2X + totalBeban3X));
-
+    // console.log('Total Penerimaan:', totalTerima1X + totalTerima2X);
+    // console.log('Total Beban:', totalBebanOpX + totalBeban2X + totalBeban3X);
+    // console.log('Total Selisih AB:', totalTerima1X + totalTerima2X - (totalBebanOpX + totalBeban2X + totalBeban3X));
 
     //Update Total global States
     if (isSuccess) {
         //UpdateTotalCF(group2, totalBalance);
         const newTotal = Math.abs(totalBalance);
-
     };
 
     return (

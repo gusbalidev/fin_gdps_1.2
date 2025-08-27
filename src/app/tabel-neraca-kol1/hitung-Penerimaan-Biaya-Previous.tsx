@@ -34,26 +34,26 @@ const HitungPenerimaanBiayaXX = ({ title, type, group2, start, end }: { title: s
 
         case 8:
             setTotalTerima1XX(newTotal)
-            console.log('Total Terima 1:', newTotal);
+            // console.log('Total Terima 1:', newTotal);
             break;
         case 9:
             setTotalTerima2XX(newTotal)
-            console.log('Total Terima 2:', newTotal);
+            // console.log('Total Terima 2:', newTotal);
             break;
 
         case 10:
             setTotalBebanOpXX(newTotal)
-            console.log('Total Beban Operasional:', newTotal);
+            // console.log('Total Beban Operasional:', newTotal);
             break;
 
         case 11:
             setTotalBeban2XX(newTotal)
-            console.log('Total Beban 2:', newTotal);
+            // console.log('Total Beban 2:', newTotal);
             break;
 
         case 12:
             setTotalBeban3XX(newTotal)
-            console.log('Total Beban 3:', newTotal);
+            // console.log('Total Beban 3:', newTotal);
             break;
 
         default:
