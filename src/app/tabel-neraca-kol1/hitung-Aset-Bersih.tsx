@@ -20,11 +20,8 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContext();
     const { totalSelisihABX, setTotalSelisihABX } = useAktivitasContext();
     const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContext();
-    // const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContextB();
+    const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X } = useAktivitasContextB();
     
-
-    // setSelisihAB1(totalSelisihABX);
-    // const finalAB = selisihAB1;
     
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
     
@@ -48,32 +45,29 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     //Total & data for table
     const { accounts: data, totalBalance } = result;
 
-    // setTotalAsetAwalX(Math.abs(totalBalance));
-
     // Hitung Kenaikan/Penurunan AB
     const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
     const currentKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
-
-    // Set KPAB to Context
-    setTotalSelisihABXX(previousKPABXX);
-    setTotalSelisihABX(currentKPABX);
-
+    const currentKPABXnew = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
+    
     // Aset Awal & Akhir Final
     // const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
     // const totalAsetAwalFinal = Math.abs(totalBalance) + totalSelisihABXX + saldoAwal;
     // const totalAsetAkhirFinal = totalAsetAwalFinal + totalSelisihABXX;
-
-    // Simpan ke Variables Context
-    setTotalAsetAwalX(Math.abs(totalBalance)+totalSelisihABXX+saldoAwal);
-    setTotalAsetAkhirX(totalAsetAwalX + totalSelisihABX);
-
-    
-    //TEST Aset Awal, KPAB, Aset Akhir
+       
+    // Aset Awal, KPAB, Aset Akhir
     const x1 = Math.abs(totalBalance)+totalSelisihABXX+saldoAwal;
-    const x2 = totalSelisihABX;
+    // const x2 = currentKPABX;
+    const x2 = currentKPABXnew;
     const x3 = x1 + x2;
+    const x4 = previousKPABXX;
     
+    // Simpan ke Variables Context
+    setTotalAsetAwalX(x1);
+    setTotalSelisihABX(x2);
     setTotalAsetAkhirX(x3);
+    setTotalSelisihABXX(x4);
+    
     if (month === 3) {
         setTotalAsetAwalX(Math.abs(totalBalance));
         setTotalSelisihABX(saldoAwal);
@@ -82,48 +76,24 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
     // let fixTemp = totalSelisihABX;
     
-
-
     return (
         <>
             <div className="w-full">
 
+                {/* totalTerima1: {totalTerima1} <br />
+                totalTerima1X: {totalTerima1X} <br />
+                x2: {x2} <br /> */}
+
                 <JustValueTotalNoLine value={toidr(totalAsetAwalX)} />
-                {/* {
-                    (month === 3 ?
-                        <JustValueTotalNoLine value={toidr(Math.abs(totalBalance))} />
-                        :
-                        <JustValueTotalNoLine value={toidr(x1)} />
-                    )
-                } */}
 
                 <JustValueTotalNoLine value={toidr(totalSelisihABX)} />
-                {/* <JustValueTotalNoLine value={toidr(fixTemp)} /> */}
-                {/* <JustValueTotalNoLine value={toidr(finalAB)} /> */}
-                {/* {
-                    (month === 3 ?
-                        <JustValueTotalNoLine value={toidr(saldoAwal)} />
-                        :
-                        <JustValueTotalNoLine value={toidr(totalSelisihAB)} />
-                    )
-                } */}
-
 
                 <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
-                {/* {
-                    (month === 3 ?
-                        <JustValueTotalBold value={toidr(Math.abs(totalBalance)+x2)} />
-                        :
-                        <JustValueTotalBold value={toidr(x3)} />
-                    )
-                } */}
-
                 
                 <br />
                 
                 {/* /* CEK: <br />
                 -- <br /> */}
-
 
             </div>
         </>
