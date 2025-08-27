@@ -76,9 +76,9 @@ export default function DataAsetBersih() {
                     </Suspense> */}
 
                     {/* Tampilkan Data */}
-                    <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}>
+                    {/* <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}> */}
                         <HitungAsetBersih title="AB2" titleTotal="Aset Bersih Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
-                    </Suspense>
+                    {/* </Suspense> */}
 
                     {/* <HitungPrevious title="KPABX" titleTotal="Kenaikan (Penurunan) Aset Bersih" type={3} group2={8} start={startFirst} end={endPrev} /> */}
                     {/* <br /> */}

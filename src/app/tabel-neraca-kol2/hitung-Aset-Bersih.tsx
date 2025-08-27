@@ -64,10 +64,11 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalSelisihAB(saldoAwal);
         setTotalAsetAwal(totalAsetAwalFinal - saldoAwal);
         setTotalAsetAkhir(totalAsetAwal + totalSelisihAB);
-    } else {
+    } 
+    // else {
 
-        setTotalAsetAkhir(totalAsetAwal + previousKPAB + saldoAwal);
-    }
+    //     setTotalAsetAkhir(totalAsetAwal + previousKPAB + saldoAwal);
+    // }
 
     // let fixTemp = currentKPAB;
 
@@ -75,7 +76,8 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         <>
             <div className="w-full">
 
-                {
+                <JustValueTotalNoLine value={toidr(totalAsetAwal)} />
+                {/* {
                     (month === 3 ?
                         // <SubTotalAktivitas value={toidr(totalAsetAwal)} />
                         <JustValueTotalNoLine value={toidr(totalAsetAwal)} />
@@ -83,12 +85,13 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                         // <SubTotalAktivitas value={toidr(totalAsetAwalFinal)} />
                         <JustValueTotalNoLine value={toidr(totalAsetAwalFinal)} />
                     )
-                }
+                } */}
 
                 <JustValueTotalNoLine value={toidr(totalSelisihAB)} />
                 {/* <JustValueTotalNoLine value={toidr(fixTemp)} /> */}
 
-                {
+                <JustValueTotalBold value={toidr(totalAsetAkhir)} />
+                {/* {
                     (month === 3 ?
                         // <SubTotalAktivitas value={toidr(totalAsetAkhir)} />
                         <JustValueTotalBold value={toidr(totalAsetAkhir)} />
@@ -96,12 +99,10 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                         // <SubTotalAktivitas value={toidr(totalAsetAkhirFinal)} /
                         <JustValueTotalBold value={toidr(totalAsetAkhirFinal)} />
                     )
-                }
+                } */}
 
                 <br />
-                {/* CEK: <br />
-                -- <br />
-                {totalSelisihABX} */}
+                
 
             </div>
         </>

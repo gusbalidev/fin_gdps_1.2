@@ -123,9 +123,9 @@ export default function ShowNSDataB() {
           </Suspense> */}
 
           {/* Tampilkan Data */}
-          <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}>
-              <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
-          </Suspense>
+          {/* <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}> */}
+          <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+          {/* </Suspense> */}
 
           {/* <TableArusKas /> */}
         </div>

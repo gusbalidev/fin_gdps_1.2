@@ -96,7 +96,7 @@ const MonthYearSelectorB = ({ DataComponent }: MonthYearSelectorProps) => {
     ]);
 
     React.useEffect(() => {
-        updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
+        // updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
         setSubTitle2(selectedPeriod);
         setShowComponent(false);
     }, [month, year, updateStartAndEndDate, setSubTitle2, selectedPeriod]);

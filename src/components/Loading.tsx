@@ -5,7 +5,7 @@ export default function Loading({ section }: { section: string }) {
     return (
         <div className="flex flex-row items-start align-middle">
             <Spinner size="small" /> <div className="w-[10px]"></div>
-            <p className="text-left text-1xl text-muted-foreground">Memuat Data: {section}, tunggu...      </p>
+            {/* <p className="text-right text-1xl text-muted-foreground">Memuat Data: {section}, tunggu...      </p> */}
         </div>
     )
 }

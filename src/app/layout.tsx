@@ -21,6 +21,7 @@ import { NeracaTProvider } from "@/context/neraca-t-context";
 import { NeracaTProviderB } from "@/context/neraca-t-context-b";
 import { SaldoAwalProvider } from "@/context/saldo-awal-context";
 import { SaldoAwalProviderB } from "@/context/saldo-awal-context-b";
+import { NeracaCol1Provider } from "@/context/neraca-col1-context";
 //import { TotalRLDetailContext } from "@/context/total-rl-detail";
 
 
@@ -71,6 +72,7 @@ export default function RootLayout({
 
                 <AppSidebar />
                 {/* <SidebarTrigger /> */}
+                <NeracaCol1Provider>
                 <NeracaTProvider>
                   <NeracaTProviderB>
                     <AktivitasProvider>
@@ -95,6 +97,7 @@ export default function RootLayout({
                     </AktivitasProvider>
                   </NeracaTProviderB>
                 </NeracaTProvider>
+                </NeracaCol1Provider>
 
               </SidebarProvider>
             </ThemeProvider>
