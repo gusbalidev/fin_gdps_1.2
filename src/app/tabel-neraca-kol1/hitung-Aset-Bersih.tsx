@@ -11,7 +11,7 @@ import GetSaldoAwal from "@/lib/get-SaldoAwal";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 import useNeracaCol1Context from "@/context/neraca-col1-context";
-import { ShowValue1, ShowValue2, ShowValueTest } from "./show-value";
+import { ShowValue1, ShowValue2 } from "./show-value";
 
 //
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
