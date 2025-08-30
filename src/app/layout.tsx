@@ -73,8 +73,8 @@ export default function RootLayout({
                 <AppSidebar />
                 {/* <SidebarTrigger /> */}
                 <NeracaCol1Provider>
+                <NeracaTProviderB>
                 <NeracaTProvider>
-                  <NeracaTProviderB>
                     <AktivitasProvider>
                       <AktivitasProviderB>
                         <CashFlowProvider>
@@ -82,7 +82,6 @@ export default function RootLayout({
                             <NeracaSaldoProviderB>
                               <SaldoAwalProvider>
                                 <SaldoAwalProviderB>
-
 
                                   <QueryClientProvider client={queryClient}>
                                     {children}
@@ -95,8 +94,8 @@ export default function RootLayout({
                         </CashFlowProvider>
                       </AktivitasProviderB>
                     </AktivitasProvider>
-                  </NeracaTProviderB>
                 </NeracaTProvider>
+                </NeracaTProviderB>
                 </NeracaCol1Provider>
 
               </SidebarProvider>

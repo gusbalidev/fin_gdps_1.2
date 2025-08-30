@@ -19,8 +19,8 @@ const NeracaDataNew = ({ title, titleTotal, type, group2, start, end }: { title:
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
         queryKey: [title, type, group2],
-        // queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-        queryFn: () => fetch(`/api/ns-nom?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        // queryFn: () => fetch(`/api/ns-nom?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        queryFn: () => fetch(`/api/ns-nom-new?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
 

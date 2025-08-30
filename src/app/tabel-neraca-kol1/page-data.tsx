@@ -15,14 +15,11 @@ import NeracaDataAP from "./neraca-data-ap-close";
 
 import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-import useAktivitasContext from "@/context/aktivitas-context";
 
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
-import HitungKPAB from "./hitung-KPAB";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
-import useAktivitasContextB from "@/context/aktivitas-contex-b";
-// import { NeracaDataTotalATX } from "../n2new/total-at";
+import useNeracaCol1Context from "@/context/neraca-col1-context";
 
 
 //
@@ -30,8 +27,6 @@ export default function ShowNSDataB() {
 
   const { totalATX, totalAPX } = useNeracaTContext();
   const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
-  const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX } = useAktivitasContext();
-  const { totalSelisihABX } = useAktivitasContext();
   
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
   const prevMonth = getMonth(new Date(end));
@@ -113,7 +108,7 @@ export default function ShowNSDataB() {
             <NeracaDataX title="KWX" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
             <NeracaDataSubX title="KWX" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
           </Suspense>
-          <br />
+          {/* <br /> */}
 
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
           <HitungPenerimaanBiaya />
@@ -152,6 +147,7 @@ export default function ShowNSDataB() {
 
         
 
+        <br />
         <Divider />
         <TotalPasiva />
       </div>
@@ -178,14 +174,16 @@ function TotalAktiva() {
 //
 function TotalPasiva() {
   const { totalKX } = useNeracaTContext();
-  const { totalAsetAwalX, totalAsetAkhirX } = useAktivitasContext();
+  const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
 
-  const totalPasiva = totalKX + totalAsetAkhirX;
+  const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
 
 
   return (
     <>
       <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} />
+      {/* {totalAsetAwalX} <br /> */}
+      {/* {totalSelisihABX} <br /> */}
     </>
   );
 }

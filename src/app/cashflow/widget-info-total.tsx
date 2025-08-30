@@ -22,6 +22,7 @@ function WidgetInfoTotal() {
 
       <TulisTotalRp value={toidr(cfStore.totalTerima1 + cfStore.totalTerima2)} title="Penerimaan" />
       <TulisTotalRp value={toidr(cfStore.totalKeluar1 + cfStore.totalKeluar2 + cfStore.totalKeluar3)} title="Pengeluaran" />
+      <TulisTotalRp value={toidr((cfStore.totalTerima1 + cfStore.totalTerima2)-(cfStore.totalKeluar1 + cfStore.totalKeluar2 + cfStore.totalKeluar3))} title="Surplus/Defisit" />
 
       {/* <TulisTotalRp value={selisihAkhir} title="Selisih Aset dan Pasiva" /> */}
     </div>
