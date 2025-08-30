@@ -108,7 +108,7 @@ export default function ShowNSDataB() {
             <NeracaDataX title="KWX" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
             <NeracaDataSubX title="KWX" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
           </Suspense>
-          {/* <br /> */}
+          <br />
 
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
           <HitungPenerimaanBiaya />

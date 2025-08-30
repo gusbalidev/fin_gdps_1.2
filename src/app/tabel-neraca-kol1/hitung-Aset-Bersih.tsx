@@ -43,7 +43,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         }),
     });
     
-    if (isLoading) return <div>{global.msgText.wait} +' - '+ {title}</div>;
+    if (isLoading) return <div>{global.msgText.wait}</div>;
     if (error) return <div>{global.msgText.error}: {error.message}</div>;
     if (!result) return <div>{global.msgText.noData}</div>;
 
