@@ -34,6 +34,30 @@ function TulisTotalRpX({ value, title }: { value: string, title: string }) {
     )
 }
 
+function TulisTotalRpBold({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            {/* <Divider /> */}
+            <div className='flex justify-between'>
+                <p className='text-[0.8em] font-medium text-blue-600 dark:text-orange-500'>Total {title}:</p>
+                <p className='text-[0.8em] font-bold'>{value}</p>
+            </div>
+        </>
+    )
+}
+
+function TulisTotalRpNormal({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            {/* <Divider /> */}
+            <div className='flex justify-between'>
+                <p className='text-[0.8em] font-medium text-blue-600 dark:text-orange-500'>Total {title}:</p>
+                <p className='text-[0.8em] font-bold'>{value}</p>
+            </div>
+        </>
+    )
+}
+
 // Calculate and display the total Aset Bersih Akhir based on the current and previous Periods
 const TotalAllAB = ({ isCurrent, titleTotal, month }: { isCurrent: boolean; titleTotal: string, month: number }) => {
 
@@ -132,9 +156,9 @@ const TotalAllAB = ({ isCurrent, titleTotal, month }: { isCurrent: boolean; titl
                     //Untuk kolom bulan Sebelumnya
                     (month === 3 ?
                     //    <TulisTotalRpX value=toidr(saldoAwal) title={titleTotal} /> 
-                       <TulisTotalRpX value={toidr(saldoAwal)} title={titleTotal} />
+                       <TulisRekapFull value={toidr(saldoAwal)} title={titleTotal} />
                        :
-                       <TulisTotalRpX value={newTotalFinalX} title={titleTotal} />
+                       <TulisRekapFull value={newTotalFinalX} title={titleTotal} />
                     )
                     
                 }
@@ -146,21 +170,39 @@ const TotalAllAB = ({ isCurrent, titleTotal, month }: { isCurrent: boolean; titl
                 {isCurrent ?
 
                     (month === 3 ?
-                       <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal)}  />
+                       <TulisTotalRp value={toidr(totalAsetAwal+saldoAwal)}  />
                        :
-                       <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal+totalSelisihAB)}  />
+                       <TulisTotalRp value={toidr(totalAsetAwal+saldoAwal+newTotal)}  />
                     )
                     
                     :
                     
                     (month === 3 ?
-                       <TulisRekapFullBold value={toidr(totalAsetAwalX+saldoAwal)} title={'Total Aset Bersih Akhir'}  />
+                       <TulisTotalRpBold value={toidr(totalAsetAwalX+saldoAwal)} title={'Total Aset Bersih Akhir'}  />
                        :
-                       <TulisRekapFullBold value={toidr(totalAsetAwalX)} title={'Total Aset Bersih Akhir'}  />
+                       <TulisTotalRpBold value={toidr(totalAsetAwalX+saldoAwal+newTotalX)} title={'Total Aset Bersih Akhir'}  />
                     )
                     
                     
                 }
+
+                <br />
+
+                {/* Total AB Akhir
+                {isCurrent ?
+                    (month === 3 ?
+                        <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal)}  />
+                        :
+                        <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal+totalSelisihAB)}  />
+                    )
+                    :
+                    (month === 3 ?
+                        <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal)}  />
+                        :
+                        <TulisRekapBold value={toidr(totalAsetAwal+saldoAwal+totalSelisihAB)}  />
+                    )
+                
+                } */}
                 
                 {/* {totalAsetAkhir} */}
 
