@@ -6,7 +6,7 @@ import { auth } from '@clerk/nextjs/server';
 // GET ALL TRANSACTIONS
 export async function GET() {
 
-    // await auth.protect()
+    await auth.protect()
     
     try
     {
