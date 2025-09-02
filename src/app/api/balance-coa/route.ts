@@ -9,6 +9,9 @@ import { auth } from '@clerk/nextjs/server';
 // http://localhost:3000/api/neraca?accountTypeId=1
 
 export async function GET(request: Request) {
+
+    await auth.protect();
+    
     try {
         const { searchParams } = new URL(request.url);
         const accountId = searchParams.get('id');

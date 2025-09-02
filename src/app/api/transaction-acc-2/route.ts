@@ -8,7 +8,7 @@ import { auth } from '@clerk/nextjs/server';
 
 export async function GET(request: Request) {
 
-    // await auth.protect()
+    await auth.protect()
     
     try
     {

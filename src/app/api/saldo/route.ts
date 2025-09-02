@@ -3,9 +3,12 @@ export const maxDuration = 30;
 
 import dbprisma from "@/lib/dbprisma";
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs/server";
 
 // Hitung Saldo Akhir Akun berdasarkan accountTypeId dan accountGroup2Id untuk periode tertentu
 export async function GET(request: Request) {
+
+    await auth.protect()
 
     try
     {

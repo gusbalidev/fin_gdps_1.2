@@ -1,10 +1,14 @@
 import dbprisma from "@/lib/dbprisma";
 import { NextResponse } from "next/server";
+import { auth } from '@clerk/nextjs/server';
 
 // Initialize Prisma Client
 //const prisma = new PrismaClient();
 
 export async function GET() {
+
+    await auth.protect()
+    
     try
     {
         const query = await dbprisma.account.findMany({

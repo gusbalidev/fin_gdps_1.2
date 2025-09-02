@@ -8,7 +8,8 @@ import { auth } from "@clerk/nextjs/server";
 // http://localhost:3000/api/neraca?accountTypeId=1
 
 export async function GET(request) {
-  // await auth.protect()
+  
+  await auth.protect()
 
   try {
     // Extract accountTypeId from the request query parameters
