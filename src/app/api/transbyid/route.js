@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export async function GET(request) {
 
-    await auth.sprotect();
+    await auth.protect();
     
     const { searchParams } = new URL(request.url);
     const accountId = searchParams.get('accountId');
