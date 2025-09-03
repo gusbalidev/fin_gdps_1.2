@@ -66,9 +66,10 @@ export function ChartCashflow() {
     };    
     
     // Get dates for last 3 months
-    const month1 = getMonthDates(0); // Current month
-    const month2 = getMonthDates(1); // Last month
-    const month3 = getMonthDates(2); // 2 months ago
+    const month1 = getMonthDates(1); // Last Month
+    const month2 = getMonthDates(2); // 2 month ago
+    const month3 = getMonthDates(3); // 3 months ago
+    // const month4 = getMonthDates(3);
         
 
     // Hitung Data Penerimaan
@@ -80,6 +81,7 @@ export function ChartCashflow() {
     
     const pen3a = CountCashFlow( { title: "Pen3a", type: 4, group2: 8, start: month3.start, end: month3.end, } ) ;
     const pen3b = CountCashFlow( { title: "Pen3b", type: 4, group2: 9, start: month3.start, end: month3.end, } ) ;
+
 
     // Hitung Data Biaya
     const biaya1a = CountCashFlow( { title: "Bia1a", type: 5, group2: 10, start: month1.start, end: month1.end, } ) ;
