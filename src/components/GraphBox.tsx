@@ -1,30 +1,10 @@
-// import { Link } from 'lucide-react'
 import React from 'react'
-import { ChartCashflow } from './chart-cashflow';
 
-interface MenuBoxButtonProps {
-  title: string;
-  desc: string;
-  menulink: string;
-}
-
-export default function GraphBox({ title, desc, menulink }: MenuBoxButtonProps) {
-
-  const handleClick = () => {
-    console.log('Button clicked');
-    window.open(menulink, '_blank');
-  };
-
+export default function GraphBox({ graphComp }: { graphComp?: React.ReactNode }) {
   return (
-    <div className="rounded-xl cursor-pointer" >
-
-      <ChartCashflow />
+    <div className="rounded-xl cursor-pointer bg-green-100 hover:bg-orange-300" >
+      {graphComp}
     </div>
   )
 }
-
-// function handleClick() {
-//   window.open('/neraca-t', '_blank');
-
-// }
 
