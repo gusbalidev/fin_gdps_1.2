@@ -5,17 +5,14 @@ import { auth } from '@clerk/nextjs/server';
 
 // GET ALL TRANSACTIONS
 export async function GET() {
-    try {
-        // Check authentication first
-        const session = await auth();
-        if (!session || !session.userId) {
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            );
-        }
+
+    // await auth.protect()
+    
+    try
+    {
 
         const query = await dbprisma.transactionAll.findMany({
+            
             select: {
                 id: true,
                 accountId: true,
@@ -24,36 +21,31 @@ export async function GET() {
                 date: true,
                 debit: true,
                 credit: true,
+                
                 account: {
                     select: {
                         id: true,
-                        code: true,
-                        name: true,
+                      code: true,
+                      name: true,
                     }
-                }, 
+                  }, 
             },
+
             orderBy: {
                 date: 'desc',
             },
+            
+
+
+
         });
-
-        if (!query) {
-            return NextResponse.json(
-                { error: 'No data found' },
-                { status: 404 }
-            );
-        }
-
-        return NextResponse.json(query);
-
-    } catch (error) {
-        console.error('Error fetching transactions:', error);
-        return NextResponse.json(
-            { error: 'Internal Server Error' },
-            { status: 500 }
-        );
+        //console.log('query TRANSACTION ALL', query);
+        return NextResponse.json(query, { status: 200 });
     }
-}
+    catch (e) {
+        return NextResponse.json({ error: e }, { status: 500 });
+    }
+    }
 
 
     // EDIT TRANSACTION 

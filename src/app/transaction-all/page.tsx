@@ -12,8 +12,15 @@ async function getData() {
     // //console.log(data)
     // return data
     try {
-        //const res = await fetch(`${global.baseUrl}/api/transaction-all`, { cache: 'no-store' })
-        const res = await fetch(`${process.env.APP_URL}/api/transaction-all`, { cache: 'no-store' })
+        // const res = await fetch(`${process.env.APP_URL}/api/transaction-all`, { 
+            // cache: 'no-store' })
+        const res = await fetch(`${process.env.APP_URL}/api/trans-all`, { 
+            cache: 'no-store',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+                // Add any other headers you need here
+        })
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`)
         }

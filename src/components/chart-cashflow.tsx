@@ -41,15 +41,6 @@ const chartConfig = {
 
 export function ChartCashflow() {
 
-    const [values, setValues] = useState({
-        pen1a: 0,
-        pen1b: 0,
-        pen2a: 0,
-        pen2b: 0,
-        pen3a: 0,
-        pen3b: 0,
-    });
-
     // Save start and end dates
     const today = new Date();
 
@@ -132,7 +123,7 @@ export function ChartCashflow() {
 
                 <CardContent>
 
-                    <ChartContainer config={chartConfig}>        
+                    <ChartContainer config={chartConfig} className="mx-auto aspect-square h-[300px]">
                         <BarChart accessibilityLayer data={chartData}>
                             <CartesianGrid vertical={true} />
                             <XAxis                                
@@ -157,7 +148,7 @@ export function ChartCashflow() {
                     Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
                     </div> */}
                     <div className="font-muted font-medium">
-                        Cek Detail <Link className="text-blue-500" href={"/cashflow"} target="_blank">DISINI</Link>
+                        Cek Laporan Detail <Link className="text-blue-500" href={"/cashflow"} target="_blank">DISINI</Link>
                     </div>
                 </CardFooter>
             </Card>
