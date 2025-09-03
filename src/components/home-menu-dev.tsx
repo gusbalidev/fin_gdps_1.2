@@ -11,12 +11,7 @@ import { ChartCashflow } from './chart-cashflow';
 function HomeMenu() {
   return (
     <>
-      <div className="flex flex-1 flex-col gap-4 pt-4 pb-5">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <GraphBox graphComp={<ChartCashflow/>} />
-        </div>
 
-      </div>
       <div className="flex flex-1 flex-col gap-4 pt-4 pb-5">
 
 

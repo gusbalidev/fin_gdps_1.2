@@ -210,6 +210,10 @@ const data = {
       isActive: true,
       items: [
         {
+          title: "GRAFIK",
+          url: "/graph",
+        },
+        {
           title: "NERACA v2",
           url: "/n2new",
         },
