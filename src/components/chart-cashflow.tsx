@@ -1,12 +1,10 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
@@ -14,19 +12,17 @@ import {
 import {
     ChartConfig,
     ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
 import Link from "next/link"
-import { useState } from "react"
 import CountCashFlow from "./countCashFlow"
 
 export const description = "A multiple bar chart"
 
 const Color1 = "#15d1a5ff"
 const Color2 = "#db5b34ff"
+const Color3 = "#f3ba4dff"
 
 const chartConfig = {
     in: {
@@ -108,9 +104,9 @@ export function ChartCashflow() {
 
     // Prepare data for the chart
     const chartData = [
-        { month: monthText3, in: pen3, out: biaya3 }, // 2 months ago
-        { month: monthText2, in: pen2, out: biaya2 }, // last month
-        { month: monthText1, in: pen1, out: biaya1 }, // current month
+        { month: monthText3, in: pen3, out: biaya3, color: Color3 }, // 2 months ago
+        { month: monthText2, in: pen2, out: biaya2, color: Color2 }, // last month
+        { month: monthText1, in: pen1, out: biaya1, color: Color1 }, // current month
     ]
 
     return (
@@ -135,11 +131,11 @@ export function ChartCashflow() {
                             />
                             <ChartTooltip
                                 cursor={false}
-                                content={<ChartTooltipContent indicator="dashed" />}
+                                content={<ChartTooltipContent indicator="dot" />}
                             />
                             <Bar dataKey="in" fill="var(--color-in)" radius={4} />
                             <Bar dataKey="out" fill="var(--color-out)" radius={4} />
-                            <ChartLegend content={<ChartLegendContent />} />
+                            {/* <ChartLegend content={<ChartLegendContent />} /> */}
                         </BarChart>
                     </ChartContainer>
                 </CardContent>
@@ -147,6 +143,22 @@ export function ChartCashflow() {
                     {/* <div className="flex gap-2 leading-none font-medium">
                     Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
                     </div> */}
+                    <div>
+                    <ul>
+                        <li>
+                            <span
+                            className="inline-block h-3 w-3 mr-2 rounded-xs align-middle"
+                            style={{ backgroundColor: Color1 }}
+                            ></span>
+                            Pemasukan</li>
+                        <li>
+                            <span
+                            className="inline-block h-3 w-3 mr-2 rounded-xs align-middle"
+                            style={{ backgroundColor: Color2 }}
+                            ></span>
+                            Pengeluaran</li>
+                    </ul>
+                    </div>
                     <div className="font-muted font-medium">
                         Cek Laporan Detail <Link className="text-blue-500" href={"/cashflow"} target="_blank">DISINI</Link>
                     </div>
