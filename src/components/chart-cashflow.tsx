@@ -123,7 +123,7 @@ export function ChartCashflow() {
 
                 <CardContent>
 
-                    <ChartContainer config={chartConfig} className="mx-auto aspect-square h-[300px]">
+                    <ChartContainer config={chartConfig} className="mx-auto h-auto">
                         <BarChart accessibilityLayer data={chartData}>
                             <CartesianGrid vertical={true} />
                             <XAxis                                
