@@ -29,9 +29,9 @@ import CountCashFlow from "./countCashFlow"
 
 export const description = "An interactive pie chart"
 
-const color1 = "purple"
-const color2 = "blue"
-const color3 = "orange"
+const color1 = "DarkViolet"
+const color2 = "DarkBlue"
+const color3 = "YellowGreen"
 
 const chartConfig = {
 
@@ -84,6 +84,7 @@ export function ChartBiaya2() {
   ]
 
   const total = (typeof biaya1 === "number" ? biaya1 : 0) + (typeof biaya2 === "number" ? biaya2 : 0) + (typeof biaya3 === "number" ? biaya3 : 0)
+  const totalNonRp = total.toLocaleString()
   const totalRp = `Rp. ${total.toLocaleString()}`
   const title = "Distribusi Biaya / Pengeluaran"
   // Month labels
@@ -106,7 +107,7 @@ export function ChartBiaya2() {
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
-        <div className="grid gap-1">
+        <div className="grid gap-1 pb-2">
           <CardTitle>{title}</CardTitle>
           <CardDescription>{monthText}</CardDescription>
         </div>
@@ -161,7 +162,7 @@ export function ChartBiaya2() {
               data={dataSource}
               dataKey="value"
               nameKey="b"
-              innerRadius={60}
+              innerRadius={50}
               strokeWidth={5}
               activeIndex={activeIndex}
               activeShape={({
@@ -169,12 +170,12 @@ export function ChartBiaya2() {
                 ...props
               }: PieSectorDataItem) => (
                 <g>
-                  <Sector {...props} outerRadius={outerRadius + 10} />
-                  <Sector
-                    {...props}
-                    outerRadius={outerRadius + 25}
-                    innerRadius={outerRadius + 12}
-                  />
+                  <Sector {...props} outerRadius={outerRadius + 6} />
+                                    <Sector
+                                      {...props}
+                                      outerRadius={outerRadius + 20}
+                                      innerRadius={outerRadius + 9}
+                                    />
                 </g>
               )}
             >
@@ -194,7 +195,7 @@ export function ChartBiaya2() {
                           className="fill-foreground text-sm font-bold"
                         >
                           {/* {dataSource[activeIndex].value.toLocaleString()} */}
-                          {totalRp}
+                          {totalNonRp}
                         </tspan>
                             
                         {/* <tspan

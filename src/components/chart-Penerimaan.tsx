@@ -29,8 +29,8 @@ import CountCashFlow from "./countCashFlow"
 
 export const description = "An interactive pie chart"
 
-const color1 = "DarkSeaGreen"
-const color2 = "Navy"
+const color1 = "DarkOrange"
+const color2 = "RoyalBlue"
 
 const chartConfig = {
 
@@ -73,6 +73,7 @@ export function ChartPenerimaan() {
   ]
 
   const total = (typeof pen1 === "number" ? pen1 : 0) + (typeof pen2 === "number" ? pen2 : 0) 
+  const totalNonRp = total.toLocaleString()
   const totalRp = `Rp. ${total.toLocaleString()}`
   const title = "Distribusi Penerimaan"
   // Month labels
@@ -95,7 +96,7 @@ export function ChartPenerimaan() {
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
-        <div className="grid gap-1">
+        <div className="grid gap-1 pb-2">
           <CardTitle>{title}</CardTitle>
           <CardDescription>{monthText}</CardDescription>
         </div>
@@ -150,7 +151,7 @@ export function ChartPenerimaan() {
               data={dataSource}
               dataKey="value"
               nameKey="b"
-              innerRadius={60}
+              innerRadius={50}
               strokeWidth={5}
               activeIndex={activeIndex}
               activeShape={({
@@ -158,11 +159,11 @@ export function ChartPenerimaan() {
                 ...props
               }: PieSectorDataItem) => (
                 <g>
-                  <Sector {...props} outerRadius={outerRadius + 10} />
+                  <Sector {...props} outerRadius={outerRadius + 6} />
                   <Sector
                     {...props}
-                    outerRadius={outerRadius + 25}
-                    innerRadius={outerRadius + 12}
+                    outerRadius={outerRadius + 20}
+                    innerRadius={outerRadius + 9}
                   />
                 </g>
               )}
@@ -183,7 +184,7 @@ export function ChartPenerimaan() {
                           className="fill-foreground text-sm font-bold"
                         >
                           {/* {dataSource[activeIndex].value.toLocaleString()} */}
-                          {totalRp}
+                          {totalNonRp}
                         </tspan>
                             
                         {/* <tspan
