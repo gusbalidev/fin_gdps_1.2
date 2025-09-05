@@ -37,9 +37,9 @@ export const description = "An interactive pie chart"
 
 // ]
 
-const color1 = "red"
+const color1 = "purple"
 const color2 = "blue"
-const color3 = "green"
+const color3 = "orange"
 
 const chartConfig = {
   visitors: {
@@ -51,15 +51,15 @@ const chartConfig = {
   mobile: {
     label: "Mobile",
   },
-  january: {
+  b1: {
     label: "Operasional",
     color: color1,
   },
-  february: {
+  b2: {
     label: "Sekretariat",
     color: color2,
   },
-  march: {
+  b3: {
     label: "Bidang/Bapel",
     color: color3,
   },
@@ -91,14 +91,14 @@ export function ChartBiaya2() {
         const biaya3 = CountCashFlow( { title: "Bia3", type: 5, group2: 12, start: month1.start, end: month1.end, } ) ;
 
   const desktopData = [
-  { label:'Operasional', month: "january", value: biaya1, fill: "var(--color-january)" },
-  { label:'Sekretariat', month: "february", value: biaya2, fill: "var(--color-february)" },
-  { label:'Bidang/Bapel', month: "march", value: biaya3, fill: "var(--color-march)" },
+  { label:'Operasional', b: "b1", value: biaya1, fill: color1 },
+  { label:'Sekretariat', b: "b2", value: biaya2, fill: color2 },
+  { label:'Bidang/Bapel', b: "b3", value: biaya3, fill: color3 },
   ]
 
   const total = (typeof biaya1 === "number" ? biaya1 : 0) + (typeof biaya2 === "number" ? biaya2 : 0) + (typeof biaya3 === "number" ? biaya3 : 0)
   const totalRp = `Rp. ${total.toLocaleString()}`
-  const title = "Distribusi Biaya"
+  const title = "Distribusi Biaya / Pengeluaran"
   // Month labels
   // const today = new Date();
   const currentMonth = new Date().getMonth(); // Current month index (0-11)
@@ -107,13 +107,13 @@ export function ChartBiaya2() {
   // const monthYear = `${monthText1} ${today.getFullYear()}`;
 
   const id = "pie-interactive"
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month)
+  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].b)
 
   const activeIndex = React.useMemo(
-    () => desktopData.findIndex((item) => item.month === activeMonth),
+    () => desktopData.findIndex((item) => item.b === activeMonth),
     [activeMonth]
   )
-  const months = React.useMemo(() => desktopData.map((item) => item.month), [])
+  const months = React.useMemo(() => desktopData.map((item) => item.b), [])
 
   return (
     <Card data-chart={id} className="flex flex-col">
@@ -173,7 +173,7 @@ export function ChartBiaya2() {
             <Pie
               data={desktopData}
               dataKey="value"
-              nameKey="month"
+              nameKey="b"
               innerRadius={60}
               strokeWidth={5}
               activeIndex={activeIndex}
@@ -207,17 +207,18 @@ export function ChartBiaya2() {
                           className="fill-foreground text-sm font-bold"
                         >
                           {desktopData[activeIndex].value.toLocaleString()}
-                          {/* {totalRp} */}
                         </tspan>
-
+                            
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          className="fill-muted-foreground text-[0.7rem]"
                         >
-                          {desktopData[activeIndex].label}
+                        {desktopData[activeIndex].label}
                         </tspan>
                       </text>
+
+                   
                     )
                   }
                 }}
@@ -225,16 +226,10 @@ export function ChartBiaya2() {
             </Pie>
           </PieChart>
         </ChartContainer>
-        <CardFooter className="flex-col items-start text-sm">
           <div>
-            {/* {desktopData[activeIndex].label}: */}
-            Total Biaya:
-            <span className="font-bold">{totalRp}</span>
+            <p className="text-sm">Total Biaya / Pengeluaran: </p>
+            <p className="font-bold">{totalRp}</p>
           </div>
-          {/* <div className="font-muted font-medium">
-            Cek Laporan Detail <a className="text-blue-500" href={"/cashflow"} target="_blank">DISINI</a>
-          </div> */}
-        </CardFooter>
       </CardContent>
     </Card>
   )
