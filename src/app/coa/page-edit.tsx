@@ -5,6 +5,7 @@ import Loading from "@/components/Loading";
 import global from "@/config.js";
 
 import { ClientDataTable } from "./client-data-tables";
+import { useQuery } from "@tanstack/react-query";
 
 
 async function getAccount() {
@@ -51,12 +52,59 @@ async function getAccount() {
     }
 }
 
-export default async function AccountPage() {
+
+async function getData() {
+    try {
+        const baseUrl = process.env.APP_URL || 'http://localhost:3000';
+        const url = new URL('/api/abl', baseUrl).toString();
+        console.log('Fetching from:', url); // Debug URL
+
+        const res = await fetch(url, {
+            cache: 'no-store',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`)
+        }
+
+        const data = await res.json()
+
+        console.log('Fetched data COA:', data)
+        return data
+    } catch (error) {
+        console.error('Error fetching data:', error)
+        return [] // Return empty array as fallback
+    }
+}
+
+
+
+export default function Coa() {
 
     const pageTitle = global.pageTitle.coa;
-    const data = await getAccount() || []; // Ensure data is always an array
+    // const data = await getAccount() || []; // Ensure data is always an array
+    // const data = await getData() || []; // Ensure data is always an array
+
+    // Fetch data using TanStack Query
+    const { data: result, isLoading, error, isSuccess } = useQuery({
+        queryKey: ['accounts'],
+        // queryFn: () => fetch(`/api/neraca-saldo-group2?accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        queryFn: () => fetch(`/api/abl`, { cache: 'no-store' })
+
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            }),
+    });
+
+
     const header = <h4>{global.pageInfo.headerText}</h4>;
     const footer = <p>{global.pageInfo.footerText}</p>;
+
+    console.log('Data to be rendered in COA page:', result);
 
     return (
 
@@ -66,7 +114,7 @@ export default async function AccountPage() {
 
                     <h1 className='text-2xl text-bold'>{pageTitle}</h1>
 
-                    <ClientDataTable initialData={data} />
+                    <ClientDataTable initialData={result} />
 
 
                 </div>
@@ -74,3 +122,4 @@ export default async function AccountPage() {
         </PageLayout>
     )
 }
+
