@@ -25,17 +25,18 @@ export default function TabelNeraca() {
   return (
 
     <div className="w-full">
-      <div>
+      <div className="text-right">
 
         {/* <br /> */}
         <h1 className="text-xl font-bold dark:text-blue-500">{subTitle2}</h1>
         <Divider />
-
-        {periodType === 'M' ?
-          <MonthYearSelectorB DataComponent={DataComponent} />
-          :
-          <YearSelectorB DataComponent={DataComponent} />
-        }
+        <div className="items-end">
+          {periodType === 'M' ?
+            <MonthYearSelectorB DataComponent={DataComponent} />
+            :
+            <YearSelectorB DataComponent={DataComponent} />
+          }
+        </div>
         <br />
 
       </div>

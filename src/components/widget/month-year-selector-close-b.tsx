@@ -129,7 +129,8 @@ const MonthYearSelectorB = ({ DataComponent }: MonthYearSelectorProps) => {
 
     return (
         <>
-            <div className="flex gap-3 py-2">
+            {/* <div className="flex gap-3 py-2"> */}
+            <div className="flex justify-end gap-3 py-2">
                 <div className="w-600 flex-none">
                     {/* <div className="flex justify-normal space-x-2 mt-2 mb-2"> */}
                     <Select onValueChange={handleMonthChange} value={month}>

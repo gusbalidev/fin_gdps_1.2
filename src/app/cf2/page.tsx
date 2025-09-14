@@ -1,79 +1,81 @@
 "use client"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-
-import PageLayout from "@/components/PageLayout";
-import Divider from "@/components/Divider";
 import global from "@/config.js";
+import React, { Suspense, use } from 'react'
 
-import SubtitlePeriode from "@/components/widget/subtitle-periode";
-import MonthYearSelector from "@/components/widget/month-year-selector";
-import YearSelector from "@/components/widget/year-selector";
+import PageLayout from '@/components/PageLayout'
+import Divider from "@/components/Divider";
 
-import useCashFlowContext from "@/context/cashflow-context";
-import ShowNSData from "./page-data";
+import BlokPeriode from "./blok-periode";
+import KolomTitleCashflow from "../title-cashflow/page";
+import TableCF1 from "../tabel-cashflow-kol1/page";
+import TableCF2 from "../tabel-cashflow-kol2/page";
 
-interface PageProps {
-  params: {};
-  searchParams: { [key: string]: string | string[] | undefined };
-}
 
-export default function Page({ 
-    params,
-    searchParams
-}: PageProps) {
+//
+export default function page() {
 
-    const pageTitle = "LAPORAN PENERIMAAN/PENGELUARAN 2";
-    const DataComponent = ShowNSData;
-    const mText = "Bulanan";
-    const yText = "Tahunan";
+  // const { periodType } = useNeracaSaldoContext();
+  const header = <h4>{global.pageInfo.headerText}</h4>;
+  const footer = <p>{global.pageInfo.footerText}</p>;
+  // const pageTitle = global.pageTitle.neraca;
+  const pageTitle = 'LAPORAN' + ' ' + global.pageTitle.cashflow;
+  const pageTitle2 = 'Laporan Komparatif';
 
-    const [periodType, setPeriodType] = useState<'M' | 'Y'>('M');
 
-    const header = <h4>{global.pageInfo.headerText}</h4>;
-    const footer = <p>{global.pageInfo.footerText}</p>;
+  return (
+    <PageLayout header={header} footer={footer}>
 
-    const { setPeriodeOn } = useCashFlowContext();
-    setPeriodeOn(false)
+      {/* TEST Component merapikan struktur - NEW */}
+      {/* <BlokTop /> */}
 
-    return (
+      <h1 className="text-3xl font-bold dark:text-blue-500">{pageTitle.toUpperCase()}</h1>
+      <h1 className="text-xl font-bold dark:text-blue-500">{pageTitle2.toUpperCase()}</h1>
+      <Divider />
+      <br />
 
-        <PageLayout header={header} footer={footer}>
-            <div className="w-full">
+      <div className='flex justify-between'>
+        <div className='w-1/2'>
 
-                <h1 className="text-3xl font-bold dark:text-blue-500">{pageTitle.toUpperCase()}</h1>
+          <h1 className="text-xl font-bold dark:text-blue-500">Periode:</h1>
+          <Divider />
+          <BlokPeriode />
 
-                <SubtitlePeriode />
-                <Divider />
+          <KolomTitleCashflow />
 
-                {/* Period:*/}
-                <div className="flex gap-2 mb-4 py-2">
-                    <Button 
-                        variant={periodType === 'M' ? 'default' : 'outline'}
-                        onClick={() => setPeriodType('M')}
-                    >
-                        {mText}
-                    </Button>
-                    <Button 
-                        variant={periodType === 'Y' ? 'default' : 'outline'}
-                        onClick={() => setPeriodType('Y')}
-                    >
-                        {yText}
-                    </Button>
-                </div>
+          {/* <KolomTitleAktivitas /> */}
+          <br />
+          {/* <KolomTitleAruskas /> */}
+        </div>
 
-                {/* Selector Bulan/Tahun? */}
-                {periodType === 'M' ? 
-                    <MonthYearSelector DataComponent={DataComponent} /> : 
-                    <YearSelector DataComponent={DataComponent} />
-                    }
+        <div className="w-1/2">
+          <div className='flex justify-between'>
 
+            {/* Tabel1 */}
+            <div className='w-1/2 ml-2'>
+
+              <TableCF1 />
 
             </div>
-        </PageLayout >
 
+            {/* Tabel 2 */}
+            <div className='w-1/2 ml-2'>
 
-    )
+              <TableCF2 />
+
+            </div>
+
+            {/* Tabel PoP */}
+            {/* <div className='w-1/5'>
+              <PoP />
+            </div> */}
+
+          </div>
+        </div>
+      </div>
+
+    </PageLayout>
+  )
 }
+
 

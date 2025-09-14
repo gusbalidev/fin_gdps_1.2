@@ -39,7 +39,7 @@ export default function Page() {
       <br />
 
       <div className='flex justify-between'>
-        <div className='w-1/2'>
+        <div className='w-1/3'>
 
           <h1 className="text-xl font-bold dark:text-blue-500">Periode:</h1>
           <Divider />
@@ -52,7 +52,7 @@ export default function Page() {
           {/* <KolomTitleAruskas /> */}
         </div>
 
-        <div className="w-1/2">
+        <div className="w-2/3">
           <div className='flex justify-between'>
 
             {/* Tabel1 */}
@@ -66,8 +66,8 @@ export default function Page() {
             <div className='w-1/2'>
 
               {isColumn1Ready === true ?
-                <TabelNeraca /> 
-                : 
+                <TabelNeraca />
+                :
                 null
               }
 

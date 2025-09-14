@@ -134,7 +134,7 @@ const data = {
 
     // App-2
 
-    
+
 
     {
       title: "LAPORAN",
@@ -164,7 +164,7 @@ const data = {
         // },
         {
           title: "Penerimaan / Pengeluaran",
-          url: "/cashflow",
+          url: "/cf2",
         },
 
         // {

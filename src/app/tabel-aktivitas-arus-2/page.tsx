@@ -24,7 +24,7 @@ export default function AktivitasArus2() {
   return (
 
     <div className="w-full">
-      <div>
+      <div className="text-right">
         {/* <h1 className="text-xl font-bold dark:text-blue-500">Aktivitas {subTitle}</h1> */}
         {/* <br /> */}
         <h1 className="text-xl font-bold dark:text-blue-500">{subTitle2}</h1>

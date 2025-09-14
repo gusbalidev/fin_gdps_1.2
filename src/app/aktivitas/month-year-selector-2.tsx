@@ -24,7 +24,7 @@ const MonthYearSelector2 = () => {
     const { start, end, setIsClosing, setSubTitle, setSubTitle2, setStartContext, setEndContext, setPrevStartContext, setPrevEndContext,
         setTitleMonthYear, setPrevTitleMonthYear,
         showComponent, setShowComponent,
-        } = useNeracaSaldoContextB();
+    } = useNeracaSaldoContextB();
 
     const currentMonthIndex = new Date().getMonth(); // Get current month index (0-11)
     const currentYear = new Date().getFullYear(); // Get current year
@@ -134,7 +134,8 @@ const MonthYearSelector2 = () => {
 
     return (
         <>
-            <div className="flex gap-3 py-2">
+            {/* <div className="flex gap-3 py-2"> */}
+            <div className="flex justify-end gap-3 py-2">
                 <div className="w-600 flex-none">
                     {/* <div className="flex justify-normal space-x-2 mt-2 mb-2"> */}
                     <Select onValueChange={handleMonthChange} value={month}>

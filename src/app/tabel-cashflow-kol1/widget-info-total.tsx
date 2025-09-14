@@ -4,17 +4,18 @@ import React from 'react'
 
 import { useCfStore } from './cf-store'
 import toidr from '@/lib/toidr'
+import useNeracaSaldoContext from '@/context/neraca-saldo-context'
 import Divider from '@/components/Divider'
 
 function WidgetInfoTotal() {
 
   const cfStore = useCfStore()
+  const { periodType, subTitle } = useNeracaSaldoContext();
 
   return (
     <div className="p-2 rounded-lg bg-blue-50 dark:bg-slate-800">
       {/* Rangkuman Neraca */}
-      <h1 className="text-xl font-bold pt-4 pb-2">TOTAL / RANGKUMAN</h1>
-
+      <h1 className="text-xl font-bold pt-4 pb-2">{subTitle}</h1>
       {/* {isBalanceSheetEqual(totalAktiva, totalPasiva) ? <p className="text-green-500 pb-2">{global.pageInfo.infoNeracaBalance}</p> : <p className="text-red-500 pb-2">{global.pageInfo.infoNeracaUnbalance}</p>} */}
 
       {/* <Button onClick={() => cfStore.setTotalCf(cfStore.totalCf+100)}>SET TOTAL TEST</Button> */}
@@ -37,9 +38,9 @@ function TulisTotalRp({ value, title }: { value: string, title: string }) {
   return (
     <>
       <Divider />
-      <div className='flex justify-between p-2'>
-        <p className='text-md font-bold'>Total {title}:</p>
-        {/* <p className='text-lg font-bold'>{value}</p> */}
+      <div className='flex justify-end py-2'>
+        {/* <p className='text-md font-bold'>{title}:</p> */}
+        <p className='text- font-bold'>{value}</p>
       </div>
     </>
   )

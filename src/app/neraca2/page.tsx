@@ -35,7 +35,7 @@ export default function page() {
       <br />
 
       <div className='flex justify-between'>
-        <div className='w-1/2'>
+        <div className='w-1/3'>
 
           <h1 className="text-xl font-bold dark:text-blue-500">Periode:</h1>
           <Divider />
