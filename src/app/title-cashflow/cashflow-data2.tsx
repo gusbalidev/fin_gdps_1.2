@@ -11,7 +11,7 @@ import Divider from "@/components/Divider";
 //import useCashFlowContext from "@/context/cashflow-context";
 
 //
-const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
+const CashFlowData2Title = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
 
     const { setTotalT1, setTotalT2, setTotalK1, setTotalK2, setTotalK3 } = useCfStore();
     //const { start, end } = useCashFlowContext();
@@ -87,7 +87,7 @@ const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: { title:
     )
 }
 
-export default CashFlowData2;
+export default CashFlowData2Title;
 
 
 function TulisTotalRp({ value, title }: { value: string, title: string }) {
