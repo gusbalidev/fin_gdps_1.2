@@ -10,6 +10,7 @@ import Divider from '@/components/Divider';
 import { DataTable } from './data-tables';
 import { columns } from './columns';
 import Loading from '@/components/Loading';
+import { Spinner } from '@/components/ui/spinner';
 
 
 //
@@ -32,22 +33,22 @@ const AccountPage = () => {
             }),
     });
 
-    if (isLoading) return <div>Tunggu...</div>; // Handle loading state
+    if (isLoading) return <Spinner className='justify-center items-center' size="small" />;
     if (error) return <div>Error: {error.message}</div>; // Handle error state
     if (!data) return <div>Tidak ada data (null)</div>;
 
 
     return (
         <PageLayout header={header} footer={footer}>
-
-            <h1 className="text-3xl font-bold dark:text-blue-500">{pageTitle.toUpperCase()}</h1>
-            <h1 className="text-xl font-bold dark:text-blue-500">{pageTitle2}</h1>
-
-            <Divider />
             <Suspend fallback={<Loading section="COA" />}>
-                <DataTable columns={columns} data={data} />
-            </Suspend>
 
+                <h1 className="text-3xl font-bold dark:text-blue-500">{pageTitle.toUpperCase()}</h1>
+                <h1 className="text-xl font-bold dark:text-blue-500">{pageTitle2}</h1>
+                <Divider />
+
+                <DataTable columns={columns} data={data} />
+
+            </Suspend>
         </PageLayout>
     )
 }

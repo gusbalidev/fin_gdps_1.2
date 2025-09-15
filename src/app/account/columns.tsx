@@ -99,8 +99,8 @@ export const columns: ColumnDef<Account>[] = [
         cell: ({ row }) => {
             return <div className="text-left w-[100%]">
                 <Link
-                    href={`/coa/${row.original.id}/transactions`}
-                    className="text-blue-600 hover:underline"
+                    href={`/account/${row.original.id}/transactions`}
+                    className="hover:underline font-bold"
                 >
                     {row.original.name}
                 </Link>
