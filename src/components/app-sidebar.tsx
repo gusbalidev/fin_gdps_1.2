@@ -61,7 +61,7 @@ const data = {
       items: [
         {
           title: "Daftar Akun",
-          url: "/coa",
+          url: "/account",
         },
 
       ],

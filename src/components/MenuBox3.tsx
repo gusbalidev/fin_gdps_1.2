@@ -15,7 +15,7 @@ function MenuBox3({ title, desc, menulink }: MenuBoxButtonProps) {
   };
 
   return (
-    <div className="aspect-auto rounded-xl bg-gray-200 hover:bg-yellow-200 cursor-pointer h-[180px]" >
+    <div className="aspect-auto rounded-xl bg-gray-200 hover:bg-yellow-200 cursor-pointer h-[180px] truncate" >
       <div onClick={handleClick} className="flex flex-col justify-center items-center h-full p-2">
         <h3 className="text-[1.3em] font-bold text-orange-900 text-center">{title}</h3>
         <p className="text-sm font-light text-orange-800 text-center">{desc}</p>
