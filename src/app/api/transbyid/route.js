@@ -1,38 +1,45 @@
-import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 import { auth } from '@clerk/nextjs/server';
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/dbprisma";
 
 export async function GET(request) {
-
-    await auth.protect();
-    
-    const { searchParams } = new URL(request.url);
-    const accountId = searchParams.get('accountId');
-
-    if (!accountId) {
-        return NextResponse.json({ error: 'Account ID is required' }, { status: 400 });
-    }
-
     try {
+        // Check authentication
+        const session = await auth();
+        if (!session || !session.userId) {
+            return NextResponse.json(
+                { error: 'Unauthorized' },
+                { 
+                    status: 401,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+        }
+
+        const { searchParams } = new URL(request.url);
+        const accountId = searchParams.get('accountId');
+
+        if (!accountId) {
+            return NextResponse.json(
+                { error: 'Account ID is required' },
+                { status: 400 }
+            );
+        }
+
         const transactions = await prisma.transactionAll.findMany({
-            include: {
-                account: true
-            },
-            where: {
-                accountId: parseInt(accountId)
-            },
-            orderBy: {
-                date: 'desc'
-            }
+            where: { accountId: parseInt(accountId) },
+            orderBy: { date: 'desc' }
         });
 
         return NextResponse.json(transactions);
+
     } catch (error) {
-        console.error('Error fetching transactions:', error);
-        return NextResponse.json({ error: 'Error fetching transactions' }, { status: 500 });
-    } finally {
-        await prisma.$disconnect();
+        console.error('API error:', error);
+        return NextResponse.json(
+            { error: 'Internal Server Error' },
+            { status: 500 }
+        );
     }
 }

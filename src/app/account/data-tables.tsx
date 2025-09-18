@@ -226,7 +226,7 @@ export function DataTable<TData, TValue>({
         />
 
         <div className="space-x-2">
-          <Button
+          <Button 
             variant="outline"
             size="sm"
             onClick={() => table.setPageIndex(0)}

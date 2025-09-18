@@ -43,7 +43,7 @@ const AccountPage = () => {
             <Suspend fallback={<Loading section="COA" />}>
 
                 <h1 className="text-3xl font-bold dark:text-blue-500">{pageTitle.toUpperCase()}</h1>
-                <h1 className="text-xl font-bold dark:text-blue-500">{pageTitle2}</h1>
+                <h1 className="text-xl font-medium dark:text-blue-500">{pageTitle2}</h1>
                 <Divider />
 
                 <DataTable columns={columns} data={data} />

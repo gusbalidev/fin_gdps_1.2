@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 //import { EditDialog } from "./edit-dialog"
 import { Button } from "@/components/ui/button"
-import { EditDialog } from "./edit-dialog"
+import { EditDialog2 } from "./edit-dialog2"
 import { PencilIcon } from "lucide-react";
 //import AccountDialog from "./AccountDialog"
 
@@ -190,11 +190,11 @@ export const columns: ColumnDef<Account>[] = [
         cell: ({ row }) => {
             return (
                 <div className="text-right">
-                    <EditDialog account={row.original}>
+                    <EditDialog2 account={row.original}>
                         <Button variant="ghost" size="icon">
                             <PencilIcon />
                         </Button>
-                    </EditDialog>
+                    </EditDialog2>
                 </div>
             )
         },
