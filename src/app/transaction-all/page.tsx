@@ -6,20 +6,14 @@ import PageLayout from "@/components/PageLayout";
 import global from "@/config.js";
 
 
+//
 async function getData() {
-    // const res = await fetch(`${global.baseUrl}/api/transaction-all`, { cache: 'no-store' })
-    // const data = await res.json()
-    // //console.log(data)
-    // return data
     try {
-        // const res = await fetch(`${process.env.APP_URL}/api/transaction-all`, { 
-            // cache: 'no-store' })
         const res = await fetch(`${process.env.APP_URL}/api/trans-all`, { 
             cache: 'no-store',
             headers: {
                 'Content-Type': 'application/json',
             },
-                // Add any other headers you need here
         })
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`)
@@ -34,14 +28,13 @@ async function getData() {
 }
 
 
+//
 export default async function Page() {
     const data = await getData()
-
     const header = <h4>{global.pageInfo.headerText}</h4>;
     const footer = <p>{global.pageInfo.footerText}</p>;
 
     return (
-
         <PageLayout header={header} footer={footer}>
             <div className="w-full">
                 <DataTable columns={columns} data={data} />

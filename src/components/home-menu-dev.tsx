@@ -30,7 +30,7 @@ function HomeMenu() {
         </div>
 
         <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-          <MenuBox3 title={global.pageTitle.cashflow} desc="Laporan Penerimaan/Pengeluaran Bulanan" menulink='/cashflow' />
+          <MenuBox3 title={global.pageTitle.cashflow} desc="Laporan Penerimaan/Pengeluaran Bulanan" menulink='/cf2' />
           <MenuBox3 title={global.pageTitle.ledger} desc="Laporan Buku Besar Umum" menulink='/ledger' />
           <MenuBox3 title={global.pageTitle.nerSaldo} desc="Semua Transaksi Per-Periode/Akun" menulink='/neraca-saldo-x' />
           <MenuBox3 title={global.pageTitle.tjbj} desc="Laporan TJBJ" menulink='/tjbj' />

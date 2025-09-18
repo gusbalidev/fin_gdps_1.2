@@ -1,30 +1,24 @@
 "use client"
 
-import { DataTable } from "./data-tables";
-import { columns } from "./columns";
+import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
-
-import { useQuery } from '@tanstack/react-query';
-import { useCfStore } from '../cf2/cf-store'
 import Divider from "@/components/Divider";
-//import useCashFlowContext from "@/context/cashflow-context";
+
+import { DataTable } from "./data-tables";
+import { columns } from "./columns";
+import { useCfStore } from '../cf2/cf-store'
+
+
 
 //
-const CashFlowData2Title = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
-
+const CashFlowData2Title = ({ title, titleTotal, type, group2, start, end }: 
+    { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
     const { setTotalT1, setTotalT2, setTotalK1, setTotalK2, setTotalK3 } = useCfStore();
-    //const { start, end } = useCashFlowContext();
-
-    //console.log('start ---:', start)
-    //console.log('end ---:', end)
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
         queryKey: ['cf2', type, group2],
-        //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
-        ///api/neraca-saldo-x?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}
-        ///api/neraca-xx?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}
         queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
 
             .then(response => {
@@ -32,9 +26,6 @@ const CashFlowData2Title = ({ title, titleTotal, type, group2, start, end }: { t
                 return response.json();
             }),
     });
-
-    console.log('-----cek API URL-------')
-    console.log('fetched-url', `/api/neraca-x?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`)
 
     if (isLoading) return <div>Tunggu...</div>; // Handle loading state
     if (error) return <div>Error: {error.message}</div>; // Handle error state
@@ -47,9 +38,7 @@ const CashFlowData2Title = ({ title, titleTotal, type, group2, start, end }: { t
 
     //Update Total global States
     if (isSuccess) {
-        //UpdateTotalCF(group2, totalBalance);
         const newTotal = Math.abs(totalBalance);
-
         switch (group2) {
 
             case 8:
@@ -97,7 +86,6 @@ function TulisTotalRp({ value, title }: { value: string, title: string }) {
             <div className='flex justify-between'>
                 <p className='text-lg font-bold'>Total {title}:</p>
                 <p></p>
-                {/* <p className='text-lg font-bold'>{value}</p> */}
             </div>
         </>
     )

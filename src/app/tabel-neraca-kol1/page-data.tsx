@@ -2,40 +2,37 @@
 
 import { Suspense } from "react";
 import { getMonth } from "date-fns";
+
 import toidr from "@/lib/toidr";
 import global from "@/config.js";
-
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 
-import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca2/title-value";
+import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca/title-value";
+
 import NeracaDataX from "../n2new/neraca-dataX";
 import NeracaDataSubX from "../n2new/neraca-data-subX";
 import NeracaDataAP from "./neraca-data-ap-close";
 
 import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
+import useNeracaCol1Context from "@/context/neraca-col1-context";
 
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
-import useNeracaCol1Context from "@/context/neraca-col1-context";
 
 
 //
 export default function ShowNSDataB() {
-
   const { totalATX, totalAPX } = useNeracaTContext();
-  const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
-  
+  const { start, end, startPrev, endPrev } = useNeracaSaldoContext(); 
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
   const prevMonth = getMonth(new Date(end));
   
   return (
-
     <>
       <div>
-
         <br />
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold opacity-0">AKTIVA</h2>
         <Divider />
@@ -74,9 +71,6 @@ export default function ShowNSDataB() {
           <NeracaDataX title="ATX" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
           <NeracaDataX title="ATX" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
           <NeracaDataX title="ATX" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
-
-          {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-          {/* <NeracaDataTotalATX title="ATX" start={startFirst} end={end} /> */}
           <JustValueTotalBold value={toidr(totalATX)} />
         </Suspense>
 
@@ -101,7 +95,6 @@ export default function ShowNSDataB() {
         <br />
         <div>
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">KEWAJIBAN</h2>
-          {/* <Divider /> */}
           <Suspense fallback={<Loading section="KEWAJIBAN" />}>
             <NeracaDataX title="KWX" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
             <NeracaDataX title="KWX" titleTotal="HUTANG LAIN-LAIN" type={2} group={17} start={startFirst} end={end} />
@@ -111,18 +104,8 @@ export default function ShowNSDataB() {
           <br />
 
           <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
-          <HitungPenerimaanBiaya />
-          
-          {/* <Suspense fallback={<Loading section="KENAIKAN/PENURUNAN AB" />}>
-              <HitungKPAB titleTotal="Kenaikan (Penurunan) Aset Bersih" month={prevMonth + 1} />
-          </Suspense> */}
-
-          {/* Tampilkan Data */}
-          {/* <Suspense fallback={<Loading section="ASET BERSIH: AWAL - KENAIKAN/PENURUNAN - AKHIR" />}> */}
+          <HitungPenerimaanBiaya />         
           <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
-          {/* </Suspense> */}
-
-          {/* <TableArusKas /> */}
         </div>
 
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
@@ -135,18 +118,6 @@ export default function ShowNSDataB() {
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
-        {/* totalSelisihAB: {totalSelisihABX} <br />
-        --- <br />
-        totalTerima1XX: {totalTerima1XX} <br />
-        totalTerima2XX: {totalTerima2XX} <br />
-        totalBebanOpXX: {totalBebanOpXX} <br />
-        totalBeban2XX: {totalBeban2XX} <br />
-        totalBeban3XX: {totalBeban3XX} <br />
-        -- <br />
-        Selisih: {(totalTerima1XX+totalTerima2XX)-(totalBebanOpXX+totalBeban2XX+totalBeban3XX)} <br /> */}
-
-        
-
         <br />
         <Divider />
         <TotalPasiva />
@@ -156,11 +127,9 @@ export default function ShowNSDataB() {
 };
 
 
-
 //
 function TotalAktiva() {
   const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-
   const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
   const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
 
@@ -175,15 +144,11 @@ function TotalAktiva() {
 function TotalPasiva() {
   const { totalKX } = useNeracaTContext();
   const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
-
   const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
-
 
   return (
     <>
       <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} />
-      {/* {totalAsetAwalX} <br /> */}
-      {/* {totalSelisihABX} <br /> */}
     </>
   );
 }

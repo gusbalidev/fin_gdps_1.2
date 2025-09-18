@@ -1,40 +1,29 @@
 "use client"
 
+import { useQuery } from '@tanstack/react-query';
+
+import toidr from "@/lib/toidr";
+import Divider from "@/components/Divider";
+import { useCfStore } from './cf-store'
+
 import { DataTable } from "./data-tables";
 import { columns } from "./columns";
 
-import toidr from "@/lib/toidr";
 
-import { useQuery } from '@tanstack/react-query';
-import { useCfStore } from './cf-store'
-import Divider from "@/components/Divider";
-//import useCashFlowContext from "@/context/cashflow-context";
-
-
-const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
-
+//
+const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: 
+    { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
     const { setTotalT1, setTotalT2, setTotalK1, setTotalK2, setTotalK3 } = useCfStore();
-    //const { start, end } = useCashFlowContext();
-
-    //console.log('start ---:', start)
-    //console.log('end ---:', end)
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
         queryKey: ['cf2', type, group2],
-        //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
-        ///api/neraca-saldo-x?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}
-        ///api/neraca-xx?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}
         queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
             }),
     });
-
-    console.log('-----cek API URL-------')
-    console.log('fetched-url', `/api/neraca-x?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`)
 
     if (isLoading) return <div>Tunggu...</div>; // Handle loading state
     if (error) return <div>Error: {error.message}</div>; // Handle error state
@@ -47,17 +36,17 @@ const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: { title:
 
     //Update Total global States
     if (isSuccess) {
-        //UpdateTotalCF(group2, totalBalance);
         const newTotal = Math.abs(totalBalance);
-
         switch (group2) {
-
+            //PENERIMAAN
             case 8:
                 setTotalT1(newTotal)
                 break;
             case 9:
                 setTotalT2(newTotal)
                 break;
+
+            //PENGELUARAN
             case 10:
                 setTotalK1(newTotal)
                 break;
@@ -65,10 +54,9 @@ const CashFlowData2 = ({ title, titleTotal, type, group2, start, end }: { title:
                 setTotalK2(newTotal)
                 break;
             case 12:
-
                 setTotalK3(newTotal)
                 break;
-
+                
             default:
                 // Handle default case
                 break;
@@ -94,9 +82,7 @@ function TulisTotalRp({ value, title }: { value: string, title: string }) {
     return (
         <>
             <Divider />
-            {/* <div className='flex justify-between p-2'> */}
             <div className='flex justify-end px-2'>
-                {/* <p className='text-lg font-bold'>Total {title}:</p> */}
                 <p className='text-lg font-bold'>{value}</p>
             </div>
         </>

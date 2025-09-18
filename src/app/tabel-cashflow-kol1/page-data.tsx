@@ -1,23 +1,17 @@
 import React, { Suspense } from 'react'
+
 import Divider from '@/components/Divider'
+import useNeracaSaldoContext from '@/context/neraca-saldo-context';
+
+import Loading from './loading'
+import WidgetInfoTotal from './widget-info-total';
 import CashFlowData from './cashflow-data'
 import CashFlowData2 from './cashflow-data2';
-import Loading from './loading'
-import { toQueryDate } from '@/lib/tanggal';
-import WidgetInfoTotal from './widget-info-total';
-
-import useNeracaSaldoContext from '@/context/neraca-saldo-context';
 
 
 //
 function ShowCFData() {
-    // const { start, end, periodeOn } = useCashFlowContext();
-    const { start, end, periodeOn, startPrev, endPrev, titleMonthYear, titlePrevMonthYear } =
-        useNeracaSaldoContext();
-    console.log('SHOW-CF-DATA:')
-    console.log('Start:', toQueryDate(start))
-    console.log('End:', toQueryDate(end))
-    console.log('Periode is: ', periodeOn)
+    const { start, end } = useNeracaSaldoContext();
 
     return (
         <>
@@ -33,7 +27,6 @@ function ShowCFData() {
             <Suspense fallback={<Loading section="Penerimaan Lain-lain" />}>
                 <CashFlowData2 title="Penerimaan Lain-lain" titleTotal="Penerimaan Lain-lain" type={4} group2={9} start={start} end={end} />
             </Suspense>
-
 
             {/* BEBAN / BIAYA2 */}
             <h1 className="text-xl font-bold pt-4 pb-2 dark:text-blue-500 opacity-0">PENGELUARAN</h1>

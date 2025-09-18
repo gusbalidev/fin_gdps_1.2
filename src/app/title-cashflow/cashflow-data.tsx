@@ -1,26 +1,22 @@
 "use client"
 
+import { useQuery } from '@tanstack/react-query';
+
+import toidr from "@/lib/toidr";
+import Divider from "@/components/Divider";
+
 import { DataTable } from "./data-tables";
 import { columns } from "./columns";
 
-import toidr from "@/lib/toidr";
-// import TulisTotalRp from "@/components/TulisTotalRp";
 
-import { useQuery } from '@tanstack/react-query';
-import { useCfStore } from '../cf2/cf-store'
-import Divider from "@/components/Divider";
-//import useCashFlowContext from "@/context/cashflow-context";
-
-
-const CashFlowDataTitle = ({ title, titleTotal, type, group2, start, end }: { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
-
-    // const { setTotalT1, setTotalT2, setTotalK1, setTotalK2, setTotalK3 } = useCfStore();
+//
+const CashFlowDataTitle = ({ title, titleTotal, type, group2, start, end }: 
+    { title: string; titleTotal: string; type: number; group2: number, start: string, end: string }) => {
 
     // Fetch data using TanStack Query
-    const { data: result, isLoading, error, isSuccess } = useQuery({
+    const { data: result, isLoading, error } = useQuery({
         queryKey: ['cftitle', type, group2],
         queryFn: () => fetch(`/api/ns-nom-title?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -35,36 +31,6 @@ const CashFlowDataTitle = ({ title, titleTotal, type, group2, start, end }: { ti
     const { accounts: data, totalBalance } = result;
     const newTotal = Math.abs(totalBalance);
     const newTotalBalance = toidr(newTotal);
-
-    //Update Total global States
-    // if (isSuccess) {
-    //     //UpdateTotalCF(group2, totalBalance);
-    //     const newTotal = Math.abs(totalBalance);
-
-    //     switch (group2) {
-
-    //         case 8:
-    //             setTotalT1(newTotal)
-    //             break;
-    //         case 9:
-    //             setTotalT2(newTotal)
-    //             break;
-    //         case 10:
-    //             setTotalK1(newTotal)
-    //             break;
-    //         case 11:
-    //             setTotalK2(newTotal)
-    //             break;
-    //         case 12:
-
-    //             setTotalK3(newTotal)
-    //             break;
-
-    //         default:
-    //             // Handle default case
-    //             break;
-    //     }
-    // };
 
     return (
         <>
