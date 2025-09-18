@@ -119,10 +119,9 @@ export const columns: ColumnDef<Account>[] = [
     },
     {
         // id: "accountGroup",
-        id: "groupname",
-        // accessorKey: "accountGroup.name",
-        accessorKey: "groupname",
-        header: "Grup",
+        id: "accountGroupName",
+        accessorKey: "accountGroup.name",
+        header: "Grup 1",
         cell: ({ row }) => {
             // return <div className="text-left w-[100%]">{row.original.accountGroup.name}</div>;
             return <div className="text-left w-[100%]">{row.original.accountGroup.name}</div>;
@@ -139,7 +138,7 @@ export const columns: ColumnDef<Account>[] = [
         enableSorting: true,
     },
     {
-        id: "accountGroup2",
+        id: "accountGroup2Name",
         accessorKey: "accountGroup2.name",
         header: "Grup 2",
         cell: ({ row }) => {
@@ -157,6 +156,8 @@ export const columns: ColumnDef<Account>[] = [
         enableSorting: true,
     },
     {
+        // accessorKey: "accountType.name",
+        id: "accountTypeName",
         accessorKey: "accountType.name",
         header: "Tipe",
         cell: ({ row }) => {

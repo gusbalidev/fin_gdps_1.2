@@ -106,23 +106,23 @@ export function DataTable<TData, TValue>({
         />
 
         <Input
-          placeholder="Grup ...."
+          placeholder="Grup 1 ...."
           value={
-            (table.getColumn("groupname")?.getFilterValue() as string) ?? ""
+            (table.getColumn("accountGroupName")?.getFilterValue() as string) ?? ""
           }
           onChange={(event) =>
-            table.getColumn("groupname")?.setFilterValue(event.target.value)
+            table.getColumn("accountGroupName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
 
         <Input
-          placeholder="Grup2 ...."
+          placeholder="Grup 2 ...."
           value={
-            (table.getColumn("nama-group2")?.getFilterValue() as string) ?? ""
+            (table.getColumn("accountGroup2Name")?.getFilterValue() as string) ?? ""
           }
           onChange={(event) =>
-            table.getColumn("nama-group2")?.setFilterValue(event.target.value)
+            table.getColumn("accountGroup2Name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -130,10 +130,10 @@ export function DataTable<TData, TValue>({
         <Input
           placeholder="Tipe ...."
           value={
-            (table.getColumn("nama-tipe")?.getFilterValue() as string) ?? ""
+            (table.getColumn("accountTypeName")?.getFilterValue() as string) ?? ""
           }
           onChange={(event) =>
-            table.getColumn("nama-tipe")?.setFilterValue(event.target.value)
+            table.getColumn("accountTypeName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
