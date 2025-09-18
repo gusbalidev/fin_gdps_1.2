@@ -29,6 +29,8 @@ async function getData(accountId: string) {
         const url = new URL(`/api/transbyid`, baseUrl);
         url.searchParams.append('accountId', accountId);
 
+        console.log('Fetching data from:', url.toString());
+
         const res = await fetch(url.toString(), {
             cache: 'no-store',
             headers: {
@@ -41,7 +43,7 @@ async function getData(accountId: string) {
         if (!res.ok) {
             // Log the raw response for debugging
             const textResponse = await res.text();
-            console.error('Error response:', textResponse);
+            // console.error('Error response:', textResponse);
             throw new Error(`HTTP error! status: ${res.status}`);
         }
 
@@ -54,7 +56,7 @@ async function getData(accountId: string) {
         return Array.isArray(data) ? data : [];
 
     } catch (error) {
-        console.error('Error fetching transactions:', error);
+        // console.error('Error fetching transactions:', error);
         return []; // Return empty array as fallback
     }
 }
