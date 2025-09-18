@@ -4,8 +4,7 @@ import {
   updateTransaction,
   deleteTransaction,
 } from "@/actions/TransactionUpdate";
-import { updateAccount } from "@/actions/AccountAction"; // You'll need to create this
-
+import { getAccountGroups, updateAccount } from "@/actions/AccountAction";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,39 +29,30 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
-// import { Transaction } from "./columns";
 import { Trash2Icon } from "lucide-react";
-import { CurrencyInput } from "@/components/currency-input";
-import { getAccounts } from "@/actions/AccountAction";
-//import { revalidatePath } from "next/cache"
 
-// interface Account {
-//     id: number;
-//     code: string;
-//     name: string;
-// }
+import { useRouter } from "next/navigation";
 
 interface Account {
   id: number;
   code: string;
   name: string;
+  balance1: number;
   accountTypeId: number;
   accountGroupId: number;
   accountGroup2Id: number;
 }
 
-// interface EditDialogProps {
-//     children: React.ReactNode
-//     transaction: Transaction
-// }
-
 interface EditDialogProps {
   children: React.ReactNode;
   account: Account;
-  // onSuccess?: () => void; 
+  onSuccess?: () => void;
 }
 
-export function EditDialog({ children, account }: EditDialogProps) {
+// export function EditDialog({ children, account }: EditDialogProps) {
+export function EditDialog({ children, account, onSuccess }: EditDialogProps) {
+  const router = useRouter();
+
   // Add loading state
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -71,45 +61,46 @@ export function EditDialog({ children, account }: EditDialogProps) {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const { toast }: any = useToast();
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const [selectedAccountId, setSelectedAccountId] = useState(
-    account.id
-  );
+  const [selectedAccountId, setSelectedAccountId] = useState(account.id);
   const balancedefault = 0; // Set default value for balance
+  const [balance1, setBalance1] = useState<number>(account.balance1);
+  // const [balance1, setBalance1] = useState<string>(account.balance1?.toString() || '0');
 
-  //   useEffect(() => {
-  //     const fetchAccounts = async () => {
-  //       try {
-  //         const fetchedAccounts = await getAccounts();
-  //         setAccounts(fetchedAccounts);
-  //       } catch (error) {
-  //         console.error("Failed to fetch accounts:", error);
-  //       }
-  //     };
+  const [accountGroups, setAccountGroups] = useState<
+    { id: number; name: string }[]
+  >([]);
 
-  //     fetchAccounts();
-  //   }, []);
+  // update balance1 when account changes
+  useEffect(() => {
+    setBalance1(account.balance1);
+  }, [account.balance1]);
 
-  // Log initial selectedAccountId
-  // useEffect(() => {
-  //     console.log('Initial selectedAccountId:', selectedAccountId);
-  // }, []);
+  // lookup AccountGroup items
+  useEffect(() => {
+    const loadAccountGroups = async () => {
+      try {
+        const groups = await getAccountGroups();
+        setAccountGroups(groups);
+      } catch (error) {
+        console.error("Failed to load account groups:", error);
+      }
+    };
+
+    loadAccountGroups();
+  }, []);
+
 
   async function handleFormAction(formData: FormData) {
     setIsSubmitting(true);
-    // console.log('Before setting accountId:', formData.get('accountId'));
     formData.set("accountId", selectedAccountId.toString());
-    // console.log('After setting accountId:', formData.get('accountId'));
-    // Create a new FormData instance to avoid mutation issues
     const updatedFormData = new FormData();
     // Copy all existing form data
     Array.from(formData.entries()).forEach(([key, value]) => {
       updatedFormData.append(key, value);
     });
-    // for (const [key, value] of formData.entries()) {
-    //     updatedFormData.append(key, value);
-    // }
     // Explicitly set the accountId
     updatedFormData.set("accountId", selectedAccountId.toString());
+    // updatedFormData.set("balance1", balance1.replace(/[^\d.-]/g, '')); // Remove currency formatting
 
     try {
       const result = await updateAccount(formData);
@@ -132,10 +123,12 @@ export function EditDialog({ children, account }: EditDialogProps) {
       });
 
       setOpen(false);
+      // router.refresh();
       // Call the success callback to refresh the table
-      // if (onSuccess) {
-      //   onSuccess();
-      // }
+      if (onSuccess) {
+        onSuccess();
+        // onSuccess(account.id);
+      }
     } catch (error) {
       toast({
         title: "Gagal",
@@ -153,12 +146,12 @@ export function EditDialog({ children, account }: EditDialogProps) {
   const handleDelete = async () => {
     try {
       const result = await deleteTransaction(account.id);
+      // const result = { success: true, error }; // Mock result for testing
 
       if (!result || result.error) {
         toast({
           title: "Gagal",
-          description:
-            result?.error || "Terjadi kesalahan saat menghapus Akun",
+          description: result?.error || "Terjadi kesalahan saat menghapus Akun",
           variant: "destructive",
         });
         return;
@@ -174,7 +167,7 @@ export function EditDialog({ children, account }: EditDialogProps) {
       setShowDeleteAlert(false);
       //window.location.reload() // Temporary solution - better to use React state management
     } catch (error) {
-      console.error("Error deleting transaction:", error);
+      console.error("Error deleting Akun:", error);
       toast({
         title: "Gagal",
         description: "Terjadi kesalahan saat menghapus Akun",
@@ -183,9 +176,39 @@ export function EditDialog({ children, account }: EditDialogProps) {
     }
   };
 
-  return (
+
+  // Modify the cancel button handler
+  const handleCancel = () => {
+    setBalance1(account.balance1); // Reset to original value
+    setOpen(false);
+  };
+ 
+  const numBalance = balance1 < 0
+      ? -Math.abs(balance1)
+      : Math.abs(balance1);
+  
+  // Format functions
+  const formatNumber = (num: number) => {
+    return num.toLocaleString('id-ID');
+  };
+
+  const parseFormattedNumber = (str: string) => {
+    return Number(str.replace(/[^\d-]/g, ''));
+  };
+  
+
+  //
+  return ( 
+
     <>
-      <Dialog open={open} onOpenChange={setOpen}>
+      {/* <Dialog open={open} onOpenChange={setOpen}> */}
+      <Dialog open={open} onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          setBalance1(account.balance1); // Reset when dialog closes
+        }
+        setOpen(isOpen);
+        }}>
+        
         <DialogTrigger asChild>{children}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-800">
           <DialogHeader>
@@ -206,6 +229,7 @@ export function EditDialog({ children, account }: EditDialogProps) {
                   className="col-span-3"
                 />
               </div>
+
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="name" className="text-left">
                   Nama
@@ -214,7 +238,7 @@ export function EditDialog({ children, account }: EditDialogProps) {
                   id="name"
                   name="name"
                   defaultValue={account.name}
-                  className="col-span-3"
+                  className="col-span-3 dark:border-gray-600"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -224,21 +248,50 @@ export function EditDialog({ children, account }: EditDialogProps) {
                 <Input
                   id="balance1"
                   name="balance1"
-                  defaultValue={balancedefault}
-                  className="col-span-3"
+                  // type="number"
+                  type="text"
+                  // inputMode="numeric"                  
+                  prefix="Rp. "
+                  // step="0.01"
+                  // value={balance1}
+                  // value={numBalance}
+                  // value={numBalanceFormatted}
+                  value={formatNumber(numBalance)}
+                  // value={numBalance.toLocaleString('id-ID')} // Format the number with Indonesian locale
+                  // onChange={(e) => setBalance1(Number(e.target.value))}
+                  onChange={(e) => {
+                    const rawValue = parseFormattedNumber(e.target.value);
+                    setBalance1(rawValue);
+                  }}
+                  // onChange={(e) => {
+                  //   // Remove non-numeric characters and parse the value
+                  //   const value = e.target.value.replace(/[^\d-]/g, '');
+                  //   setBalance1(Number(value));
+                  // }}
+                  className="col-span-3 dark:border-gray-600"
                 />
               </div>
-
+              
             </div>
             <div className="flex justify-between space-x-2">
-              {/* <Button variant="link" onClick={handleDeleteClick} disabled> */}
-              <Button variant="link" disabled>
+              <Button
+                disabled={true}
+                variant="link"
+                onClick={handleDeleteClick}
+              >
                 {<Trash2Icon />}
               </Button>
-              <Button
+              {/* <Button
                 type="button"
                 variant="outline"
                 onClick={() => setOpen(false)}
+              >
+                Batal
+              </Button> */}
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCancel}
               >
                 Batal
               </Button>

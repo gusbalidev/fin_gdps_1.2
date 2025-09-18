@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 //import { EditDialog } from "./edit-dialog"
 import { Button } from "@/components/ui/button"
-import { EditDialog2 } from "./edit-dialog2"
+import { EditDialog } from "./edit-dialog"
 import { PencilIcon } from "lucide-react";
 //import AccountDialog from "./AccountDialog"
 
@@ -73,7 +73,7 @@ export const columns: ColumnDef<Account>[] = [
         accessorKey: "accountId",
         header: () => <div className="text-right w-[100%]">id</div>,
         cell: ({ row }) => {
-            return <div className="text-right w-[100%]">{row.original.id}</div>;
+            return <div className="text-right text-gray-400 dark:text-gray-700 w-[100%]">{row.original.id}</div>;
         },
         enableSorting: true,
     },
@@ -113,7 +113,7 @@ export const columns: ColumnDef<Account>[] = [
         accessorKey: "accountGroup.code",
         header: () => <div className="text-right w-[100%]">id</div>,
         cell: ({ row }) => {
-            return <div className="text-right w-[100%]">{row.original.accountGroup.id}</div>;
+            return <div className="text-right text-gray-400 dark:text-gray-700 w-[100%]">{row.original.accountGroup.id}</div>;
         },
         enableSorting: true,
     },
@@ -133,7 +133,7 @@ export const columns: ColumnDef<Account>[] = [
         accessorKey: "accountGroup2.code",
         header: () => <div className="text-right w-[100%]">id</div>,
         cell: ({ row }) => {
-            return <div className="text-right w-[100%]">{row.original.accountGroup2.id}</div>;
+            return <div className="text-right text-gray-400 dark:text-gray-700 w-[100%]">{row.original.accountGroup2.id}</div>;
         },
         enableSorting: true,
     },
@@ -151,7 +151,7 @@ export const columns: ColumnDef<Account>[] = [
         accessorKey: "accountType.id",
         header: () => <div className="text-right w-[100%]">id</div>,
         cell: ({ row }) => {
-            return <div className="text-right w-[100%]">{row.original.accountType.id}</div>;
+            return <div className="text-right text-gray-400 dark:text-gray-700 w-[100%]">{row.original.accountType.id}</div>;
         },
         enableSorting: true,
     },
@@ -171,7 +171,7 @@ export const columns: ColumnDef<Account>[] = [
         cell: ({ row }) => {
             const balance = row.original.balance;
             const positiveBalance = Math.abs(balance);
-            return <div className="text-right w-[100%]">Rp. {positiveBalance.toLocaleString()}</div>;
+            return <div className="text-right w-[100%]">{positiveBalance.toLocaleString()}</div>;
         },
         enableSorting: true,
     },
@@ -182,7 +182,7 @@ export const columns: ColumnDef<Account>[] = [
             const balance = row.original.balance1;
             // const balance = 0;
             const positiveBalance = Math.abs(balance);
-            return <div className="text-right w-[100%]">Rp. {positiveBalance.toLocaleString()}</div>;
+            return <div className="text-right w-[100%]">{positiveBalance.toLocaleString()}</div>;
         },
         enableSorting: true,
     },
@@ -191,11 +191,11 @@ export const columns: ColumnDef<Account>[] = [
         cell: ({ row }) => {
             return (
                 <div className="text-right">
-                    <EditDialog2 account={row.original}>
+                    <EditDialog account={row.original}>
                         <Button variant="ghost" size="icon">
                             <PencilIcon />
                         </Button>
-                    </EditDialog2>
+                    </EditDialog>
                 </div>
             )
         },
