@@ -21,7 +21,9 @@ import useNeracaCol1Context from "@/context/neraca-col1-context";
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
-import NeracaDataDetailX from "../lamp-neraca-dev/neraca-data-detailX";
+import NeracaData from "../lamp-n2/neraca-data";
+import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
+import NeracaDataSub from "../lamp-n2/neraca-data-sub";
 
 
 //
@@ -42,35 +44,34 @@ export default function ShowNSDataB() {
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
             {/* <AktivaLancar /> */}
-            <NeracaDataX title="ALX" titleTotal="KAS" type={1} group={1} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="KAS" type={1} group={1} start={startFirst} end={endPrev} />
-            {/* <NeracaDataSubX title="AL" titleTotal="KAS" type={1} group={1} start={startFirst} end={endPrev} /> */}
+            <NeracaData title="AKTIVA LANCAR" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="BANK" type={1} group={2} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="BANK" type={1} group={2} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="DEPO" type={1} group={3} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="DEPO" type={1} group={3} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="BON-SBID" type={1} group={4} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="BON-SBID" type={1} group={4} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="BON-SBAP" type={1} group={5} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="BON-SBAP" type={1} group={5} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="PIU-K" type={1} group={6} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="PIU-K" type={1} group={6} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="PIU-J" type={1} group={7} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="PIU-J" type={1} group={7} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="PIU-R" type={1} group={8} start={startFirst} end={endPrev} />
+            <NeracaData title="AKTIVA LANCAR" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="PIU-R" type={1} group={8} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataX title="ALX" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={endPrev} />
-            <NeracaDataDetailX title="ALXdetail" titleTotal="BIY-DD" type={1} group={9} start={startFirst} end={endPrev} />
+            <NeracaData title="AL" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
+            <NeracaDataDetail title="AL" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
 
-            <NeracaDataSubX title="ALSubX" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={endPrev} />
+            <NeracaDataSub title="AKTIVA LANCAR" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} />
         </Suspense>
 
 

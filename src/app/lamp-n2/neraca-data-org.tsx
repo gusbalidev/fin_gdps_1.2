@@ -4,7 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
-import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
+// import { TulisRekapRp } from './sub-total';
+import { JustValueTotal, JustValueTotalNoLine } from './title-value';
 
 const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
@@ -13,7 +14,7 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: ['lampns1', type, group],
+        queryKey: ['nsnow', type, group],
         //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
         //queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
         queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
@@ -84,10 +85,7 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
     return (
         <>
             <div className="w-full">
-                {/* <h2 className="text-lg font-bold pt-2 pb-2">{title}</h2> */}
-                {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
-                {/* <DataTable columns={columns} data={data} /> */}
-                <TulisRekapRp value={newTotalBalance} title={titleTotal} />
+                <JustValueTotalNoLine value={newTotalBalance} />
             </div>
 
         </>

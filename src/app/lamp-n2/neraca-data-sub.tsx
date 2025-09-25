@@ -2,17 +2,34 @@
 
 import { useQuery } from '@tanstack/react-query';
 
+import { DataTable } from "./data-tables";
+import { columns } from "./columns";
+// import { columns } from "./columns-new";
+//import { getNeraca } from "./get-data";
+
 import toidr from "@/lib/toidr";
+import TulisTotalRp from "@/components/TulisTotalRpNeraca";
+import { useNeracaStore } from './neraca-store';
 import useNeracaTContext from '@/context/neraca-t-context';
-import { JustValueTotalBold } from './title-value';
 
 
-//
+function TulisRekapRp({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            <div className='flex justify-between p-0.4'>
+                {/* <p className='text-lg font-medium'>{title}</p> */}
+                <p> </p>
+                <p className='text-lg font-medium'>{value}</p>
+            </div>
+        </>
+    )
+}
+
+
 const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
-    const { totalAL,
-        setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalAB, setTotalAB2 } = useNeracaTContext();
+    const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalAB, setTotalAB2 } = useNeracaTContext();
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
@@ -42,7 +59,7 @@ const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: 
     if (isSuccess) {
         //UpdateTotalCF(group2, totalBalance);
         const newTotal = Math.abs(totalBalance);
-
+         
 
         switch (group) {
 
@@ -77,7 +94,10 @@ const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: 
     return (
         <>
             <div className="w-full">
-                <JustValueTotalBold value={newTotalBalance} />
+                {/* <h2 className="text-lg font-bold pt-2 pb-2">{title}</h2> */}
+                {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
+                {/* <DataTable columns={columns} data={data} /> */}
+                <TulisTotalRp value={newTotalBalance} title={titleTotal} />
             </div>
 
         </>

@@ -49,6 +49,7 @@ export default function Page() {
             <div className='w-1/2'>
               {isColumn1Ready === true ?
                 <TabelNeraca />
+                // <TabelLampNeracaKol1 />
                 :
                 null
               }
