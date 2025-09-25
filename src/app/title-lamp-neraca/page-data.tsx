@@ -10,7 +10,7 @@ import Divider from "@/components/Divider";
 
 import { JustValueTotalNoLineBold2 } from "../neraca/title-value";
 
-import NeracaDataAP from "./neraca-data-ap-close";
+import NeracaDataAP from "./neraca-data-ap";
 
 import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
@@ -92,7 +92,7 @@ export default function ShowNSDataB() {
 
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA TETAP</h2>
-        <Suspense fallback={<Loading section="AKTIVA TETAP - CURRENT" />}>
+        <Suspense fallback={<Loading section="AKTIVA TETAP" />}>
             {/* <AktivaLancar /> */}
             <NeracaDataTitle title="AT" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="AT" titleTotal="TN" type={1} group={10} start={startFirst} end={end} />
@@ -110,13 +110,12 @@ export default function ShowNSDataB() {
             <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} />
         </Suspense>
 
-
-        
-
+       
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
+        <h2 className="text-start text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">PENYUSUTAN</h2>
+        {/* <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA TETAP</h2> */}
         <Suspense fallback={<Loading section="AP" />}>
             {/* <AkumPenyusutan /> */}
             {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
