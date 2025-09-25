@@ -25,7 +25,7 @@ import NeracaData from "../lamp-n2/neraca-data";
 import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
 import NeracaDataSub from "../lamp-n2/neraca-data-sub";
 import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
-import NeracaDataTotalAT from "../lamp-n2/neraca-data-total-at";
+import NeracaDataTotalAT from "./neraca-data-total-at";
 
 
 //

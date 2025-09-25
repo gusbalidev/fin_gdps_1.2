@@ -68,6 +68,7 @@ const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: 
 
     return (
         <>
+            <Divider />
             <div className="w-full pr-2">
                 <TulisTotalRp value={newTotalBalance} title={titleTotal} />
             </div>
@@ -83,9 +84,9 @@ export default NeracaDataSub;
 function TulisTotalRp({ value, title }: { value: string, title: string }) {
     return (
         <>
-            <Divider />
+            {/* <Divider /> */}
             <div className='flex justify-between'>
-                <p className='text-[0.8em] font-bold text-blue-600 dark:text-orange-500'>Total {title}:</p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total {title}:</p>
                 {/* <p> </p> */}
                 {/* <p className='text-[0.8em] font-bold text-blue-600 dark:text-orange-500'>{value}</p> */}
             </div>

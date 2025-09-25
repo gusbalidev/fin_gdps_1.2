@@ -3,8 +3,8 @@
 import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
-import TulisTotalRp from "@/components/TulisTotalRpNeraca";
 import useNeracaTContext from '@/context/neraca-t-context';
+import Divider from '@/components/Divider';
 
 //
 const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
@@ -68,6 +68,7 @@ const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: 
 
     return (
         <>
+            <Divider />
             <div className="w-full pr-2">
                 <TulisTotalRp value={newTotalBalance} title={titleTotal} />
             </div>
@@ -80,3 +81,16 @@ const NeracaDataSub = ({ title, titleTotal, type, group, start, end }: { title: 
 export default NeracaDataSub;
 
 //export default
+
+function TulisTotalRp({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            {/* <Divider /> */}
+            <div className='flex justify-between'>
+                {/* <p className='text-lg font-bold'>Total {title}:</p> */}
+                <p> </p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{value}</p>
+            </div>
+        </>
+    )
+}
