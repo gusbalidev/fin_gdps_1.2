@@ -218,6 +218,10 @@ const data = {
           url: "/n2new",
         },
         {
+          title: "Lampiran NERACA v2",
+          url: "/lamp-n2",
+        },
+        {
           title: "Buku Besar Riil",
           url: "/ledger-riil",
         },
