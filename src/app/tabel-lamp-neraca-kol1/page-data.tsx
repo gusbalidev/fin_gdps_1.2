@@ -120,22 +120,13 @@ export default function ShowNSDataB() {
         {/* <div className="flex justify-between">
             <h1 className="text-[1.2em] text-gray-400 pt-4 pb-2">{titlePrevMonthYear}</h1>
         </div> */}
-
+        
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
-        <Suspense fallback={<Loading section="AP" />}>
-            {/* <AkumPenyusutan /> */}
-            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-            <Divider />
-            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
-        </Suspense>
-
         <br />
-        <h2 className="text-xl font-bold pt-4 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN & ASET BERSIH</h2>
-
+        <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold opacity-0">KEWAJIBAN & ASET BERSIH</h2>
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN</h2>
+        <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">KEWAJIBAN</h2>
+
         <Suspense fallback={<Loading section="KEWAJIBAN" />}>
             <NeracaData title="KW" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
             <NeracaDataDetail title="KW" titleTotal="HUT-B" type={2} group={16} start={startFirst} end={end} />
@@ -149,6 +140,20 @@ export default function ShowNSDataB() {
             <NeracaDataSub title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
             {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
         </Suspense>
+
+        <div className="h-2"></div>
+        <div className="h-2"></div>
+
+        <Divider />
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
+        <Suspense fallback={<Loading section="AP" />}>
+            {/* <AkumPenyusutan /> */}
+            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
+            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
+            <Divider />
+            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
+        </Suspense>
+
 
         <div className="h-2"></div>
 

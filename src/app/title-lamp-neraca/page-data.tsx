@@ -110,7 +110,33 @@ export default function ShowNSDataB() {
             <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} />
         </Suspense>
 
-       
+        <div className="h-2"></div>
+
+        {/* <Divider /> */}
+        {/* <h2 className="text-xl font-bold pt-4 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN & ASET BERSIH</h2> */}
+
+        <Divider />
+
+        <br />
+        <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold">KEWAJIBAN & ASET BERSIH</h2>
+        <Divider />
+
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">KEWAJIBAN</h2>
+        <Suspense fallback={<Loading section="KEWAJIBAN" />}>
+            <NeracaDataTitle title="KW" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
+            <NeracaDataDetailTitle title="KW" titleTotal="HUT-B" type={2} group={16} start={startFirst} end={end} />
+            <div className="h-2"/>
+            <NeracaDataTitle title="KW" titleTotal="HUTANG LAIN-LAIN" type={2} group={17} start={startFirst} end={end} />
+            <NeracaDataDetailTitle title="KW" titleTotal="HUT-LL" type={2} group={17} start={startFirst} end={end} />
+            <div className="h-2"/>
+            <NeracaDataTitle title="KW" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
+            <NeracaDataDetailTitle title="KW" titleTotal="HUT-JP" type={2} group={18} start={startFirst} end={end} />
+
+            <NeracaDataSub title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
+            {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
+        </Suspense>
+
+        <div className="h-2"></div>
         <div className="h-2"></div>
 
         <Divider />

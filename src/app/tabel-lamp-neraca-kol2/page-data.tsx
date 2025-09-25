@@ -13,7 +13,7 @@ import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } f
 import NeracaDataX from "../lamp-n2/neraca-dataX";
 import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
 
-import NeracaDataSubX from "../n2new/neraca-data-subX";
+import NeracaDataSubX from "../lamp-n2/neraca-data-subX";
 import NeracaDataAP from "./neraca-data-ap-close";
 
 import useNeracaTContext from "@/context/neraca-t-context";
@@ -120,20 +120,11 @@ export default function ShowNSDataB() {
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
-        <Suspense fallback={<Loading section="AP" />}>
-            {/* <AkumPenyusutan /> */}
-            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-            <Divider />
-            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
-        </Suspense>
-
         <br />
-        <h2 className="text-xl font-bold pt-4 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN & ASET BERSIH</h2>
-
+        <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold opacity-0">KEWAJIBAN & ASET BERSIH</h2>
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN</h2>
+        <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">KEWAJIBAN</h2>
+
         <Suspense fallback={<Loading section="KEWAJIBAN" />}>
             <NeracaDataX title="KW" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
             <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={16} start={startFirst} end={end} />
@@ -144,9 +135,23 @@ export default function ShowNSDataB() {
             <NeracaDataX title="KW" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
             <NeracaDataDetailX title="KW" titleTotal="HUT-JP" type={2} group={18} start={startFirst} end={end} />
 
-            <NeracaDataSub title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
+            <NeracaDataSubX title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
             {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
         </Suspense>
+
+        <div className="h-2"></div>
+        <div className="h-2"></div>
+
+        <Divider />
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
+        <Suspense fallback={<Loading section="AP" />}>
+            {/* <AkumPenyusutan /> */}
+            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
+            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
+            <Divider />
+            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
+        </Suspense>
+
 
         <div className="h-2"></div>
 
