@@ -13,6 +13,7 @@ import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
 import TabelLampNeracaKol1 from '../tabel-lamp-neraca-kol1/page';
 import TitleLampNeraca from '../title-lamp-neraca/page';
+import TabelLampNeracaKol2 from '../tabel-lamp-neraca-kol2/page';
 
 
 //
@@ -50,8 +51,8 @@ export default function Page() {
             {/* Tabel 2 */}
             <div className='w-1/2'>
               {isColumn1Ready === true ?
-                <TabelNeraca />
-                // <TabelLampNeracaKol1 />
+                // <TabelNeraca />
+                <TabelLampNeracaKol2 />
                 :
                 null
               }

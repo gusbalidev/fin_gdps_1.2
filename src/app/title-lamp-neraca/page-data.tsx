@@ -110,6 +110,9 @@ export default function ShowNSDataB() {
             <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} />
         </Suspense>
 
+
+        
+
         <div className="h-2"></div>
 
         <Divider />
