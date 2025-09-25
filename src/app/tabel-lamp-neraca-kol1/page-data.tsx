@@ -43,7 +43,7 @@ export default function ShowNSDataB() {
         <Divider />
         {/* <br /> */}
 
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">AKTIVA LANCAR</h2>
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
             {/* <AktivaLancar /> */}
             <NeracaData title="AKTIVA LANCAR" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
@@ -83,11 +83,11 @@ export default function ShowNSDataB() {
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA-T-L</h2>
         <Suspense fallback={<Loading section="AKTIVA TIDAK LANCAR - CURRENT" />}>
             {/* <AktivaTidakLancar /> */}
-            <NeracaData title="ATL" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
-            <NeracaDataDetail title="ATL" titleTotal="TDP" type={1} group={15} start={startFirst} end={end} />
+            <NeracaData title="AKTIVA TIDAK LANCAR" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
+            <NeracaDataDetail title="AKTIVA TIDAK LANCAR" titleTotal="TDP" type={1} group={15} start={startFirst} end={end} />
             <div className="h-2"/>
             <NeracaData title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
-            <NeracaDataDetailX title="ATL" titleTotal="GDP" type={1} group={16} start={startFirst} end={end} />
+            <NeracaDataDetailX title="AKTIVA TIDAK LANCAR" titleTotal="GDP" type={1} group={16} start={startFirst} end={end} />
 
             <NeracaDataSub title="ATL" titleTotal="ATL" type={1} group={3} start={startFirst} end={end} />
         </Suspense>

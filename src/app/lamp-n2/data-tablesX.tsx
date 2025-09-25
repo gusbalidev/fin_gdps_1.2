@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
+                                <TableCell colSpan={columns.length} className="text-center">
                                     Tidak ada data.
                                 </TableCell>
                             </TableRow>

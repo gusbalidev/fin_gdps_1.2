@@ -8,10 +8,8 @@ import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 
-import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca/title-value";
+import { JustValueTotalNoLineBold2 } from "../neraca/title-value";
 
-import NeracaDataX from "../n2new/neraca-dataX";
-import NeracaDataSubX from "../n2new/neraca-data-subX";
 import NeracaDataAP from "./neraca-data-ap-close";
 
 import useNeracaTContext from "@/context/neraca-t-context";
@@ -21,18 +19,14 @@ import useNeracaCol1Context from "@/context/neraca-col1-context";
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
-import NeracaData from "../lamp-n2/neraca-data";
-import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
-import NeracaDataSub from "../lamp-n2/neraca-data-sub";
-import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
-import NeracaDataTotalAT from "../lamp-n2/neraca-data-total-at";
+import NeracaDataSub from "./neraca-data-sub";
+import NeracaDataTotalAT from "./neraca-data-total-at";
 import NeracaDataTitle from "../lamp-n2/neraca-data-title";
 import NeracaDataDetailTitle from "../lamp-n2/neraca-data-detailX-title";
 
 
 //
 export default function ShowNSDataB() {
-  const { totalATX, totalAPX } = useNeracaTContext();
   const { start, end, startPrev, endPrev } = useNeracaSaldoContext(); 
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
   const prevMonth = getMonth(new Date(end));
@@ -48,13 +42,13 @@ export default function ShowNSDataB() {
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
             {/* <AktivaLancar /> */}
-            <NeracaDataTitle title="AKTIVA LANCAR" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
+            <NeracaDataTitle title="KAS" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="AL" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataTitle title="AKTIVA LANCAR" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
+            <NeracaDataTitle title="BANK" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="AL" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
             <div className="h-2"/>
-            <NeracaDataTitle title="AKTIVA LANCAR" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
+            <NeracaDataTitle title="DEPOSITO" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="AL" titleTotal="DEPO" type={1} group={3} start={startFirst} end={end} />
             <div className="h-2"/>
             <NeracaDataTitle title="AKTIVA LANCAR" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
@@ -75,7 +69,7 @@ export default function ShowNSDataB() {
             <NeracaDataTitle title="AL" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="AL" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
 
-            <NeracaDataSub title="AKTIVA LANCAR" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} />
+            <NeracaDataSub title="AKTIVA LANCAR" titleTotal="AKTIVA LANCAR" type={1} group={1} start={startFirst} end={end} />
         </Suspense>
 
 
@@ -91,7 +85,7 @@ export default function ShowNSDataB() {
             <NeracaDataTitle title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
             <NeracaDataDetailTitle title="ATL" titleTotal="GDP" type={1} group={16} start={startFirst} end={end} />
 
-            <NeracaDataSub title="ATL" titleTotal="ATL" type={1} group={3} start={startFirst} end={end} />
+            <NeracaDataSub title="ATL" titleTotal="AKTIVA TIDAK LANCAR" type={1} group={3} start={startFirst} end={end} />
         </Suspense>
 
         <div className="h-2"></div>
@@ -113,7 +107,7 @@ export default function ShowNSDataB() {
             <NeracaDataDetailTitle title="AT" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
 
             {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-            <NeracaDataTotalAT title="Aktiva Tetap" start={startFirst} end={end} />
+            <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} />
         </Suspense>
 
         <div className="h-2"></div>

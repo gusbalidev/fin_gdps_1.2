@@ -31,7 +31,7 @@ export const columns: ColumnDef<Account>[] = [
         // header: () => <div className="text-left text-[1.2em]">Akun</div>,
         header: () => null,
         cell: ({ row }) => {
-            return <div className="text-left truncate w-[300px]">
+            return <div className="text-left text-[0.9em] truncate w-[80%]">
                 <Link
                     href={`/coa/${row.original.id}/transactions`}
                     className="text-blue-600 hover:underline"

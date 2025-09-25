@@ -102,7 +102,7 @@ export default NeracaData;
 function TulisRekapRp({ value, title }: { value: string, title: string }) {
     return (
         <>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pr-2'>
                 {/* <p className='text-sm font-medium'>{title}</p> */}
                 <p></p>
                 <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{value}</p>

@@ -88,7 +88,7 @@ const NeracaDataTitle = ({ title, titleTotal, type, group, start, end }: { title
                 {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
                 {/* <DataTable columns={columns} data={data} /> */}
                 {/* <TulisRekapRp value={newTotalBalance} title={title} /> */}
-                <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{title}</p>
+                <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{titleTotal}</p>
             </div>
 
         </>
