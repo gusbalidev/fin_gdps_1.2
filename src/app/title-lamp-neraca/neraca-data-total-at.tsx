@@ -27,7 +27,7 @@ function TulisRekapRp({ value, title }: { value: string, title: string }) {
         <>
             <div className='flex justify-between p-0.5'>
                 {/* <p className='text-sm font-medium'>{title}</p> */}
-                <p className='text-[1em] text-blue-600 dark:text-orange-500'>Total {title}:</p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total {title}:</p>
                 <p></p>
                 {/* <p className='text-[0.8em] text-blue-600 dark:text-orange-500'>{value}</p> */}
                 {/* <p className='text-m'>{value}</p> */}
