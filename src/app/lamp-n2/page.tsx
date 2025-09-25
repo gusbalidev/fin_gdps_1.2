@@ -12,6 +12,7 @@ import BlokPeriode from "./blok-periode";
 import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
 import TabelLampNeracaKol1 from '../tabel-lamp-neraca-kol1/page';
+import TitleLampNeraca from '../title-lamp-neraca/page';
 
 
 //
@@ -30,15 +31,16 @@ export default function Page() {
       <Divider />
       <br />
       <div className='flex justify-between'>
-        <div className='w-1/3'>
+        <div className='w-1/2 pr-1'>
           <h1 className="text-xl font-bold dark:text-blue-500">Periode:</h1>
           <Divider />
           <BlokPeriode />
-          <KolomTitleNeraca />
+          {/* <KolomTitleNeraca /> */}
+          <TitleLampNeraca />
           <br />        
         </div>
 
-        <div className="w-2/3">
+        <div className="w-1/2 pr-1">
           <div className='flex justify-between'>
             {/* Tabel1 */}
             <div className='w-1/2'>

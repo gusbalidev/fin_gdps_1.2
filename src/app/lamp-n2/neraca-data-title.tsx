@@ -6,7 +6,7 @@ import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
 // import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
 
-const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
+const NeracaDataTitle = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
     const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4 } = useNeracaTContext();
@@ -83,11 +83,12 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
 
     return (
         <>
-            <div className="w-full">
+            <div className="w-full text-start">
                 {/* <h2 className="text-lg font-bold pt-2 pb-2">{title}</h2> */}
                 {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
                 {/* <DataTable columns={columns} data={data} /> */}
-                <TulisRekapRp value={newTotalBalance} title={titleTotal} />
+                {/* <TulisRekapRp value={newTotalBalance} title={title} /> */}
+                <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{title}</p>
             </div>
 
         </>
@@ -95,17 +96,17 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
     )
 }
 
-export default NeracaData;
+export default NeracaDataTitle;
 
 //export default
 
 function TulisRekapRp({ value, title }: { value: string, title: string }) {
     return (
         <>
-            <div className='flex justify-between'>
+            <div className='flex justify-between p-0.5'>
                 {/* <p className='text-sm font-medium'>{title}</p> */}
+                <p className='text-[0.8em] text-blue-600 dark:text-orange-500'>{title}</p>
                 <p></p>
-                <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{value}</p>
                 {/* <p className='text-m'>{value}</p> */}
             </div>
         </>
