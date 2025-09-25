@@ -6,7 +6,7 @@ import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
 import TulisRekapRp from '@/components/TulisRekapRpNeraca';
 import { DataTable } from './data-tablesX';
-import { columns } from './columnsX';
+import { columns } from './columnsX-title';
 
 const NeracaDataDetailTitle = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 

@@ -10,11 +10,8 @@ import YearSelectorB from "./year-selector-close-b";
 
 //
 export default function TabelLampNeracaKol2() {
-  // const { periodType, subTitle } = useNeracaSaldoContext();
-  // const DataComponent = ShowNSDataB;
-
-  const { periodType, subTitle } = useNeracaSaldoContext();
-  const { periodType2, subTitle2 } = useNeracaSaldoContextB();
+  const { periodType } = useNeracaSaldoContext();
+  const { subTitle2 } = useNeracaSaldoContextB();
   const DataComponent = ShowNSDataB;
 
   return (
