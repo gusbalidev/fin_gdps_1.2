@@ -31,7 +31,7 @@ export default function Page() {
       <Divider />
       <br />
       <div className='flex justify-between'>
-        <div className='w-1/2 pr-1'>
+        <div className='w-1/2'>
           <h1 className="text-xl font-bold dark:text-blue-500">Periode:</h1>
           <Divider />
           <BlokPeriode />
@@ -40,7 +40,7 @@ export default function Page() {
           <br />        
         </div>
 
-        <div className="w-1/2 pr-1">
+        <div className="w-1/2">
           <div className='flex justify-between'>
             {/* Tabel1 */}
             <div className='w-1/2'>

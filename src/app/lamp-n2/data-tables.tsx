@@ -63,7 +63,7 @@ export function DataTable<TData, TValue>({
 
     return (
         <>
-            <div className="rounded-md border">
+            <div className="border">
                 <Table className="w-full">
                     
                     <TableBody>
@@ -92,8 +92,6 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
 
-
-            {/* Pagination here */}
             
         </>
     )
