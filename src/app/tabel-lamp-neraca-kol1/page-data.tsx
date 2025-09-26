@@ -162,13 +162,14 @@ export default function ShowNSDataB() {
 
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+          {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2> */}
+          <TotalAktiva />
         </div>
         <Divider />
-        <br />
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+          {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2> */}
+          <TotalPasiva />
         </div>
         <Divider />
 
@@ -182,8 +183,6 @@ export default function ShowNSDataB() {
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
-        <br />
-        <Divider />
         {/* <TotalPasiva /> */}
       </div>
     </>
@@ -199,7 +198,8 @@ function TotalAktiva() {
 
   return (
     <>
-      <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} />
+      {/* <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} /> */}
+      <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalAktiva)}</h2>
     </>
   );
 }
@@ -212,7 +212,8 @@ function TotalPasiva() {
 
   return (
     <>
-      <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} />
+      {/* <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} /> */}
+      <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalPasiva)}</h2>
     </>
   );
 }

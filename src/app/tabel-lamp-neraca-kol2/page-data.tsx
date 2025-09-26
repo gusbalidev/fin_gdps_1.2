@@ -162,7 +162,6 @@ export default function ShowNSDataB() {
         <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
         </div>
         <Divider />
-        <br />
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
         <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
@@ -180,8 +179,6 @@ export default function ShowNSDataB() {
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
-        <br />
-        <Divider />
         {/* <TotalPasiva /> */}
       </div>
     </>

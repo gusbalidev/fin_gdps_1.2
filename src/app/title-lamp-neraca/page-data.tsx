@@ -163,7 +163,6 @@ export default function ShowNSDataB() {
         <h2 className="text-xl text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">Total AKTIVA</h2>
         </div>
         <Divider />
-        <br />
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pl-2">
         <h2 className="text-xl text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">Total PASIVA</h2>
