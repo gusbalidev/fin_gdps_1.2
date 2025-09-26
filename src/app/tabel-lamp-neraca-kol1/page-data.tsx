@@ -12,7 +12,7 @@ import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } f
 
 import NeracaDataX from "../n2new/neraca-dataX";
 import NeracaDataSubX from "../n2new/neraca-data-subX";
-import NeracaDataAP from "./neraca-data-ap-close";
+import NeracaDataAP from "./neraca-data-ap";
 
 import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
@@ -116,6 +116,17 @@ export default function ShowNSDataB() {
 
         <div className="h-2"></div>
 
+        <Divider />
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
+        <Suspense fallback={<Loading section="AP" />}>
+            {/* <AkumPenyusutan /> */}
+            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
+            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
+            <Divider />
+            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
+        </Suspense>
+
+        
         {/* PASIVA */}
         {/* <div className="flex justify-between">
             <h1 className="text-[1.2em] text-gray-400 pt-4 pb-2">{titlePrevMonthYear}</h1>
@@ -139,24 +150,9 @@ export default function ShowNSDataB() {
 
             <NeracaDataSub title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
             {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
-        </Suspense>
+        </Suspense>        
 
         <div className="h-2"></div>
-        <div className="h-2"></div>
-
-        <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
-        <Suspense fallback={<Loading section="AP" />}>
-            {/* <AkumPenyusutan /> */}
-            {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-            <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-            <Divider />
-            {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
-        </Suspense>
-
-
-        <div className="h-2"></div>
-
 
         <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
           <HitungPenerimaanBiaya />         
