@@ -9,14 +9,14 @@ import useNeracaTContext from '@/context/neraca-t-context';
 const NeracaDataTitle = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
-    const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4 } = useNeracaTContext();
+    // const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4 } = useNeracaTContext();
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: ['lampns1', type, group],
-        //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
-        //queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
-        queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        queryKey: ['lampns-title', type, group],
+        // queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+        queryFn: () => fetch(`/api/neraca-group1-title?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
+
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -33,53 +33,48 @@ const NeracaDataTitle = ({ title, titleTotal, type, group, start, end }: { title
     const newTotalBalance = toidr(newTotal);
 
     //Update Total global States
-    if (isSuccess) {
-        //UpdateTotalCF(group2, totalBalance);
-        const newTotal = Math.abs(totalBalance);
+    // if (isSuccess) {
+    //     const newTotal = Math.abs(totalBalance);
+    //     switch (group) {
 
-        switch (group) {
+    //         case 1:
+    //             setTotalAL(newTotal)
+    //             break;
+    //         case 3:
+    //             setTotalATL(newTotal)
+    //             break;
+    //         case 2:
+    //             setTotalAT(newTotal)
+    //             break;
+    //         case 4:
+    //             setTotalK(newTotal)
+    //             break;
+    //         case 6:
+    //             setTotalAB(newTotal)
+    //             break;
+    //         case 7:
+    //             setTotalAB2(newTotal)
+    //             break;
 
-            case 1:
-                setTotalAL(newTotal)
-                break;
-            case 3:
-                setTotalATL(newTotal)
-                break;
-            case 2:
-                setTotalAT(newTotal)
-                break;
-            case 4:
-                setTotalK(newTotal)
-                break;
-            // case 5:
-            //     setTotalKL(newTotal)
-            //     break;
-            case 6:
-                setTotalAB(newTotal)
-                break;
-            case 7:
-                setTotalAB2(newTotal)
-                break;
+    //         //Tanah, Gedung, Kendaraan, Inventaris
+    //         case 10:
+    //             setTotalAT1(newTotal)
+    //             break;
+    //         case 11:
+    //             setTotalAT2(newTotal)
+    //             break;
+    //         case 12:
+    //             setTotalAT3(newTotal)
+    //             break;
+    //         case 13:
+    //             setTotalAT4(newTotal)
+    //             break;
 
-            //Tanah, Gedung, Kendaraan, Inventaris
-            case 10:
-                setTotalAT1(newTotal)
-                break;
-            case 11:
-                setTotalAT2(newTotal)
-                break;
-            case 12:
-                setTotalAT3(newTotal)
-                break;
-            case 13:
-                setTotalAT4(newTotal)
-                break;
-
-            default:
-                // Handle default case
-                break;
-        }
-    };
+    //         default:
+    //             // Handle default case
+    //             break;
+    //     }
+    // };
 
     return (
         <>
