@@ -114,6 +114,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 }
 
                 <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
+                
                 {/* {
                     month === 3 ?
                     <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
@@ -148,5 +149,18 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 export default HitungAsetBersih;
 
 //export default
+function TulisTotalRp({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            {/* <Divider /> */}
+            <div className='flex justify-between'>
+                {/* <p className='text-lg font-bold'>Total {title}:</p> */}
+                <p> </p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{value}</p>
+            </div>
+        </>
+    )
+}
+
 
 

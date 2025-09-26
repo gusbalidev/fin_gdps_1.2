@@ -147,23 +147,28 @@ export default function ShowNSDataB() {
         </Suspense>
 
         <div className="h-2"></div>
-        <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-start text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">PENYUSUTAN</h2>
-        {/* <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA TETAP</h2> */}
-        <Suspense fallback={<Loading section="AP" />}>
-          {/* <AkumPenyusutan /> */}
-          {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-          <Divider />
-          {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
-        </Suspense>
+        <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">ASET BERSIH</h2>
+        {/* <HitungPenerimaanBiaya /> */}
+        {/* <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} /> */}
+        <p className="text-[1em] text-start">Aset Bersih</p>
+        <p className="text-[1em] text-start">Kenaikan (Penurunan) Aset Bersih</p>
+        <Divider />
+        <p className="text-[1em] text-start font-bold text-blue-600 dark:text-orange-500">Total ASET BERSIH AKHIR:</p>
+        <br />
 
-        <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">PENERIMAAN / BIAYA - ASET BERSIH</h2>
-        <HitungPenerimaanBiaya />
-        <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
-
+        <Divider />
+        <div className="bg-gray-300 dark:bg-slate-800 pl-2">
+        <h2 className="text-xl text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">Total AKTIVA</h2>
+        </div>
+        <Divider />
+        <br />
+        <Divider />
+        <div className="bg-gray-300 dark:bg-slate-800 pl-2">
+        <h2 className="text-xl text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">Total PASIVA</h2>
+        </div>
+        <Divider />
 
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}
@@ -175,8 +180,7 @@ export default function ShowNSDataB() {
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
-        <br />
-        <Divider />
+        {/* <br /> */}
         {/* <TotalPasiva /> */}
       </div>
     </>

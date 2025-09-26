@@ -10,6 +10,7 @@ import useSaldoAwalContext from "@/context/saldo-awal-context";
 import GetSaldoAwal from "@/lib/get-SaldoAwal";
 import useNeracaCol1Context from "@/context/neraca-col1-context";
 import { ShowABValue, ShowABValue2, ShowValue1, ShowValue2, ShowX } from "./show-value";
+import Divider from "@/components/Divider";
 
 //
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
@@ -91,7 +92,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     
     return (
         <>
-            <div className="w-full">
+            <div className="w-full pr-2">
 
                 {/* totalTerima1: {totalTerima1} <br />
                 totalTerima1X: {totalTerima1X} <br />
@@ -113,7 +114,12 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
                 }
 
-                <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
+                {/* <JustValueTotalBold value={toidr(totalAsetAkhirX)} /> */}
+                </div>
+                <Divider />
+                <div className="w-full pr-2">
+                    <TulisTotalRp title={titleTotal} value={toidr(totalAsetAkhirX)} />
+                </div>
                 {/* {
                     month === 3 ?
                     <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
@@ -140,7 +146,6 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
                 bulan: {month}
                  */}
 
-            </div>
         </>
     )
 }
@@ -148,5 +153,20 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 export default HitungAsetBersih;
 
 //export default
+function TulisTotalRp({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            {/* <Divider /> */}
+            <div className='flex justify-between'>
+                {/* <p className='text-lg font-bold'>Total {title}:</p> */}
+                <p> </p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{value}</p>
+            </div>
+        </>
+    )
+}
+
+
+
 
 

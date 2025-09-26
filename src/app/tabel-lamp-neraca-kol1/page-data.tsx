@@ -126,7 +126,6 @@ export default function ShowNSDataB() {
           {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
         </Suspense>
 
-
         {/* PASIVA */}
         {/* <div className="flex justify-between">
             <h1 className="text-[1.2em] text-gray-400 pt-4 pb-2">{titlePrevMonthYear}</h1>
@@ -154,10 +153,24 @@ export default function ShowNSDataB() {
 
         <div className="h-2"></div>
 
-        <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">P/B-AB</h2>
+        {/* <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">P/B-AB</h2> */}
+        <Divider />
+        <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">P/B-AB</h2>
         <HitungPenerimaanBiaya />
         <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+        <br />
 
+        <Divider />
+        <div className="bg-gray-300 dark:bg-slate-800 pr-2">
+        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+        </div>
+        <Divider />
+        <br />
+        <Divider />
+        <div className="bg-gray-300 dark:bg-slate-800 pr-2">
+        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+        </div>
+        <Divider />
 
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}

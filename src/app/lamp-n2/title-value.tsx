@@ -49,7 +49,7 @@ function JustValueTotalBold({ value }: { value: string }) {
         <>
             <Divider />
             <div>
-                <p className='text-end font-bold'>{value}</p>
+                <p className='text-end font-bold text-blue-600 dark:text-orange-500'>{value}</p>
             </div>
         </>
     )
