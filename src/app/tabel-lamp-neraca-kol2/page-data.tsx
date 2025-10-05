@@ -28,6 +28,8 @@ import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
 import NeracaDataSub from "../lamp-n2/neraca-data-sub";
 import NeracaDataTotalAT from "./neraca-data-total-at";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
+import useNeracaTContextB from "@/context/neraca-t-context-b";
 
 
 //
@@ -159,12 +161,14 @@ export default function ShowNSDataB() {
 
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+        {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>*/}
+        <TotalAktiva />
         </div>
         <Divider />
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>
+        {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2> */}
+        <TotalPasiva />
         </div>
         <Divider />
 
@@ -188,26 +192,29 @@ export default function ShowNSDataB() {
 
 //
 function TotalAktiva() {
-  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-  const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
-  const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
+  const { totalAL, totalATL, totalAT1, totalAT2, totalAT3, totalAT4, totalAP } = useNeracaTContext();
+
+  const totalAT = totalAT1 + totalAT2 + totalAT3 + totalAT4;
+  const totalAktiva = totalAL + totalATL + totalAT + totalAP;
 
   return (
     <>
-      <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} />
+      {/* <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} /> */}
+      <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalAktiva)}</h2>
     </>
   );
 }
 
 //
 function TotalPasiva() {
-  const { totalKX } = useNeracaTContext();
-  const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
-  const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
-
+  const { totalK } = useNeracaTContextB();
+  const { totalAsetAwal, totalSelisihAB } = useAktivitasContextB();
+  const totalPasiva = totalK + totalAsetAwal + totalSelisihAB;
+  
   return (
     <>
-      <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} />
+      {/* <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} /> */}
+      <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalPasiva)}</h2>
     </>
   );
 }
