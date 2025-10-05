@@ -192,9 +192,10 @@ export default function ShowNSDataB() {
 
 //
 function TotalAktiva() {
-  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-  const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
-  const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
+  // const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
+  const { totalAL, totalATL, totalAT1, totalAT2, totalAT3, totalAT4, totalAP } = useNeracaTContext();
+  const totalAT = totalAT1 + totalAT2 + totalAT3 + totalAT4;
+  const totalAktiva = totalAL + totalATL + totalAT + totalAP;
 
   return (
     <>
@@ -206,9 +207,9 @@ function TotalAktiva() {
 
 //
 function TotalPasiva() {
-  const { totalKX } = useNeracaTContext();
-  const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
-  const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
+  const { totalK } = useNeracaTContext();
+  const { totalAsetAkhirX } = useNeracaCol1Context();
+  const totalPasiva = totalK + totalAsetAkhirX;
 
   return (
     <>
