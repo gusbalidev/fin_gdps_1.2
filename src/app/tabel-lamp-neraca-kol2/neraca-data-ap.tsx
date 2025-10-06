@@ -13,7 +13,7 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
     const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContext();
-    const { setTotalAP } = useNeracaTContext();
+    const { setTotalAPX } = useNeracaTContext();
     const type = 1;
     const group = 14;
 
@@ -39,7 +39,7 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
     const newTotalBalance = toidr(newTotal);
 
     if (isSuccess) {
-        setTotalAP(totalBalance);
+        setTotalAPX(totalBalance);
     }
 
     const totalATBersih = toidr(totalAT1X + totalAT2X + totalAT3X + totalAT4X - Math.abs(totalBalance));

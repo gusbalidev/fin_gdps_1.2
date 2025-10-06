@@ -23,6 +23,7 @@ import NeracaData from "../lamp-n2/neraca-data";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
+import DataAsetBersih from "../tabel-neraca-kol2/data-aset-bersih";
 
 
 //
@@ -151,6 +152,7 @@ export default function ShowNSDataB() {
         <HitungPenerimaanBiaya />
         <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
         <br />
+        {/* <DataAsetBersih /> */}
 
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
@@ -177,6 +179,8 @@ export default function ShowNSDataB() {
         </div>
 
         {/* <TotalPasiva /> */}
+
+        
       </div>
     </>
   )

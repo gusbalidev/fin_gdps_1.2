@@ -150,7 +150,9 @@ export default function ShowNSDataB() {
         {/* <h2 className="text-start text-blue-600 dark:text-orange-600 font-bold opacity-0">P/B-AB</h2> */}
         <Divider />
         <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">P/B-AB</h2>
-        <HitungPenerimaanBiaya />
+        {/* <HitungPenerimaanBiaya />
+        <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} /> */}
+        <HitungPenerimaanBiaya />         
         <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
         <br />
 
@@ -178,6 +180,7 @@ export default function ShowNSDataB() {
         </div>
 
         {/* <TotalPasiva /> */}
+        
       </div>
     </>
   )
@@ -202,8 +205,8 @@ function TotalAktiva() {
 //
 function TotalPasiva() {
   const { totalK } = useNeracaTContext();
-  const { totalAsetAkhirX } = useNeracaCol1Context();
-  const totalPasiva = totalK + totalAsetAkhirX;
+  const { totalAsetAkhir } = useNeracaCol1Context();
+  const totalPasiva = totalK + totalAsetAkhir;
 
   return (
     <>

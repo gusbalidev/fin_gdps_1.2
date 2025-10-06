@@ -25,7 +25,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     // const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X } = useAktivitasContextB();
 
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX,
-            totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX
+            totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX, setTotalAsetAkhir
          } = useNeracaCol1Context();
     
     
@@ -89,6 +89,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     } 
 
     // let fixTemp = totalSelisihABX;
+    setTotalAsetAkhir(totalAsetAkhirX);
     
     return (
         <>

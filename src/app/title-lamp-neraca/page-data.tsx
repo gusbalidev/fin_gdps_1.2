@@ -91,7 +91,7 @@ export default function ShowNSDataB() {
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA TETAP</h2>
+        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">AKTIVA TETAP</h2>
         <Suspense fallback={<Loading section="AKTIVA TETAP" />}>
           {/* <AktivaLancar /> */}
           <NeracaDataTitle title="AT" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
