@@ -8,8 +8,6 @@ import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 
-import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca/title-value";
-
 import NeracaDataX from "../lamp-n2/neraca-dataX";
 import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
 
@@ -17,25 +15,19 @@ import NeracaDataSubX from "../lamp-n2/neraca-data-subX";
 import NeracaDataAP from "./neraca-data-ap";
 
 import useNeracaTContext from "@/context/neraca-t-context";
-import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-import useNeracaCol1Context from "@/context/neraca-col1-context";
 
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
 import NeracaData from "../lamp-n2/neraca-data";
-import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
-import NeracaDataSub from "../lamp-n2/neraca-data-sub";
-import NeracaDataTotalAT from "./neraca-data-total-at";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
-import useNeracaTContextB from "@/context/neraca-t-context-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
 
 
 //
 export default function ShowNSDataB() {
-  const { totalATX, totalAPX } = useNeracaTContext();
+  // const { totalATX, totalAPX } = useNeracaTContext();
   // const { start, end, startPrev, endPrev } = useNeracaSaldoContext(); 
   const { start, end, startPrev, endPrev } = useNeracaSaldoContextB();
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
@@ -128,12 +120,9 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
         <Suspense fallback={<Loading section="AP" />}>
-          {/* <AkumPenyusutan /> */}
-          {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-          <Divider />
-          {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
+          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - 2" start={startFirst} end={end} />
         </Suspense>
+        <br />
 
         <Divider />
         <br />

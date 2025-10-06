@@ -4,13 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
-import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
+// import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
+import Divider from '@/components/Divider';
 
 
 //Hitung Akumulasi Penyusutan
 const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
+    const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContext();
     const { setTotalAP } = useNeracaTContext();
     const type = 1;
     const group = 14;
@@ -40,49 +42,17 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
         setTotalAP(totalBalance);
     }
 
-    //Update Total global States
-    // if (isSuccess) {
-    //     //UpdateTotalCF(group2, totalBalance);
-    //     const newTotal = Math.abs(totalBalance);
-
-    //     switch (group) {
-
-    //         case 1:
-    //             setTotalAL(newTotal)
-    //             break;
-    //         case 3:
-    //             setTotalATL(newTotal)
-    //             break;
-    //         case 2:
-    //             setTotalAT(newTotal)
-    //             break;
-    //         case 4:
-    //             setTotalK(newTotal)
-    //             break;
-    //         // case 5:
-    //         //     setTotalKL(newTotal)
-    //         //     break;
-    //         case 6:
-    //             setTotalAB(newTotal)
-    //             break;
-    //         case 7:
-    //             setTotalAB2(newTotal)
-    //             break;
-
-    //         default:
-    //             // Handle default case
-    //             break;
-    //     }
-    // };
+    const totalATBersih = toidr(totalAT1X + totalAT2X + totalAT3X + totalAT4X - Math.abs(totalBalance));
 
     return (
         <>
-            <div className="flex justify-between p-0.5">
-                {/* <h2 className="text-lg font-bold pt-2 pb-2">{title}</h2> */}
-                {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
-                {/* <DataTable columns={columns} data={data} /> */}
-                <p></p>
-                <TulisRekapRp value={'('+newTotalBalance+')'} title={titleTotal} />
+            <div>
+                {/* <TulisRekapRp value={'('+newTotalBalance+')'} title={titleTotal} /> */}
+                <TulisRp value={newTotalBalance} />
+                <Divider />
+                {/* <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{totalAT-totalAP}</p> */}
+                <TulisRekapRp value={totalATBersih} title={titleTotal} />
+                {/* <br /> */}
             </div>
 
         </>
@@ -93,3 +63,27 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
 export default NeracaDataAP;
 
 //export default
+
+function TulisRp({ value }: { value: string }) {
+    return (
+        <>
+            <div className='flex justify-between pr-2'>
+                <p></p>
+                <p className='text-[1em]'>{value}</p>
+            </div>
+        </>
+    )
+}
+
+function TulisRekapRp({ value, title }: { value: string, title: string }) {
+    return (
+        <>
+            <div className='flex justify-between p-0.5 pr-2'>
+                {/* <p className='text-sm font-medium'>{title}</p> */}
+                <p></p>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{value}</p>
+                {/* <p className='text-m'>{value}</p> */}
+            </div>
+        </>
+    )
+}

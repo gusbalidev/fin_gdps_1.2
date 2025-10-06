@@ -119,17 +119,11 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
         <Suspense fallback={<Loading section="AP" />}>
-          {/* <AkumPenyusutan /> */}
-          {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
           <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
-          <Divider />
-          {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
         </Suspense>
+        <br />
 
         {/* PASIVA */}
-        {/* <div className="flex justify-between">
-            <h1 className="text-[1.2em] text-gray-400 pt-4 pb-2">{titlePrevMonthYear}</h1>
-        </div> */}
 
         <Divider />
         <br />

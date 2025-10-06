@@ -115,18 +115,15 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
         <Suspense fallback={<Loading section="AP" />}>
-          {/* <AkumPenyusutan /> */}
-          {/* <NeracaData title="AP" titleTotal="AKUMULASI PENYUSUTAN" type={1} group={14} start={startFirst} end={end} /> */}
-          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
+          <p className="text-[1em] text-start">Akumulasi Penyusutan</p>
           <Divider />
-          {/* <NeracaDataSub title="AP" titleTotal="AP" type={1} group={14} start={startFirst} end={end} /> */}
+          <p className='text-[1em] text-start pb-1 font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP BERSIH:</p>
         </Suspense>
-
+        <br />
         {/* <Divider /> */}
+
         {/* <h2 className="text-xl font-bold pt-4 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN & ASET BERSIH</h2> */}
-
         <Divider />
-
         <br />
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold">KEWAJIBAN & ASET BERSIH</h2>
         <Divider />
@@ -187,28 +184,3 @@ export default function ShowNSDataB() {
 };
 
 
-//
-function TotalAktiva() {
-  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-  const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
-  const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
-
-  return (
-    <>
-      <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} />
-    </>
-  );
-}
-
-//
-function TotalPasiva() {
-  const { totalKX } = useNeracaTContext();
-  const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
-  const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
-
-  return (
-    <>
-      <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} />
-    </>
-  );
-}
