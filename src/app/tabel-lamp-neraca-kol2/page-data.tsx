@@ -18,12 +18,13 @@ import useNeracaTContext from "@/context/neraca-t-context";
 
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
-import HitungAsetBersih from "./hitung-Aset-Bersih";
+// import HitungAsetBersih from "./hitung-Aset-Bersih";
 import NeracaData from "../lamp-n2/neraca-data";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
 import DataAsetBersih from "../tabel-neraca-kol2/data-aset-bersih";
+import HitungAsetBersih from "./hitung-Aset-Bersih2";
 
 
 //
@@ -99,17 +100,17 @@ export default function ShowNSDataB() {
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA TETAP</h2>
         <Suspense fallback={<Loading section="AKTIVA TETAP - CURRENT" />}>
           {/* <AktivaLancar /> */}
-          <NeracaDataX title="AT" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AT" titleTotal="TN" type={1} group={10} start={startFirst} end={end} />
+          <NeracaDataX title="AT2" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AT2" titleTotal="TN" type={1} group={10} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AT" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
+          <NeracaDataX title="AT2" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
           <NeracaDataDetailX title="AT" titleTotal="BG" type={1} group={11} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AT" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AT" titleTotal="KN" type={1} group={12} start={startFirst} end={end} />
+          <NeracaDataX title="AT2" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AT2" titleTotal="KN" type={1} group={12} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AT" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AT" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
+          <NeracaDataX title="AT2" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AT2" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
 
           {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
           {/* <NeracaDataTotalAT title="Aktiva Tetap" start={startFirst} end={end} /> */}
@@ -132,13 +133,13 @@ export default function ShowNSDataB() {
         <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">KEWAJIBAN</h2>
 
         <Suspense fallback={<Loading section="KEWAJIBAN" />}>
-          <NeracaDataX title="KW" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
+          <NeracaDataX title="KW2" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
           <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={16} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="KW" titleTotal="HUTANG LAIN-LAIN" type={2} group={17} start={startFirst} end={end} />
+          <NeracaDataX title="KW2" titleTotal="HUTANG LAIN-LAIN" type={2} group={17} start={startFirst} end={end} />
           <NeracaDataDetailX title="KW" titleTotal="HUT-LL" type={2} group={17} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="KW" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
+          <NeracaDataX title="KW2" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
           <NeracaDataDetailX title="KW" titleTotal="HUT-JP" type={2} group={18} start={startFirst} end={end} />
 
           <NeracaDataSubX title="KW" titleTotal="KW" type={2} group={4} start={startFirst} end={end} />
@@ -156,14 +157,14 @@ export default function ShowNSDataB() {
 
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>*/}
-        <TotalAktiva />
+          {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2>*/}
+          <TotalAktiva />
         </div>
         <Divider />
         <Divider />
         <div className="bg-gray-300 dark:bg-slate-800 pr-2">
-        {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2> */}
-        <TotalPasiva />
+          {/* <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">0</h2> */}
+          <TotalPasiva />
         </div>
         <Divider />
 
@@ -180,7 +181,7 @@ export default function ShowNSDataB() {
 
         {/* <TotalPasiva /> */}
 
-        
+
       </div>
     </>
   )
@@ -208,7 +209,7 @@ function TotalPasiva() {
   const { totalKX } = useNeracaTContext();
   const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX } = useAktivitasContextB();
   const totalPasiva = totalKX + totalAsetAkhirX;
-  
+
   return (
     <>
       {/* <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} /> */}

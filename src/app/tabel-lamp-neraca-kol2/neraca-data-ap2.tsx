@@ -53,6 +53,7 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
                 <Divider />
                 {/* <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>{totalAT-totalAP}</p> */}
                 <TulisRekapRp value={totalATBersih} title={titleTotal} />
+                {/* {totalAT2X} */}
                 {/* <br /> */}
             </div>
 
