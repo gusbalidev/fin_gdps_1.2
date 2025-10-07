@@ -11,14 +11,14 @@ const NeracaDataTotalATX = ({ title, start, end }: { title: string; start: strin
 
     const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContextB();
    
-    const subAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
-    const newTotalBalance = toidr(subAT);
+    const tempTotalAktivaTetap = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
+    const totalAktivaTetap = toidr(tempTotalAktivaTetap);
 
 
     return (
         <>
             <Divider />
-            <TulisRekapRp value={newTotalBalance} title={title} />
+            <TulisRekapRp value={totalAktivaTetap} title={title} />
 
         </>
 

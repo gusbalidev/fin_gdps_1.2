@@ -10,7 +10,7 @@ import useNeracaSaldoContext from "@/context/neraca-saldo-context";
 import KolomTitleNeraca from "./kolom-title-neraca";
 import BlokPeriode from "./blok-periode";
 import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
-import TabelNeraca from "../tabel-neraca-kol2/page";
+import TabelNeracaKol2 from "../tabel-neraca-kol2/page";
 
 
 //
@@ -47,7 +47,7 @@ export default function Page() {
             {/* Tabel 2 */}
             <div className='w-1/2'>
               {isColumn1Ready === true ?
-                <TabelNeraca />
+                <TabelNeracaKol2 />
                 :
                 null
               }

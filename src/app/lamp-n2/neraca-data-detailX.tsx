@@ -2,9 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 
-import toidr from "@/lib/toidr";
-import useNeracaTContext from '@/context/neraca-t-context';
-import TulisRekapRp from '@/components/TulisRekapRpNeraca';
 import { DataTable } from './data-tablesX';
 import { columns } from './columnsX';
 import useNeracaTContextB from '@/context/neraca-t-context-b';

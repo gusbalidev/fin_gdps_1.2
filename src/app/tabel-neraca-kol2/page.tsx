@@ -12,7 +12,7 @@ import ShowNSDataB from "./page-data";
 
 
 //
-export default function TabelNeraca() {
+export default function TabelNeracaKol2() {
   // const data = await getData()
   // const [isClosing, setIsClosing] = useState(false);
   // const [periodType, setPeriodType] = useState<'M' | 'Y'>('M');

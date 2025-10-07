@@ -18,17 +18,15 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
     // const {selisihAB1, setSelisihAB1} = useNeracaSaldoContext();
-
     // const { totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX } = useAktivitasContext();
-    const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContextB();
     // const { totalSelisihABX } = useAktivitasContext();
     // const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContext();
     // const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X } = useAktivitasContextB();
-
+    
+    const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContextB();
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX,
-        totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX
-    } = useAktivitasContextB();
-
+            totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX
+            } = useAktivitasContextB();
 
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
 

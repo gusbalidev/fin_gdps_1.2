@@ -25,6 +25,7 @@ import useAktivitasContextB from "@/context/aktivitas-contex-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
 import DataAsetBersih from "../tabel-neraca-kol2/data-aset-bersih";
 import HitungAsetBersih from "./hitung-Aset-Bersih2";
+import useNeracaTContextB from "@/context/neraca-t-context-b";
 
 
 //
@@ -172,11 +173,11 @@ export default function ShowNSDataB() {
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}
         <div>
-          <HitungPenerimaanBiayaXX title="P1X" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="P2X" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B1X" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P1X-2" type={4} group2={8} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P2X-2" type={4} group2={9} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B1X-2" type={5} group2={10} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B2X-2" type={5} group2={11} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B3X-2" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
         {/* <TotalPasiva /> */}
@@ -206,7 +207,7 @@ function TotalAktiva() {
 
 //
 function TotalPasiva() {
-  const { totalKX } = useNeracaTContext();
+  const { totalKX } = useNeracaTContextB();
   const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX } = useAktivitasContextB();
   const totalPasiva = totalKX + totalAsetAkhirX;
 
