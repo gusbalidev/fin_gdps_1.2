@@ -6,14 +6,15 @@ import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
 // import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
 import Divider from '@/components/Divider';
+import useNeracaTContextB from '@/context/neraca-t-context-b';
 
 
 //Hitung Akumulasi Penyusutan
 const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
-    const { totalAT1, totalAT2, totalAT3, totalAT4 } = useNeracaTContext();
-    const { totalAP, setTotalAP } = useNeracaTContext();
+    const { totalAT1X, totalAT2X, totalAT3X, totalAT4X } = useNeracaTContextB();
+    const { totalAPX, setTotalAPX } = useNeracaTContextB();
     const type = 1;
     const group = 14;
 
@@ -39,10 +40,10 @@ const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleT
     const newTotalBalance = toidr(newTotal);
 
     if (isSuccess) {
-        setTotalAP(totalBalance);
+        setTotalAPX(totalBalance);
     }
 
-    const totalATBersih = toidr(totalAT1 + totalAT2 + totalAT3 + totalAT4 - Math.abs(totalBalance));
+    const totalATBersih = toidr(totalAT1X + totalAT2X + totalAT3X + totalAT4X - Math.abs(totalBalance));
     return (
         <>
             <div>

@@ -47,6 +47,7 @@ export default function Page() {
             {/* Tabel1 */}
             <div className='w-1/2'>
               <TabelLampNeracaKol1 />
+              {/* <TabelLampNeracaKol2Test /> */}
             </div>
 
             {/* Tabel 2 */}
@@ -55,6 +56,7 @@ export default function Page() {
                 // <TabelNeraca />
                 // <TabelLampNeracaKol2 />
                 <TabelLampNeracaKol2Test />
+                // <TabelLampNeracaKol1 />
                 :
                 null
               }

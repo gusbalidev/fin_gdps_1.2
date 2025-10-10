@@ -28,6 +28,8 @@ import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
 import NeracaDataTotalAT from "./neraca-data-total-at";
 import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
+import useNeracaTContextB from "@/context/neraca-t-context-b";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
 
 
 //
@@ -47,35 +49,35 @@ export default function ShowNSDataB() {
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
           {/* <AktivaLancar /> */}
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="BANK" type={1} group={2} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaData title="AKTIVA LANCAR" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="DEPO" type={1} group={3} start={startFirst} end={end} />
+          <NeracaData title="AL2" titleTotal="DEPOSITO" type={1} group={3} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="DEPO" type={1} group={3} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="BON-SBID" type={1} group={4} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="BON SEMENTARA BIDANG" type={1} group={4} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="BON-SBID" type={1} group={4} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="BON-SBAP" type={1} group={5} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="BON SEMENTARA BAPEL" type={1} group={5} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="BON-SBAP" type={1} group={5} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="PIU-K" type={1} group={6} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="PIUTANG KARYAWAN" type={1} group={6} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="PIU-K" type={1} group={6} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="PIU-J" type={1} group={7} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="PIUTANG JEMAAT" type={1} group={7} start={startFirst} end={end} />
+          <NeracaDataDetailX title="A2L" titleTotal="PIU-J" type={1} group={7} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AKTIVA LANCAR" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="PIU-R" type={1} group={8} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="PIUTANG RELOKASI" type={1} group={8} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="PIU-R" type={1} group={8} start={startFirst} end={end} />
           <div className="h-2" />
-          <NeracaDataX title="AL" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
-          <NeracaDataDetailX title="AL" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
+          <NeracaDataX title="AL2" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
+          <NeracaDataDetailX title="AL2" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
 
           {/* <NeracaDataSub title="AKTIVA LANCAR" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} /> */}
-          <NeracaDataSubX title="AKTIVA LANCAR" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} />
+          <NeracaDataSubX title="AL2" titleTotal="Aktiva Lancar" type={1} group={1} start={startFirst} end={end} />
         </Suspense>
 
 
@@ -120,7 +122,7 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
         <Suspense fallback={<Loading section="AP" />}>
-          <NeracaDataAP title="AP" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
+          <NeracaDataAP title="AP2" titleTotal="AKUMULASI PENYUSUTAN - CURRENT" start={startFirst} end={end} />
         </Suspense>
         <br />
 
@@ -187,11 +189,11 @@ export default function ShowNSDataB() {
 
 
 //
+//
 function TotalAktiva() {
-  // const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
-  const { totalAL, totalATL, totalAT1, totalAT2, totalAT3, totalAT4, totalAP } = useNeracaTContext();
-  const totalAT = totalAT1 + totalAT2 + totalAT3 + totalAT4;
-  const totalAktiva = totalAL + totalATL + totalAT + totalAP;
+  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContextB();
+  const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
+  const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
 
   return (
     <>
@@ -203,9 +205,9 @@ function TotalAktiva() {
 
 //
 function TotalPasiva() {
-  const { totalK } = useNeracaTContext();
-  const { totalAsetAkhir } = useNeracaCol1Context();
-  const totalPasiva = totalK + totalAsetAkhir;
+  const { totalKX } = useNeracaTContextB();
+  const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX } = useAktivitasContextB();
+  const totalPasiva = totalKX + totalAsetAkhirX;
 
   return (
     <>

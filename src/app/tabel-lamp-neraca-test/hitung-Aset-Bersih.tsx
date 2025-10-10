@@ -9,8 +9,8 @@ import useAktivitasContext from "@/context/aktivitas-context";
 import useSaldoAwalContext from "@/context/saldo-awal-context";
 import GetSaldoAwal from "@/lib/get-SaldoAwal";
 import useNeracaCol1Context from "@/context/neraca-col1-context";
-import { ShowABValue, ShowABValue2, ShowValue1, ShowValue2, ShowX } from "./show-value";
 import Divider from "@/components/Divider";
+import useAktivitasContextB from "@/context/aktivitas-contex-b";
 
 //
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
@@ -26,7 +26,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
 
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX,
             totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX, setTotalAsetAkhir
-         } = useNeracaCol1Context();
+         } = useAktivitasContextB();
     
     
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
@@ -54,7 +54,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     // Hitung Kenaikan/Penurunan AB
     const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
     // const currentKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
-    const currentKPABXnew = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
+    const currentKPABX = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
     
     // Aset Awal & Akhir Final
     // const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
@@ -62,25 +62,13 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     // const totalAsetAkhirFinal = totalAsetAwalFinal + totalSelisihABXX;
        
     // Aset Awal, KPAB, Aset Akhir
-    const x1 = Math.abs(totalBalance)+totalSelisihABXX+saldoAwal;
-    // const x2 = currentKPABX;
-    const x2 = currentKPABXnew;
-    const x3 = x1 + x2;
-    const x4 = previousKPABXX;
-
-    const valuesAB = {
-        awal: x1,
-        selisih: x2,
-        akhir: x3
-    };
-
-    Object.freeze(valuesAB);
+    const tempAsetAwal = Math.abs(totalBalance)+totalSelisihABXX+saldoAwal;
     
     // Simpan ke Variables Context
-    setTotalAsetAwalX(x1);
-    // setTotalSelisihABX(x2);
+    setTotalAsetAwalX(tempAsetAwal);
+    setTotalSelisihABX(currentKPABX)
     setTotalAsetAkhirX(totalAsetAwalX+totalSelisihABX);
-    setTotalSelisihABXX(x4);
+    // setTotalSelisihABXX(previousKPABXX);
     
     if (month === 3) {
         setTotalAsetAwalX(Math.abs(totalBalance));
@@ -89,7 +77,7 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     } 
 
     // let fixTemp = totalSelisihABX;
-    setTotalAsetAkhir(totalAsetAkhirX);
+    // setTotalAsetAkhirX(totalAsetAkhirX);
     
     return (
         <>

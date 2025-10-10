@@ -6,10 +6,11 @@ import toidr from "@/lib/toidr";
 import TulisTotalRp from "@/components/TulisTotalRpNeracaX";
 import useNeracaTContext from '@/context/neraca-t-context';
 import { JustValueTotalBold } from './title-value';
+import useNeracaTContextB from '@/context/neraca-t-context-b';
 
 const NeracaDataSubX = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
-    const { setTotalALX, setTotalATLX, setTotalATX, setTotalAPX, setTotalKX, setTotalABX, setTotalAB2X } = useNeracaTContext();
+    const { setTotalALX, setTotalATLX, setTotalATX, setTotalAPX, setTotalKX, setTotalABX, setTotalAB2X } = useNeracaTContextB();
 
     // Fetch data
     const { data: result, isLoading, error, isSuccess } = useQuery({
