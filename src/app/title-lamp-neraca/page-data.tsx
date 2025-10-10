@@ -4,21 +4,19 @@ import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-import NeracaDataTitle from "../lamp-n2/neraca-data-title";
-import NeracaDataDetailTitle from "../lamp-n2/neraca-data-detailX-title";
+import NeracaDataTitle from "./neraca-data-title";
+import NeracaDataDetailTitle from "./neraca-data-detailX-title";
 
 //
 export default function ShowNSDataB() {
-  const { end} = useNeracaSaldoContext();
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
+  const { end } = useNeracaSaldoContext();
   
   return (
     <>
       <div>
-        {/* <br /> */}
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold">AKTIVA</h2>
         <Divider />
-        {/* <br /> */}
 
         <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
@@ -50,7 +48,6 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="AL" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="AL" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
 
-          {/* <NeracaDataSub title="AKTIVA LANCAR" titleTotal="AKTIVA LANCAR" type={1} group={1} start={startFirst} end={end} /> */}
           <Divider />
           <div className='flex justify-between'>
                 <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA LANCAR:</p>
@@ -62,7 +59,6 @@ export default function ShowNSDataB() {
 
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">AKTIVA TIDAK LANCAR</h2>
-        {/* <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA-T-L</h2> */}
         <Suspense fallback={<Loading section="AKTIVA TIDAK LANCAR title" />}>
           {/* <AktivaTidakLancar /> */}
           <NeracaDataTitle title="ATL" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
@@ -71,7 +67,6 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="ATL" titleTotal="GDP" type={1} group={16} start={startFirst} end={end} />
 
-          {/* <NeracaDataSub title="ATL" titleTotal="AKTIVA TIDAK LANCAR" type={1} group={3} start={startFirst} end={end} /> */}
           <Divider />
           <div className='flex justify-between'>
                 <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TIDAK LANCAR:</p>
@@ -96,10 +91,7 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="AT" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="AT" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
 
-          {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-          {/* <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} /> */}
           <Divider />
-          {/* <div className='flex justify-between'> */}
           <div className='flex justify-between p-0.5'>
                 <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP:</p>
           </div>
@@ -115,9 +107,7 @@ export default function ShowNSDataB() {
           <p className='text-[1em] text-start pb-1 font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP BERSIH:</p>          
         </Suspense>
         <br />
-        {/* <Divider /> */}
 
-        {/* <h2 className="text-xl font-bold pt-4 pb-2 text-blue-600 dark:text-orange-500">KEWAJIBAN & ASET BERSIH</h2> */}
         <Divider />
         <br />
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold">KEWAJIBAN & ASET BERSIH</h2>
@@ -134,8 +124,6 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="KW" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="KW" titleTotal="HUT-JP" type={2} group={18} start={startFirst} end={end} />
 
-          {/* <NeracaDataSub title="KW" titleTotal="KEWAJIBAN" type={2} group={4} start={startFirst} end={end} /> */}
-          {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
           <Divider />
           <div className='flex justify-between'>
                 <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total KEWAJIBAN:</p>
@@ -146,8 +134,6 @@ export default function ShowNSDataB() {
 
         <Divider />
         <h2 className="text-lg text-start font-bold pt-2 pb-2 dark:text-orange-500">ASET BERSIH</h2>
-        {/* <HitungPenerimaanBiaya /> */}
-        {/* <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} /> */}
         <p className="text-[1em] text-start">Aset Bersih</p>
         <p className="text-[1em] text-start">Kenaikan (Penurunan) Aset Bersih</p>
         <Divider />

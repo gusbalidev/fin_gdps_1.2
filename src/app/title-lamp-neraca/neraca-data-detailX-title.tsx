@@ -1,7 +1,7 @@
 "use client"
 
 import { useQuery } from '@tanstack/react-query';
-import { DataTable } from './data-tablesX';
+import { DataTable } from '../lamp-n2/data-tablesX';
 import { columns } from './columnsX-title';
 
 //
