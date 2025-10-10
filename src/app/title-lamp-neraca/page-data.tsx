@@ -1,36 +1,17 @@
-// "use client"
-
 import { Suspense } from "react";
-import { getMonth } from "date-fns";
 
-import toidr from "@/lib/toidr";
 import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
-
-import { JustValueTotalNoLineBold2 } from "../neraca/title-value";
-
-import NeracaDataAP from "./neraca-data-ap";
-
-import useNeracaTContext from "@/context/neraca-t-context";
 import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-import useNeracaCol1Context from "@/context/neraca-col1-context";
-
-import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
-import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
-import HitungAsetBersih from "./hitung-Aset-Bersih";
-import NeracaDataSub from "./neraca-data-sub";
-import NeracaDataTotalAT from "./neraca-data-total-at";
 import NeracaDataTitle from "../lamp-n2/neraca-data-title";
 import NeracaDataDetailTitle from "../lamp-n2/neraca-data-detailX-title";
 
-
 //
 export default function ShowNSDataB() {
-  const { start, end, startPrev, endPrev } = useNeracaSaldoContext();
+  const { end} = useNeracaSaldoContext();
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
-  const prevMonth = getMonth(new Date(end));
-
+  
   return (
     <>
       <div>
@@ -116,7 +97,12 @@ export default function ShowNSDataB() {
           <NeracaDataDetailTitle title="AT" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
 
           {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-          <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} />
+          {/* <NeracaDataTotalAT title="AKTIVA TETAP" start={startFirst} end={end} /> */}
+          <Divider />
+          {/* <div className='flex justify-between'> */}
+          <div className='flex justify-between p-0.5'>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP:</p>
+          </div>
         </Suspense>
 
         <div className="h-2"></div>
@@ -181,18 +167,6 @@ export default function ShowNSDataB() {
         </div>
         <Divider />
 
-        {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
-        Per. sblum: {startFirst} - {endPrev}<br /> */}
-        {/* <div>
-          <HitungPenerimaanBiayaXX title="P1X" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="P2X" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B1X" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
-        </div> */}
-
-        {/* <br /> */}
-        {/* <TotalPasiva /> */}
       </div>
     </>
   )
