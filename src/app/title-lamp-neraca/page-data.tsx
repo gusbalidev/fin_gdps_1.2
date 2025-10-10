@@ -69,7 +69,11 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="AL" titleTotal="BIAYA DIBAYAR DIMUKA" type={1} group={9} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="AL" titleTotal="BIY-BDM" type={1} group={9} start={startFirst} end={end} />
 
-          <NeracaDataSub title="AKTIVA LANCAR" titleTotal="AKTIVA LANCAR" type={1} group={1} start={startFirst} end={end} />
+          {/* <NeracaDataSub title="AKTIVA LANCAR" titleTotal="AKTIVA LANCAR" type={1} group={1} start={startFirst} end={end} /> */}
+          <Divider />
+          <div className='flex justify-between'>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA LANCAR:</p>
+          </div>
         </Suspense>
 
 
@@ -86,7 +90,11 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="ATL" titleTotal="GEDUNG DALAM PENYELESAIAN" type={1} group={16} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="ATL" titleTotal="GDP" type={1} group={16} start={startFirst} end={end} />
 
-          <NeracaDataSub title="ATL" titleTotal="AKTIVA TIDAK LANCAR" type={1} group={3} start={startFirst} end={end} />
+          {/* <NeracaDataSub title="ATL" titleTotal="AKTIVA TIDAK LANCAR" type={1} group={3} start={startFirst} end={end} /> */}
+          <Divider />
+          <div className='flex justify-between'>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TIDAK LANCAR:</p>
+          </div>
         </Suspense>
 
         <div className="h-2"></div>
@@ -118,7 +126,7 @@ export default function ShowNSDataB() {
         <Suspense fallback={<Loading section="AP" />}>
           <p className="text-[1em] text-start font-bold dark:text-orange-500">Akumulasi Penyusutan</p>
           <Divider />
-          <p className='text-[1em] text-start pb-1 font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP BERSIH:</p>
+          <p className='text-[1em] text-start pb-1 font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP BERSIH:</p>          
         </Suspense>
         <br />
         {/* <Divider /> */}
@@ -140,8 +148,12 @@ export default function ShowNSDataB() {
           <NeracaDataTitle title="KW" titleTotal="KEWAJIBAN JANGKA PANJANG" type={2} group={18} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="KW" titleTotal="HUT-JP" type={2} group={18} start={startFirst} end={end} />
 
-          <NeracaDataSub title="KW" titleTotal="KEWAJIBAN" type={2} group={4} start={startFirst} end={end} />
+          {/* <NeracaDataSub title="KW" titleTotal="KEWAJIBAN" type={2} group={4} start={startFirst} end={end} /> */}
           {/* <NeracaDataDetailX title="KW" titleTotal="HUT-B" type={2} group={4} start={startFirst} end={endPrev} /> */}
+          <Divider />
+          <div className='flex justify-between'>
+                <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total KEWAJIBAN:</p>
+          </div>
         </Suspense>
 
         <div className="h-2"></div>
@@ -153,7 +165,9 @@ export default function ShowNSDataB() {
         <p className="text-[1em] text-start">Aset Bersih</p>
         <p className="text-[1em] text-start">Kenaikan (Penurunan) Aset Bersih</p>
         <Divider />
-        <p className="text-[1em] text-start font-bold text-blue-600 dark:text-orange-500">Total ASET BERSIH AKHIR:</p>
+          <div className='flex justify-between'>
+              <p className='text-[1em] font-bold text-blue-600 dark:text-orange-500'>Total ASET BERSIH:</p>
+          </div>
         <br />
 
         <Divider />
@@ -169,13 +183,13 @@ export default function ShowNSDataB() {
 
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}
-        <div>
+        {/* <div>
           <HitungPenerimaanBiayaXX title="P1X" type={4} group2={8} start={startFirst} end={endPrev} />
           <HitungPenerimaanBiayaXX title="P2X" type={4} group2={9} start={startFirst} end={endPrev} />
           <HitungPenerimaanBiayaXX title="B1X" type={5} group2={10} start={startFirst} end={endPrev} />
           <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
           <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
-        </div>
+        </div> */}
 
         {/* <br /> */}
         {/* <TotalPasiva /> */}
