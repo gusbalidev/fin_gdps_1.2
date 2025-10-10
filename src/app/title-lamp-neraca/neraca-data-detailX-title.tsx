@@ -22,7 +22,7 @@ const NeracaDataDetailTitle = ({ title, titleTotal, type, group, start, end }: {
     if (!result) return <div>Tidak ada data (null)</div>;
 
     //Total & data for table
-    const { accounts: data, totalBalance } = result;
+    const { accounts: data } = result;
     
     return (
         <>

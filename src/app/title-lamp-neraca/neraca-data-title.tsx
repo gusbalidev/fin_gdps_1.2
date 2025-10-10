@@ -19,10 +19,6 @@ const NeracaDataTitle = ({ title, titleTotal, type, group, start, end }: { title
     if (error) return <div>Error: {error.message}</div>; // Handle error state
     if (!result) return <div>Tidak ada data (null)</div>;
 
-    //Total & data for table
-    const { accounts: data, totalBalance } = result;
-    const newTotal = Math.abs(totalBalance);
-
     return (
         <>
             <div className="w-full text-start">
