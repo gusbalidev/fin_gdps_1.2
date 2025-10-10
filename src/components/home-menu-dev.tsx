@@ -24,8 +24,8 @@ function HomeMenu() {
         </div>
 
         <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <MenuBox3 title={global.pageTitle.neraca} desc="Laporan Neraca" menulink='/neraca' />
-          <MenuBox3 title={global.pageTitle.lampNeraca} desc="Laporan Lampiran Neraca" menulink='/lamp-neraca-dev' />
+          <MenuBox3 title={global.pageTitle.neraca} desc="Laporan Neraca" menulink='/n2new' />
+          <MenuBox3 title={global.pageTitle.lampNeraca} desc="Laporan Lampiran Neraca" menulink='/lamp-n2' />
           <MenuBox3 title={global.pageTitle.activity} desc="Laporan Aktivitas & Arus Kas" menulink='/aktivitas' />
         </div>
 
