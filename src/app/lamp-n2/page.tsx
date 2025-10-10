@@ -14,6 +14,7 @@ import TabelNeraca from "../tabel-neraca-kol2/page";
 import TabelLampNeracaKol1 from '../tabel-lamp-neraca-kol1/page';
 import TitleLampNeraca from '../title-lamp-neraca/page';
 import TabelLampNeracaKol2 from '../tabel-lamp-neraca-kol2/page';
+import TabelLampNeracaKol2Test from '../tabel-lamp-neraca-test/page';
 
 
 //
@@ -53,6 +54,7 @@ export default function Page() {
               {isColumn1Ready === true ?
                 // <TabelNeraca />
                 <TabelLampNeracaKol2 />
+                // <TabelLampNeracaKol2Test />
                 :
                 null
               }

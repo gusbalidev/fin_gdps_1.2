@@ -142,13 +142,21 @@ const data = {
       icon: Printer,
       isActive: true,
       items: [
+        // {
+        //   title: "NERACA",
+        //   url: "/neraca",
+        // },
         {
           title: "NERACA",
-          url: "/neraca",
+          url: "/n2new",
         },
+        // {
+        //   title: "Lampiran NERACA",
+        //   url: "/lamp-neraca-dev",
+        // },
         {
           title: "Lampiran NERACA",
-          url: "/lamp-neraca-dev",
+          url: "/lamp-n2",
         },
         {
           title: "Aktivitas & Arus Kas",
@@ -213,14 +221,14 @@ const data = {
           title: "GRAFIK",
           url: "/graph",
         },
-        {
-          title: "NERACA v2",
-          url: "/n2new",
-        },
-        {
-          title: "Lampiran NERACA v2",
-          url: "/lamp-n2",
-        },
+        // {
+        //   title: "NERACA v2",
+        //   url: "/n2new",
+        // },
+        // {
+        //   title: "Lampiran NERACA v2",
+        //   url: "/lamp-n2",
+        // },
         {
           title: "Buku Besar Riil",
           url: "/ledger-riil",

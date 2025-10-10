@@ -11,7 +11,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import useNeracaSaldoContext from "@/context/neraca-saldo-context";
+import useNeracaSaldoContextB from '@/context/neraca-saldo-context-b';
 
 // Import the component to be displayed
 interface MonthYearSelectorProps {
@@ -19,32 +19,24 @@ interface MonthYearSelectorProps {
 }
 
 // MonthYearSelector component that accepts a DataComponent prop
-const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
-
+const MonthYearSelectorB = ({ DataComponent }: MonthYearSelectorProps) => {
     const btnCaption = global.btnCaption.hitung;
-    const { start, end, setIsClosing, setSubTitle, setStartContext, setEndContext, setPrevStartContext, setPrevEndContext,
-        setTitleMonthYear, setPrevTitleMonthYear, setIsColumn1Ready } = useNeracaSaldoContext();
+    const { start, end, setIsClosing, setSubTitle2, setStartContext, setEndContext, setPrevStartContext, setPrevEndContext,
+        setTitleMonthYear, setPrevTitleMonthYear } = useNeracaSaldoContextB();
 
     const currentMonthIndex = new Date().getMonth(); // Get current month index (0-11)
     const currentYear = new Date().getFullYear(); // Get current year
-    const prevMonthIndex = currentMonthIndex === 0 ? 11 : currentMonthIndex - 1; // handle January
-    const prevMonthYear = currentMonthIndex === 0 ? currentYear - 1 : currentYear;
-
-
     const years = Array.from({ length: global.app.maxYearBack + 1 }, (_, i) => (currentYear - i).toString()); // Generate years
 
     const monthNames = useMemo(() => [
         "Januari", "Februari", "Maret", "April", "Mei", "Juni",
         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
     ], []);
-    // const [month, setMonth] = useState(monthNames[currentMonthIndex]); // Set default to current month
-    const [month, setMonth] = useState(monthNames[prevMonthIndex]); // Set default to current month
+    const [month, setMonth] = useState(monthNames[currentMonthIndex]); // Set default to current month
 
     //const [month, setMonth] = useState('');
     const currentYearString = currentYear.toString();
-    // const [year, setYear] = useState(currentYearString);
-    const [year, setYear] = useState(prevMonthYear.toString()); // Default to previous month year if January
-
+    const [year, setYear] = useState(currentYearString);
     const [showComponent, setShowComponent] = useState(false);
 
     const [selectedPeriod, setSelectedPeriod] = useState(`${month} ${year}`); // New state for selected period
@@ -104,47 +96,43 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
     ]);
 
     React.useEffect(() => {
-        updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
-        setSubTitle(selectedPeriod);
+        // updateStartAndEndDate(month, year); // Calculate start and end dates, including previous month
+        setSubTitle2(selectedPeriod);
         setShowComponent(false);
-        setIsColumn1Ready(false);
-        //refreshPath();
-    }, [month, year, updateStartAndEndDate, setSubTitle, selectedPeriod, setIsColumn1Ready]);
+    }, [month, year, updateStartAndEndDate, setSubTitle2, selectedPeriod]);
 
     const handleMonthChange = (value: string) => {
         setMonth(value);
         setSelectedPeriod(`${value} ${year}`); // Update selected period
         updateStartAndEndDate(value, year); // Update start date
-        setSubTitle(selectedPeriod);
+        setSubTitle2(selectedPeriod);
         setShowComponent(true);
         setIsClosing(false);
         //refreshPath();
-        handleButtonClick();
     };
 
     const handleYearChange = (value: string) => {
         setYear(value);
         setSelectedPeriod(`${month} ${value}`); // Update selected period
         updateStartAndEndDate(month, value); // Update start date
-        setSubTitle(selectedPeriod);
+        setSubTitle2(selectedPeriod);
         setShowComponent(true);
         setIsClosing(false);
         //refreshPath();
-        handleButtonClick();
     };
 
     const handleButtonClick = () => {
-        setSubTitle(selectedPeriod);
+        setSubTitle2(selectedPeriod);
         setShowComponent(true);
-        setIsColumn1Ready(true);
         //refreshPath();
     };
 
     return (
         <>
-            {/* <div className="flex gap-3 py-2"> */}
             <div className="flex justify-end gap-3 py-2">
+                {/* <div className="justify-end-safe gap-3 py-2"> */}
                 <div className="w-600 flex-none">
+                    {/* <div className="w-600 flex-none"> */}
                     {/* <div className="flex justify-normal space-x-2 mt-2 mb-2"> */}
                     <Select onValueChange={handleMonthChange} value={month}>
                         <SelectTrigger>
@@ -174,7 +162,7 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
                     </Select>
                 </div>
                 <Button variant={'outline'} onClick={handleButtonClick}>{btnCaption}</Button>
-            </div>
+            </div >
 
             <div>
                 {/* {showComponent && <ShowNSData />} */}
@@ -186,4 +174,4 @@ const MonthYearSelector = ({ DataComponent }: MonthYearSelectorProps) => {
 };
 
 
-export default MonthYearSelector;
+export default MonthYearSelectorB;

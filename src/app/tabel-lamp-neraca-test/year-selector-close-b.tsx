@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useCallback } from 'react';
-
 import global from "@/config.js";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,18 +10,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-// import ShowNSData from "./neraca-t/page-data";
+import useNeracaSaldoContextB from '@/context/neraca-saldo-context-b';
 
 interface YearSelectorProps {
     DataComponent: React.ComponentType;
 }
 
 // const YearSelector = () => {
-const YearSelector = ({ DataComponent }: YearSelectorProps) => {
+const YearSelectorB = ({ DataComponent }: YearSelectorProps) => {
     const btnCaption = global.btnCaption.hitung;
-    const { setIsClosing, setSubTitle, setStartContext, setEndContext,
-        titleMonthYear, titlePrevMonthYear, setTitleMonthYear, setPrevTitleMonthYear } = useNeracaSaldoContext();
+    const { setIsClosing, setSubTitle2, setStartContext, setEndContext,
+        titleMonthYear, titlePrevMonthYear, setTitleMonthYear, setPrevTitleMonthYear } = useNeracaSaldoContextB();
 
     const currentYear = new Date().getFullYear();
     const nextYear = currentYear + 1;
@@ -45,11 +43,11 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
         setEndContext(`${toYear}-03-31`);
 
         // Update subtitle with the year range
-        setSubTitle(`1 April ${fromYear} - 31 Maret ${toYear}`);
+        setSubTitle2(`1 April ${fromYear} - 31 Maret ${toYear}`);
 
         setTitleMonthYear('Per 31 Maret ' + toYear);
         setPrevTitleMonthYear('Per 31 Maret ' + fromYear);
-    }, [setStartContext, setEndContext, setSubTitle, setTitleMonthYear, setPrevTitleMonthYear]);
+    }, [setStartContext, setEndContext, setSubTitle2, setTitleMonthYear, setPrevTitleMonthYear]);
 
     // Update date range when yearFrom or yearTo changes
     React.useEffect(() => {
@@ -68,7 +66,7 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
         updateDateRange(newYearFrom, newYearTo);
         setShowComponent(true);
         setIsClosing(false);
-    }, [currentYear, updateDateRange, setIsClosing]);
+    }, [currentYear, updateDateRange]);
 
     const handleYearToChange = useCallback((value: string) => {
         const newYearTo = value;
@@ -78,7 +76,7 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
         updateDateRange(newYearFrom, newYearTo);
         setShowComponent(true);
         setIsClosing(false);
-    }, [updateDateRange, setIsClosing]);
+    }, [updateDateRange]);
 
     const handleButtonClick = () => {
         setShowComponent(true);
@@ -134,4 +132,4 @@ const YearSelector = ({ DataComponent }: YearSelectorProps) => {
     );
 };
 
-export default YearSelector;
+export default YearSelectorB;
