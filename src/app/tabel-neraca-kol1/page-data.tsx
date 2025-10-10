@@ -21,11 +21,12 @@ import useNeracaCol1Context from "@/context/neraca-col1-context";
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
+import useNeracaTContextB from "@/context/neraca-t-context-b";
 
 
 //
 export default function ShowNSDataB() {
-  const { totalATX, totalAPX } = useNeracaTContext();
+  const { totalATX, totalAPX, totalAT1X, totalAT2X, totalAT3X, totalAT4X} = useNeracaTContextB();
   const { start, end, startPrev, endPrev } = useNeracaSaldoContext(); 
   const startFirst = global.app.periodStart || "2024-04-01"; // Use global config or default to 2023-04-01
   const prevMonth = getMonth(new Date(end));
@@ -71,19 +72,20 @@ export default function ShowNSDataB() {
           <NeracaDataX title="ATX" titleTotal="BANGUNAN" type={1} group={11} start={startFirst} end={end} />
           <NeracaDataX title="ATX" titleTotal="KENDARAAN" type={1} group={12} start={startFirst} end={end} />
           <NeracaDataX title="ATX" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
-          <JustValueTotalBold value={toidr(totalATX)} />
+          <JustValueTotalBold value={toidr(totalAT1X + totalAT2X + totalAT3X + totalAT4X)} />
         </Suspense>
 
         {/* Hitung Ak. Penyusutan */}
         <Suspense fallback={<Loading section="AP" />}>
           <NeracaDataAP title="APX" titleTotal="AKUMULASI PENYUSUTAN" start={startFirst} end={end} />
+          {/* <JustValueTotalBold value={toidr(totalATX + totalAPX)} /> */}
         </Suspense>
 
         <br />
         {/* Akumulasi Penyusutan */}
         <JustValueTotalNoLine value={toidr(totalAPX)} />
         {/* Total Aktiva Tetap Bersih */}
-        <JustValueTotalBold value={toidr(totalATX + totalAPX)} />
+        <JustValueTotalBold value={toidr(totalAT1X + totalAT2X + totalAT3X + totalAT4X+totalAPX)} />
 
         <br />
         <Divider />
@@ -129,7 +131,8 @@ export default function ShowNSDataB() {
 
 //
 function TotalAktiva() {
-  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
+  // const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContext();
+  const { totalALX, totalATLX, totalAT1X, totalAT2X, totalAT3X, totalAT4X, totalAPX } = useNeracaTContextB();
   const totalAT = totalAT1X + totalAT2X + totalAT3X + totalAT4X;
   const totalAktiva = totalALX + totalATLX + totalAT + totalAPX;
 
@@ -142,7 +145,7 @@ function TotalAktiva() {
 
 //
 function TotalPasiva() {
-  const { totalKX } = useNeracaTContext();
+  const { totalKX } = useNeracaTContextB();
   const { totalAsetAwalX, totalSelisihABX } = useNeracaCol1Context();
   const totalPasiva = totalKX + totalAsetAwalX + totalSelisihABX;
 

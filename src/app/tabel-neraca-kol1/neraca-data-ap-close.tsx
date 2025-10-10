@@ -4,11 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
+import useNeracaTContextB from '@/context/neraca-t-context-b';
 
 //Hitung Akumulasi Penyusutan
 const NeracaDataAP = ({ title, titleTotal, start, end }: { title: string; titleTotal: string; start: string, end: string }) => {
 
-    const { setTotalAPX } = useNeracaTContext();
+    const { setTotalAPX, totalATX } = useNeracaTContextB();
     const type = 1;
     const group = 14;
 
