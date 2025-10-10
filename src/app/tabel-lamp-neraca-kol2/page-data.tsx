@@ -113,8 +113,6 @@ export default function ShowNSDataB() {
           <NeracaDataX title="AT2" titleTotal="INVENTARIS" type={1} group={13} start={startFirst} end={end} />
           <NeracaDataDetailX title="AT2" titleTotal="IN" type={1} group={13} start={startFirst} end={end} />
 
-          {/* <NeracaDataSub title="AT" titleTotal="AT" type={1} group={2} start={startFirst} end={end} /> */}
-          {/* <NeracaDataTotalAT title="Aktiva Tetap" start={startFirst} end={end} /> */}
           <NeracaDataTotalATX title="Aktiva Tetap" start={startFirst} end={end} />
         </Suspense>
 

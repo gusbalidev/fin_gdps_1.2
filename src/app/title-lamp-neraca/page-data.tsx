@@ -39,7 +39,7 @@ export default function ShowNSDataB() {
         <Divider />
         {/* <br /> */}
 
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">AKTIVA LANCAR</h2>
+        <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">AKTIVA LANCAR</h2>
         <Suspense fallback={<Loading section="AKTIVA LANCAR" />}>
           {/* <AktivaLancar /> */}
           <NeracaDataTitle title="KAS" titleTotal="KAS" type={1} group={1} start={startFirst} end={end} />
@@ -76,8 +76,9 @@ export default function ShowNSDataB() {
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA-T-L</h2>
-        <Suspense fallback={<Loading section="AKTIVA TIDAK LANCAR - CURRENT" />}>
+        <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">AKTIVA TIDAK LANCAR</h2>
+        {/* <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">AKTIVA-T-L</h2> */}
+        <Suspense fallback={<Loading section="AKTIVA TIDAK LANCAR title" />}>
           {/* <AktivaTidakLancar /> */}
           <NeracaDataTitle title="ATL" titleTotal="TANAH DALAM PENYELESAIAN" type={1} group={15} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="ATL" titleTotal="TDP" type={1} group={15} start={startFirst} end={end} />
@@ -91,7 +92,7 @@ export default function ShowNSDataB() {
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">AKTIVA TETAP</h2>
+        <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">AKTIVA TETAP</h2>
         <Suspense fallback={<Loading section="AKTIVA TETAP" />}>
           {/* <AktivaLancar /> */}
           <NeracaDataTitle title="AT" titleTotal="TANAH" type={1} group={10} start={startFirst} end={end} />
@@ -115,7 +116,7 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">PENYUSUTAN</h2>
         <Suspense fallback={<Loading section="AP" />}>
-          <p className="text-[1em] text-start">Akumulasi Penyusutan</p>
+          <p className="text-[1em] text-start font-bold dark:text-orange-500">Akumulasi Penyusutan</p>
           <Divider />
           <p className='text-[1em] text-start pb-1 font-bold text-blue-600 dark:text-orange-500'>Total AKTIVA TETAP BERSIH:</p>
         </Suspense>
@@ -128,7 +129,7 @@ export default function ShowNSDataB() {
         <h2 className="text-start text-2xl text-blue-600 dark:text-orange-600 font-bold">KEWAJIBAN & ASET BERSIH</h2>
         <Divider />
 
-        <h2 className="text-lg font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 text-start">KEWAJIBAN</h2>
+        <h2 className="text-lg font-bold pt-2 pb-2 dark:text-orange-500 text-start">KEWAJIBAN</h2>
         <Suspense fallback={<Loading section="KEWAJIBAN" />}>
           <NeracaDataTitle title="KW" titleTotal="HUTANG BIAYA" type={2} group={16} start={startFirst} end={end} />
           <NeracaDataDetailTitle title="KW" titleTotal="HUT-B" type={2} group={16} start={startFirst} end={end} />
@@ -146,7 +147,7 @@ export default function ShowNSDataB() {
         <div className="h-2"></div>
 
         <Divider />
-        <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">ASET BERSIH</h2>
+        <h2 className="text-lg text-start font-bold pt-2 pb-2 dark:text-orange-500">ASET BERSIH</h2>
         {/* <HitungPenerimaanBiaya /> */}
         {/* <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} /> */}
         <p className="text-[1em] text-start">Aset Bersih</p>
