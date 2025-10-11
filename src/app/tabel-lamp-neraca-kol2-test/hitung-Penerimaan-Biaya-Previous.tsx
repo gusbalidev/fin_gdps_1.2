@@ -3,10 +3,11 @@
 import { useQuery } from '@tanstack/react-query';
 
 import useAktivitasContext from '@/context/aktivitas-context';
+import useAktivitasContextB from '@/context/aktivitas-contex-b';
 
 const HitungPenerimaanBiayaXX = ({ title, type, group2, start, end }: { title: string; type: number; group2: number; start: string, end: string }) => {
 
-    const { setTotalTerima1XX, setTotalTerima2XX, setTotalBebanOpXX, setTotalBeban2XX, setTotalBeban3XX } = useAktivitasContext();
+    const { setTotalTerima1XX, setTotalTerima2XX, setTotalBebanOpXX, setTotalBeban2XX, setTotalBeban3XX } = useAktivitasContextB();
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({

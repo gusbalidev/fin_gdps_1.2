@@ -57,8 +57,8 @@ export default function Page() {
                 // <TabelNeraca />
                 // <TabelLampNeracaKol1 />
                 // <TabelLampNeracaKol2 />
-                <TabelLampNeracaKol2Test />
                 // <TabelLampNeracaKol1Test />
+                <TabelLampNeracaKol2Test />
                 :
                 null
               }

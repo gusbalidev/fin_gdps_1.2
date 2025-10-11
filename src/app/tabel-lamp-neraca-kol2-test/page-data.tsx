@@ -165,11 +165,11 @@ export default function ShowNSDataB() {
         {/* Hitung Total Penerimaan/Beban untuk periode sebelumnya <br />
         Per. sblum: {startFirst} - {endPrev}<br /> */}
         <div>
-          <HitungPenerimaanBiayaXX title="P1X" type={4} group2={8} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="P2X" type={4} group2={9} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B1X" type={5} group2={10} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B2X" type={5} group2={11} start={startFirst} end={endPrev} />
-          <HitungPenerimaanBiayaXX title="B3X" type={5} group2={12} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P1XX" type={4} group2={8} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="P2XX" type={4} group2={9} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B1XX" type={5} group2={10} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B2XX" type={5} group2={11} start={startFirst} end={endPrev} />
+          <HitungPenerimaanBiayaXX title="B3XX" type={5} group2={12} start={startFirst} end={endPrev} />
         </div>
 
         {/* <TotalPasiva /> */}
@@ -206,17 +206,20 @@ function TotalPasiva() {
   const { totalKX } = useNeracaTContextB();
   // const { setTotalALX, setTotalATLX, setTotalATX, setTotalKX, setTotalABX, setTotalAB2X, setTotalAT1X, setTotalAT2X, setTotalAT3X, setTotalAT4X } = useNeracaTContextB();
   
-  const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX } = useAktivitasContextB();
+  const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX, totalSelisihABXX } = useAktivitasContextB();
+  
   const totalPasiva = totalKX + totalAsetAkhirX;
 
   return (
     <>
       {/* <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} /> */}
       <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalPasiva)}</h2>
-      {/* useAktivitasContextB: <br />
+      {/* useNeracaTContextB: <br />
       {totalKX} <br />
+      useAktivitasContextB: <br />
       {totalAsetAkhirX} <br />
-      {totalAsetAwalX} */}
+      {totalAsetAwalX} <br />
+      {totalSelisihABX} */}
     </>
   );
 }
