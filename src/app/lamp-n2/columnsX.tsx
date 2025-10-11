@@ -51,7 +51,7 @@ export const columns: ColumnDef<Account>[] = [
         cell: ({ row }) => {
             //const balance = row.original.balance;
             const balance = Math.abs(row.original.balance);
-            return <div className="text-right  text-gray-700 dark:text-gray-400 ">Rp. {balance.toLocaleString()}</div>;
+            return <div className="text-right ">Rp. {balance.toLocaleString()}</div>;
             return <div className="text-right ">Rp. {balance.toLocaleString()}</div>;
         },
         enableSorting: true,
