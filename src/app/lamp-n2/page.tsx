@@ -11,10 +11,11 @@ import KolomTitleNeraca from "./kolom-title-neraca";
 import BlokPeriode from "./blok-periode";
 import TabelNeracaKol1 from "../tabel-neraca-kol1/page";
 import TabelNeraca from "../tabel-neraca-kol2/page";
-import TabelLampNeracaKol1 from '../tabel-lamp-neraca-kol1/page';
+// import TabelLampNeracaKol1 from '../tabel-lamp-neraca-kol1/page';
 import TitleLampNeraca from '../title-lamp-neraca/page';
 import TabelLampNeracaKol2 from '../tabel-lamp-neraca-kol2/page';
-import TabelLampNeracaKol2Test from '../tabel-lamp-neraca-test/page';
+import TabelLampNeracaKol2Test from '../tabel-lamp-neraca-kol2-test/page';
+import TabelLampNeracaKol1Test from '../tabel-lamp-neraca-kol1-test/page';
 
 
 //
@@ -46,7 +47,7 @@ export default function Page() {
           <div className='flex justify-between'>
             {/* Tabel1 */}
             <div className='w-1/2'>
-              <TabelLampNeracaKol1 />
+              <TabelLampNeracaKol1Test />
               {/* <TabelLampNeracaKol2Test /> */}
             </div>
 
@@ -54,9 +55,10 @@ export default function Page() {
             <div className='w-1/2'>
               {isColumn1Ready === true ?
                 // <TabelNeraca />
+                // <TabelLampNeracaKol1 />
                 // <TabelLampNeracaKol2 />
                 <TabelLampNeracaKol2Test />
-                // <TabelLampNeracaKol1 />
+                // <TabelLampNeracaKol1Test />
                 :
                 null
               }

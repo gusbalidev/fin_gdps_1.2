@@ -1,0 +1,30 @@
+"use client"
+
+import Divider from "@/components/Divider";
+import useNeracaSaldoContext from "@/context/neraca-saldo-context";
+import ShowNSDataB from "./page-data";
+import MonthYearSelector from "./month-year-selector-close";
+import YearSelector from "./year-selector-close";
+
+
+//
+export default function TabelLampNeracaKol1Test() {
+  const { periodType, subTitle } = useNeracaSaldoContext();
+  const DataComponent = ShowNSDataB;
+
+  return (
+    <div className="w-full">
+      <div className="text-right">
+        <h1 className="text-xl font-bold dark:text-blue-500">{subTitle}</h1>
+        <Divider />
+        {periodType === 'M' ?
+          <MonthYearSelector DataComponent={DataComponent} />
+          :
+          <YearSelector DataComponent={DataComponent} />
+        }
+        <br />
+      </div>
+    </div>
+
+  )
+}

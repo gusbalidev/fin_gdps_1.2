@@ -8,7 +8,6 @@ import { JustValueTotalBold, JustValueTotalNoLine } from "../neraca2/title-value
 import useAktivitasContext from "@/context/aktivitas-context";
 import useSaldoAwalContext from "@/context/saldo-awal-context";
 import GetSaldoAwal from "@/lib/get-SaldoAwal";
-import useNeracaCol1Context from "@/context/neraca-col1-context";
 import Divider from "@/components/Divider";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
 
@@ -16,17 +15,11 @@ import useAktivitasContextB from "@/context/aktivitas-contex-b";
 const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }:
     { title: string; titleTotal: string; type: number; group2: number; start: string, end: string, month: number }) => {
 
-    // const {selisihAB1, setSelisihAB1} = useNeracaSaldoContext();
-    
-    // const { totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX } = useAktivitasContext();
     const { totalTerima1XX, totalTerima2XX, totalBebanOpXX, totalBeban2XX, totalBeban3XX, totalSelisihABXX, setTotalSelisihABXX } = useAktivitasContext();
-    // const { totalSelisihABX } = useAktivitasContext();
-    // const { totalTerima1, totalTerima2, totalBebanOp, totalBeban2, totalBeban3 } = useAktivitasContext();
-    // const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X } = useAktivitasContextB();
 
     const { totalTerima1X, totalTerima2X, totalBebanOpX, totalBeban2X, totalBeban3X, totalSelisihABX, setTotalSelisihABX,
             totalAsetAwalX, totalAsetAkhirX, setTotalAsetAwalX, setTotalAsetAkhirX, setTotalAsetAkhir
-         } = useAktivitasContextB();
+            } = useAktivitasContextB();
     
     
     GetSaldoAwal({ title: "Saldo Awal", coaId: 82 });
@@ -54,13 +47,8 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
     // Hitung Kenaikan/Penurunan AB
     const previousKPABXX = (totalTerima1XX + totalTerima2XX) - (totalBebanOpXX + totalBeban2XX + totalBeban3XX) ;
     // const currentKPABX = (totalTerima1 + totalTerima2) - (totalBebanOp + totalBeban2 + totalBeban3);
-    const currentKPABX = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);
-    
-    // Aset Awal & Akhir Final
-    // const totalAsetAwalFinal = Math.abs(totalBalance) + saldoAwal + previousKPABXX - saldoAwal;
-    // const totalAsetAwalFinal = Math.abs(totalBalance) + totalSelisihABXX + saldoAwal;
-    // const totalAsetAkhirFinal = totalAsetAwalFinal + totalSelisihABXX;
-       
+    const currentKPABX = (totalTerima1X + totalTerima2X) - (totalBebanOpX + totalBeban2X + totalBeban3X);    
+      
     // Aset Awal, KPAB, Aset Akhir
     const tempAsetAwal = Math.abs(totalBalance)+totalSelisihABXX+saldoAwal;
     
@@ -75,65 +63,26 @@ const HitungAsetBersih = ({ title, titleTotal, type, group2, start, end, month }
         setTotalSelisihABX(saldoAwal);
         setTotalAsetAkhirX(Math.abs(totalBalance)+saldoAwal);
     } 
-
-    // let fixTemp = totalSelisihABX;
-    // setTotalAsetAkhirX(totalAsetAkhirX);
     
     return (
         <>
             <div className="w-full pr-2">
 
-                {/* totalTerima1: {totalTerima1} <br />
-                totalTerima1X: {totalTerima1X} <br />
-                x2: {x2} <br /> */}
-
                 <JustValueTotalNoLine value={toidr(totalAsetAwalX)} />
-                {/* <JustValueTotalNoLine value={toidr(totalSelisihABX)} /> */}
 
-                {/* before: {totalSelisihABX} <br /> */}
                 {
                     month === 3 ?
                     <JustValueTotalNoLine value={toidr(saldoAwal)} />
                     :
                     <JustValueTotalNoLine value={toidr(totalSelisihABX)} />
-                    // <ShowABValue value={totalSelisihABX} value2={totalAsetAkhirX} />
-                    // <ShowX value={totalSelisihABX} value2={totalAsetAkhirX} />
-                    // <ShowABValue2 value={totalSelisihABX} />
-                    // <ShowValue2 value={valuesAB.selisih} value2={totalAsetAkhirX} />
-
                 }
 
-                {/* <JustValueTotalBold value={toidr(totalAsetAkhirX)} /> */}
                 </div>
                 <Divider />
                 <div className="w-full pr-2">
                     <TulisTotalRp title={titleTotal} value={toidr(totalAsetAkhirX)} />
                 </div>
-                {/* {
-                    month === 3 ?
-                    <JustValueTotalBold value={toidr(totalAsetAkhirX)} />
-                    :
-                    null
-                } */}
-
-                {/* <br /> */}
-                {/* --- <br /> */}
-                {/* {totalSelisihABX} */}
-                {/* <ShowValueTest value={valuesAB.selisih} /> */}
-
-                {/*                 
-                <br />
-                {valuesAB.awal} <br />
-                {valuesAB.selisih} <br />
-                {valuesAB.akhir} <br />
-                ---- <br />
-                {x1} <br />
-                {x2} <br />
-                {x3} <br />
-                ---- <br />
-                {previousKPABXX} <br />
-                bulan: {month}
-                 */}
+                
 
         </>
     )

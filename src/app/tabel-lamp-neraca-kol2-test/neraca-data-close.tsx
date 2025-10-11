@@ -4,19 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 
 import toidr from "@/lib/toidr";
 import useNeracaTContext from '@/context/neraca-t-context';
-// import TulisRekapRp from '@/components/TulisRekapRpNeracaCurrent';
+// import { TulisRekapRp } from './sub-total';
 
 const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: string; titleTotal: string; type: number; group: number; start: string, end: string }) => {
 
     //const { setTotalAL, setTotalATL, setTotalAT, setTotalAP, setTotalK, setTotalKL, setTotalAB, setTotalAB2 } = useNeracaStore();
-    const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4,
-            setTotalATL1, setTotalATL2
-            } 
-            = useNeracaTContext();
+    const { setTotalAL, setTotalATL, setTotalAT, setTotalK, setTotalAB, setTotalAB2, setTotalAT1, setTotalAT2, setTotalAT3, setTotalAT4 } = useNeracaTContext();
 
     // Fetch data using TanStack Query
     const { data: result, isLoading, error, isSuccess } = useQuery({
-        queryKey: [title, type, group],
+        queryKey: ['nsnow', type, group],
         //queryFn: () => fetch(`/api/neraca?accountTypeId=${type}&accountGroup2Id=${group2}`, { cache: 'no-store' })
         //queryFn: () => fetch(`/api/neraca-saldo?accountTypeId=${type}&accountGroup2Id=${group2}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
         queryFn: () => fetch(`/api/neraca-group1?accountTypeId=${type}&accountGroupId=${group}&startDate=${start}&endDate=${end}`, { cache: 'no-store' })
@@ -45,11 +42,11 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
             case 1:
                 setTotalAL(newTotal)
                 break;
-            case 2:
-                setTotalAT(newTotal)
-                break;
             case 3:
                 setTotalATL(newTotal)
+                break;
+            case 2:
+                setTotalAT(newTotal)
                 break;
             case 4:
                 setTotalK(newTotal)
@@ -78,14 +75,6 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
                 setTotalAT4(newTotal)
                 break;
 
-            // 
-            case 15:
-                setTotalATL1(newTotal)
-                break;
-            case 16:
-                setTotalATL2(newTotal)
-                break;
-
             default:
                 // Handle default case
                 break;
@@ -98,7 +87,7 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
                 {/* <h2 className="text-lg font-bold pt-2 pb-2">{title}</h2> */}
                 {/* <h2 className="text-lg font-bold pt-2 pb-2 opacity-0">{title}</h2> */}
                 {/* <DataTable columns={columns} data={data} /> */}
-                <TulisRekapRp value={newTotalBalance} title={titleTotal} />
+                {/* <TulisRekapRp value={newTotalBalance} title={titleTotal} /> */}
             </div>
 
         </>
@@ -109,16 +98,3 @@ const NeracaData = ({ title, titleTotal, type, group, start, end }: { title: str
 export default NeracaData;
 
 //export default
-
-function TulisRekapRp({ value, title }: { value: string, title: string }) {
-    return (
-        <>
-            <div className='flex justify-between pr-2'>
-                {/* <p className='text-sm font-medium'>{title}</p> */}
-                <p></p>
-                <p className='text-[0.9em] text-blue-600 dark:text-orange-500'>{value}</p>
-                {/* <p className='text-m'>{value}</p> */}
-            </div>
-        </>
-    )
-}

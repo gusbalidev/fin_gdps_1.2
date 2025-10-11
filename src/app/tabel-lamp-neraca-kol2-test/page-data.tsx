@@ -8,26 +8,18 @@ import global from "@/config.js";
 import Loading from "@/components/Loading";
 import Divider from "@/components/Divider";
 
-import { JustValueTotalBold, JustValueTotalNoLine, JustValueTotalNoLineBold2 } from "../neraca/title-value";
-
-import NeracaDataX from "../lamp-n2/neraca-dataX";
-import NeracaDataSubX from "../n2new/neraca-data-subX";
-import NeracaDataAP from "./neraca-data-ap";
-
-import useNeracaTContext from "@/context/neraca-t-context";
-import useNeracaSaldoContext from "@/context/neraca-saldo-context";
-import useNeracaCol1Context from "@/context/neraca-col1-context";
-
 import HitungPenerimaanBiayaXX from "./hitung-Penerimaan-Biaya-Previous";
 import HitungPenerimaanBiaya from "./hitung-Penerimaan-Biaya";
 import HitungAsetBersih from "./hitung-Aset-Bersih";
-import NeracaData from "../lamp-n2/neraca-data";
-import NeracaDataDetail from "../lamp-n2/neraca-data-detail";
-import NeracaDataSub from "../lamp-n2/neraca-data-sub";
+
+import NeracaDataX from "../lamp-n2/neraca-dataX";
+import NeracaDataSubX from "../n2new/neraca-data-subX";
 import NeracaDataDetailX from "../lamp-n2/neraca-data-detailX";
-import NeracaDataTotalAT from "./neraca-data-total-at";
-import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import NeracaDataTotalATX from "./neraca-data-total-atX";
+import NeracaDataAP from "./neraca-data-ap";
+import NeracaData from "../lamp-n2/neraca-data";
+
+import useNeracaSaldoContextB from "@/context/neraca-saldo-context-b";
 import useNeracaTContextB from "@/context/neraca-t-context-b";
 import useAktivitasContextB from "@/context/aktivitas-contex-b";
 
@@ -154,7 +146,7 @@ export default function ShowNSDataB() {
         <Divider />
         <h2 className="text-lg text-start font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500 opacity-0">P/B-AB</h2>
         <HitungPenerimaanBiaya />         
-        <HitungAsetBersih title="ABX" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
+        <HitungAsetBersih title="AB2" titleTotal="AB Awal-Akhir" type={3} group2={6} start={startFirst} end={end} month={prevMonth + 1} />
         <br />
 
         <Divider />
@@ -199,6 +191,12 @@ function TotalAktiva() {
     <>
       {/* <JustValueTotalNoLineBold2 value={toidr(totalAktiva)} /> */}
       <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalAktiva)}</h2>
+      {/* useNeracaTContextB: <br />
+      {totalALX} <br />
+      {totalATLX} <br />
+      {totalAT} <br />
+      {totalAPX} <br /> */}
+
     </>
   );
 }
@@ -206,6 +204,8 @@ function TotalAktiva() {
 //
 function TotalPasiva() {
   const { totalKX } = useNeracaTContextB();
+  // const { setTotalALX, setTotalATLX, setTotalATX, setTotalKX, setTotalABX, setTotalAB2X, setTotalAT1X, setTotalAT2X, setTotalAT3X, setTotalAT4X } = useNeracaTContextB();
+  
   const { totalAsetAwalX, totalAsetAkhirX, totalSelisihABX } = useAktivitasContextB();
   const totalPasiva = totalKX + totalAsetAkhirX;
 
@@ -213,6 +213,10 @@ function TotalPasiva() {
     <>
       {/* <JustValueTotalNoLineBold2 value={toidr(totalPasiva)} /> */}
       <h2 className="text-xl font-bold pt-2 pb-2 text-blue-600 dark:text-orange-500">{toidr(totalPasiva)}</h2>
+      {/* useAktivitasContextB: <br />
+      {totalKX} <br />
+      {totalAsetAkhirX} <br />
+      {totalAsetAwalX} */}
     </>
   );
 }

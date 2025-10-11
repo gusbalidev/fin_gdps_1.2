@@ -24,6 +24,10 @@ const NeracaTContext = createContext
         totalA: number; setTotalA: (type: number) => void;
         totalAL: number; setTotalAL: (type: number) => void;
         totalATL: number; setTotalATL: (type: number) => void;
+
+        totalATL1: number; setTotalATL1: (type: number) => void;
+        totalATL2: number; setTotalATL2: (type: number) => void;
+        
         totalAT: number; setTotalAT: (type: number) => void;
         totalAP: number; setTotalAP: (type: number) => void;
 
@@ -67,6 +71,11 @@ const NeracaTContext = createContext
         totalA: 0, setTotalA: () => { },
         totalAL: 0, setTotalAL: () => { },
         totalATL: 0, setTotalATL: () => { },
+
+        totalATL1: 0, setTotalATL1: () => { },
+        totalATL2: 0, setTotalATL2: () => { },
+
+
         totalAT: 0, setTotalAT: () => { },
         totalAP: 0, setTotalAP: () => { },
 
@@ -104,6 +113,10 @@ export function NeracaTProvider({ children }: {
     const [totalA, setTotalA] = useState(0);
     const [totalAL, setTotalAL] = useState(0);
     const [totalATL, setTotalATL] = useState(0);
+
+    const [totalATL1, setTotalATL1] = useState(0);
+    const [totalATL2, setTotalATL2] = useState(0);
+
     const [totalAT, setTotalAT] = useState(0);
     const [totalAP, setTotalAP] = useState(0);
 
@@ -137,6 +150,10 @@ export function NeracaTProvider({ children }: {
             totalA, setTotalA,
             totalAL, setTotalAL,
             totalATL, setTotalATL,
+            
+            totalATL1, setTotalATL1,
+            totalATL2, setTotalATL2,
+
             totalAT, setTotalAT,
 
             totalAT1, setTotalAT1,
