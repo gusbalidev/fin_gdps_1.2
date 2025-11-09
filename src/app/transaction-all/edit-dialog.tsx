@@ -280,7 +280,7 @@ export function EditDialog({ children, transaction }: EditDialogProps) {
                             </div>
                         </div>
                         <div className="flex justify-between space-x-2">
-                            <Button disabled={true} variant="link" onClick={handleDeleteClick}>{<Trash2Icon />}</Button>
+                            <Button disabled={false} variant="link" onClick={handleDeleteClick}>{<Trash2Icon />}</Button>
                             <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                                 Batal
                             </Button>
