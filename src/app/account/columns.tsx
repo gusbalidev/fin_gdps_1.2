@@ -186,19 +186,19 @@ export const columns: ColumnDef<Account>[] = [
         },
         enableSorting: true,
     },
-    // {
-    //     id: "actions",
-    //     cell: ({ row }) => {
-    //         return (
-    //             <div className="text-right">
-    //                 <EditDialog account={row.original}>
-    //                     <Button variant="ghost" size="icon">
-    //                         <PencilIcon />
-    //                     </Button>
-    //                 </EditDialog>
-    //             </div>
-    //         )
-    //     },
-    // },
+    {
+        id: "actions",
+        cell: ({ row }) => {
+            return (
+                <div className="text-right">
+                    <EditDialog account={row.original}>
+                        <Button variant="ghost" size="icon">
+                            <PencilIcon />
+                        </Button>
+                    </EditDialog>
+                </div>
+            )
+        },
+    },
 
 ]
