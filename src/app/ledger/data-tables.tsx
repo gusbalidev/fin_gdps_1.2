@@ -437,6 +437,15 @@ export function DataTable<TData, TValue>({
             className="w-[200px]"
           />
 
+          <Input
+            placeholder="Cari Uraian ...."
+            value={(table.getColumn("description")?.getFilterValue() as string) ?? ""}
+            onChange={(event) => {
+              table.getColumn("description")?.setFilterValue(event.target.value);
+            }}
+            className="w-[200px]"
+          />
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="ml-auto">
